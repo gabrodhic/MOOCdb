@@ -1,0 +1,1 @@
+SELECT MAX(LENGTH(`username`)) FROM forum_data.auth_user; 
