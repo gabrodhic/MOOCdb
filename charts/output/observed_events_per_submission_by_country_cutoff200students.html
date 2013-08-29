@@ -1,0 +1,34 @@
+
+    <html>
+    <head>
+      <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+      <script type='text/javascript'>
+       google.load('visualization', '1', {'packages': ['geomap']});
+       google.setOnLoadCallback(drawMap);
+    
+        function drawMap() {
+          var data = google.visualization.arrayToDataTable([
+        ['Country', 'Number observed events per submission'],['BD', 37.86858062],['PE', 35.19908951],['EG', 31.33806834],['BR', 28.67805939],['PT', 28.53700721],['IN', 27.63659185],['IT', 27.14498788],['ZA', 27.14039689],['US', 26.52990120],['MX', 26.32422182],['PK', 25.44197547],['CA', 24.79415294],['RO', 23.86436960],['VE', 23.81591120],['CO', 23.27183744],['PH', 22.54054945],['DO', 22.31070563],['IE', 22.30354453],['CL', 22.22772126],['PL', 21.90907163],['GR', 21.29115447],['SG', 20.92757465],['AR', 20.92337691],['RU', 20.38696797],['GB', 19.52058231],['DE', 19.37318945],['UA', 19.18326559],['CR', 18.54600476],['AU', 18.04613189],['NL', 17.70001388],['SE', 17.52427979],['ES', 17.17050458],['FR', 16.81415397],['HU', 15.33999607],['DK', 13.96847281]
+    ]);
+
+      var options = {};
+      options['dataMode'] = 'regions';
+      options['width'] = 1000;
+      options['height'] = 600;
+      options['showLegend'] = true;
+      options['colors']=[0xffffaa, 0xCC3300]; // yellow to red
+      
+        var container = document.getElementById('map_canvas');
+      var geomap = new google.visualization.GeoMap(container);
+      geomap.draw(data, options);
+  };
+  </script>
+    </head>
+    
+    <body>
+    Number observed events per submission by country having at least 200 students<br/> <br/>
+      <div id='map_canvas'></div>
+    </body>
+    
+    </html>
+    

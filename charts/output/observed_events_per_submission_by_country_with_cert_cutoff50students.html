@@ -1,0 +1,34 @@
+
+    <html>
+    <head>
+      <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+      <script type='text/javascript'>
+       google.load('visualization', '1', {'packages': ['geomap']});
+       google.setOnLoadCallback(drawMap);
+    
+        function drawMap() {
+          var data = google.visualization.arrayToDataTable([
+        ['Country', 'Number observed events per submission for students who got a certificate'],['PE', 8.81012396],['IT', 8.28560145],['UA', 8.09098923],['US', 7.83162444],['CA', 7.79257037],['FR', 7.72032970],['GB', 7.60663424],['BR', 7.47360806],['PL', 7.34304225],['MX', 7.31733020],['AR', 7.11266265],['HU', 6.88218760],['GR', 6.87987366],['VE', 6.85511250],['DE', 6.77258790],['RO', 6.73160159],['CL', 6.68650808],['RU', 6.51393005],['CO', 6.19798246],['AU', 6.09704762],['ES', 6.07947985],['IN', 5.85245214],['PT', 5.40426119],['PK', 5.21806028]
+    ]);
+
+      var options = {};
+      options['dataMode'] = 'regions';
+      options['width'] = 1000;
+      options['height'] = 600;
+      options['showLegend'] = true;
+      options['colors']=[0xffffaa, 0xCC3300]; // yellow to red
+      
+        var container = document.getElementById('map_canvas');
+      var geomap = new google.visualization.GeoMap(container);
+      geomap.draw(data, options);
+  };
+  </script>
+    </head>
+    
+    <body>
+    Number observed events per submission for students who got a certificate by country having at least 50 students<br/> <br/>
+      <div id='map_canvas'></div>
+    </body>
+    
+    </html>
+    

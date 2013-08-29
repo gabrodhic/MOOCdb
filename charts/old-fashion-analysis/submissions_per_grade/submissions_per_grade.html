@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Grade', 'Average nb of submissions'],
+          ['A', 1379.8743 ],
+          ['B', 1475.3759 ],
+          ['C', 1265.3764 ]
+        ]);
+
+        var options = {
+          title: 'Average number of submissions vs. Grade',
+          hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

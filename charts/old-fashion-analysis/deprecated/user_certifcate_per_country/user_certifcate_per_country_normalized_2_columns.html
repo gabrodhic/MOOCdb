@@ -1,0 +1,167 @@
+<!--  https://developers.google.com/chart/interactive/docs/gallery/geomap?hl=en#Configuration_Options -->
+<!-- https://developers.google.com/chart/interactive/docs/gallery/geochart -->
+
+<html>
+<head>
+  <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+  <script type='text/javascript'>
+   google.load('visualization', '1', {'packages': ['geomap']});
+   google.setOnLoadCallback(drawMap);
+
+    function drawMap() {
+      var data = google.visualization.arrayToDataTable([
+         ['Country', 'Percentage of Students who got a Certificate'], 
+		['VI',0.3333],
+		['LU',0.2917],
+		['AX',0.2500],
+		['JE',0.2500],
+		['MG',0.2222],
+		['CU',0.2162],
+		['MN',0.1852],
+		['HU',0.1622],
+		['AM',0.1613],
+		['SK',0.1458],
+		['ES',0.1456],
+		['LV',0.1441],
+		['MT',0.1429],
+		['GI',0.1429],
+		['EC',0.1410],
+		['CZ',0.1399],
+		['MD',0.1389],
+		['EE',0.1371],
+		['PL',0.1365],
+		['GR',0.1353],
+		['RS',0.1351],
+		['UY',0.1333],
+		['DK',0.1297],
+		['PT',0.1257],
+		['HR',0.1250],
+		['PA',0.1228],
+		['SI',0.1170],
+		['RO',0.1156],
+		['PY',0.1130],
+		['FR',0.1128],
+		['AT',0.1127],
+		['BZ',0.1111],
+		['AL',0.1091],
+		['IT',0.1073],
+		['IS',0.1053],
+		['CM',0.1053],
+		['BE',0.1042],
+		['YE',0.1034],
+		['BG',0.0993],
+		['RU',0.0979],
+		['ZA',0.0978],
+		['SE',0.0959],
+		['SY',0.0952],
+		['PR',0.0952],
+		['CH',0.0951],
+		['SV',0.0914],
+		['UA',0.0877],
+		['DO',0.0868],
+		['BY',0.0833],
+		['TW',0.0815],
+		['VE',0.0808],
+		['KG',0.0800],
+		['LT',0.0789],
+		['CO',0.0772],
+		['MV',0.0769],
+		['AR',0.0754],
+		['GH',0.0738],
+		['IL',0.0734],
+		['SG',0.0717],
+		['MM',0.0714],
+		['NZ',0.0714],
+		['DE',0.0695],
+		['DZ',0.0682],
+		['CY',0.0678],
+		['KH',0.0667],
+		['GB',0.0665],
+		['NL',0.0665],
+		['IN',0.0659],
+		['HK',0.0649],
+		['JP',0.0641],
+		['EU',0.0638],
+		['FI',0.0633],
+		['AZ',0.0625],
+		['TN',0.0588],
+		['CA',0.0581],
+		['NP',0.0578],
+		['BO',0.0576],
+		['SD',0.0566],
+		['PE',0.0564],
+		['PH',0.0553],
+		['A1',0.0548],
+		['AU',0.0532],
+		['MX',0.0521],
+		['US',0.0514],
+		['PK',0.0510],
+		['GT',0.0508],
+		['BR',0.0491],
+		['CR',0.0480],
+		['CL',0.0477],
+		['NO',0.0476],
+		['JM',0.0455],
+		['BD',0.0455],
+		['MY',0.0428],
+		['EG',0.0411],
+		['GE',0.0400],
+		['MK',0.0400],
+		['AE',0.0391],
+		['JO',0.0377],
+		['IE',0.0376],
+		['ET',0.0365],
+		['AP',0.0353],
+		['VN',0.0343],
+		['TT',0.0339],
+		['ID',0.0334],
+		['TZ',0.0303],
+		['SA',0.0298],
+		['NG',0.0292],
+		['RW',0.0286],
+		['KE',0.0284],
+		['LB',0.0282],
+		['BA',0.0278],
+		['IR',0.0274],
+		['MA',0.0258],
+		['KW',0.0256],
+		['CN',0.0244],
+		['KZ',0.0242],
+		['HN',0.0235],
+		['TH',0.0234],
+		['UZ',0.0208],
+		['QA',0.0167],
+		['TR',0.0153],
+		['UG',0.0135],
+		['LK',0.0089],
+		['KR',0.0084]
+      ]);
+
+      var options = {};
+      options['dataMode'] = 'regions';
+      options['width'] = 1000;
+      options['height'] = 600;
+      options['showLegend'] = true;
+       // options['colors']=[0XEBEBEB,0XA3D5F8];
+       // options['colors']=[0x99FF33, 0XFFFF00, 0XFF3300, 0XCC0033];
+        // options['colors']=[0XFFFFCC, 0x99FF33, 0XFF6633, 0XFFFF00, 0XCC0033, 0XFF3300, 0XFF0033];
+        options['colors']=[0XFFFFFF, 0X000000]; // black and white
+        options['colors']=[0xffffaa, 0xCC3300]; // yellow to red
+       //options['colors']=[0XFFFFCC, 0x99FF33, 0XFF6633, 0XCC0033, 0XFFFF00, 0XFF3300, 0XFF0033];
+      // options['colors'] = [0xbaecc7, 0x3bc75f]; // light to dark green
+      //options['colorAxis'] = ['blue', 'red'];
+      
+
+      var container = document.getElementById('map_canvas');
+      var geomap = new google.visualization.GeoMap(container);
+      geomap.draw(data, options);
+  };
+  </script>
+</head>
+
+<body>
+Percentage of Students who got a Certificate: <br/> <br/>
+  <div id='map_canvas'></div>
+</body>
+
+</html>

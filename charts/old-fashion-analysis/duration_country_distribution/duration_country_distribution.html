@@ -1,0 +1,127 @@
+<!--  https://developers.google.com/chart/interactive/docs/gallery/geomap?hl=en#Configuration_Options -->
+<!-- https://developers.google.com/chart/interactive/docs/gallery/geochart -->
+
+<html>
+<head>
+  <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+  <script type='text/javascript'>
+   google.load('visualization', '1', {'packages': ['geomap']});
+   google.setOnLoadCallback(drawMap);
+
+    function drawMap() {
+      var data = google.visualization.arrayToDataTable([
+         ['Country', 'Average duration of an observed events'], 
+		 ['US',65.7267],
+['IN',53.1414],
+['GB',66.6119],
+['CO',61.2277],
+['ES',60.9190],
+['BR',60.0257],
+['PK',48.8590],
+['CA',67.5626],
+['MX',62.8238],
+['GR',57.3212],
+['RU',64.9399],
+['PL',59.6033],
+['PE',55.1132],
+['DE',60.6243],
+['CL',63.2053],
+['HU',63.3302],
+['FR',62.6540],
+['UA',57.5452],
+['AR',63.1332],
+['IT',62.2062],
+['AU',68.2465],
+['VE',65.1791],
+['DO',62.0074],
+['RO',55.2235],
+['EG',50.2357],
+['BD',46.9066],
+['PT',57.2507],
+['SE',68.8241],
+['DK',66.0760],
+['NL',66.6665],
+['SG',66.4438],
+['BE',67.8921],
+['MY',52.3357],
+['ZA',66.3868],
+['TW',59.4469],
+['EC',64.6922],
+['PH',59.2141],
+['IE',61.0421],
+['DZ',48.2966],
+['NG',38.8959],
+['CR',61.5060],
+['JP',72.7972],
+['CH',64.2213],
+['TR',62.3883],
+['SA',56.5401],
+['NZ',66.1810],
+['BG',65.2978],
+['AT',63.3414],
+['EE',63.4456],
+['FI',63.0247],
+['PY',62.5468],
+['GT',53.4427],
+['BO',67.1303],
+['LV',66.2930],
+['CZ',67.5380],
+['RS',59.8328],
+['CN',70.5472],
+['HR',58.4360],
+['NP',46.0415],
+['SV',67.6864],
+['BY',69.5392],
+['EU',69.8527],
+['HK',69.3853],
+['AE',65.1219],
+['ID',52.4776],
+['IL',65.6052],
+['SI',54.5468],
+['KR',59.2922],
+['NO',59.3519],
+['MA',48.7949],
+['A1',59.4375],
+['GH',56.8395],
+['UY',72.8539],
+['LT',59.6139],
+['KE',53.0600],
+['VN',63.3451],
+['PA',62.5383],
+['PR',64.7055],
+['IR',62.3752],
+['KZ',59.9107],
+['SK',65.1477],
+['AP',52.2224],
+['LU',55.0053]
+		
+      ]);
+
+      var options = {};
+      options['dataMode'] = 'regions';
+      options['width'] = 1000;
+      options['height'] = 600;
+      options['showLegend'] = true;
+       // options['colors']=[0XEBEBEB,0XA3D5F8];
+       // options['colors']=[0x99FF33, 0XFFFF00, 0XFF3300, 0XCC0033];
+        // options['colors']=[0XFFFFCC, 0x99FF33, 0XFF6633, 0XFFFF00, 0XCC0033, 0XFF3300, 0XFF0033];
+        options['colors']=[0XFFFFFF, 0X000000]; // black and white
+        options['colors']=[0xffffaa, 0xCC3300]; // black and white
+       //options['colors']=[0XFFFFCC, 0x99FF33, 0XFF6633, 0XCC0033, 0XFFFF00, 0XFF3300, 0XFF0033];
+      // options['colors'] = [0xbaecc7, 0x3bc75f]; // light to dark green
+      //options['colorAxis'] = ['blue', 'red'];
+      
+
+      var container = document.getElementById('map_canvas');
+      var geomap = new google.visualization.GeoMap(container);
+      geomap.draw(data, options);
+  };
+  </script>
+</head>
+
+<body>
+Average duration of an observed event (countries with less than 100,000 observed events were removed): <br/> <br/>
+  <div id='map_canvas'></div>
+</body>
+
+</html>

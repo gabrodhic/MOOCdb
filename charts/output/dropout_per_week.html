@@ -1,0 +1,29 @@
+
+    <html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Week #', 'Number of dropouts'],['0', 383],['1', 14072],['2', 8845],['3', 5090],['4', 3626],['5', 2726],['6', 1734],['7', 1106],['8', 2245],['9', 1483],['10', 881],['11', 665],['12', 523],['13', 515],['14', 8425],['15', 395],['16', 134],['17', 98],['18', 89],['19', 58],['20', 65],['21', 53],['22', 66],['23', 45]
+        ]);
+    
+            var options = {
+              title: 'Number of dropouts by week',
+              hAxis: {title: 'Week #' ,  titleTextStyle: {color: 'blue'}},
+              vAxis: {title: 'Number of dropouts',  titleTextStyle: {color: 'blue'}}
+            };
+    
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+          }
+        </script>
+      </head>
+      <body>    
+          Number of dropouts by week
+          <div id="chart_div" style="width: 1200px; height: 500px;"></div>
+      </body>
+    </html>
+    

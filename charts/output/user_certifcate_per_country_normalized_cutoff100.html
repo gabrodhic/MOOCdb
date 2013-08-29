@@ -1,0 +1,34 @@
+
+    <html>
+    <head>
+      <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+      <script type='text/javascript'>
+       google.load('visualization', '1', {'packages': ['geomap']});
+       google.setOnLoadCallback(drawMap);
+    
+        function drawMap() {
+          var data = google.visualization.arrayToDataTable([
+        ['user_country', 'Percentage of students who got a certificate'],['US', 5.1443],['IN', 6.5925],['GB', 6.6457],['CO', 7.7210],['PK', 5.0965],['BR', 4.9077],['ES', 14.5599],['MX', 5.2134],['CA', 5.8127],['CL', 4.7734],['RU', 9.7920],['DE', 6.9468],['PE', 5.6404],['GR', 13.5273],['PL', 13.6496],['AU', 5.3165],['AR', 7.5386],['BD', 4.5505],['FR', 11.2849],['HU', 16.2198],['UA', 8.7719],['VE', 8.0808],['EG', 4.1096],['IT', 10.7309],['CN', 2.4351],['RO', 11.5596],['PT', 12.5704],['DO', 8.6792],['TR', 1.5267],['SE', 9.5890],['IR', 2.7397],['NL', 6.6536],['PH', 5.5336],['IE', 3.7624],['SG', 7.1721],['SA', 2.9787],['ZA', 9.7800],['CR', 4.8000],['MY', 4.2781],['KR', 0.8357],['ID', 3.3426],['TW', 8.1461],['DK', 12.9683],['NG', 2.9155],['BE', 10.4235],['EC', 14.0984],['JP', 6.4057],['AE', 3.9146],['CH', 9.5057],['BO', 5.7613],['FI', 6.3291],['EU', 6.3830],['BY', 8.3333],['DZ', 6.8182],['AT', 11.2676],['VN', 3.4314],['NZ', 7.1429],['MA', 2.5773],['HK', 6.4865],['IL', 7.3446],['PY', 11.2994],['GT', 5.0847],['SV', 9.1429],['NP', 5.7803],['NO', 4.7619],['HR', 12.5000],['BG', 9.9338],['GH', 7.3826],['RS', 13.5135],['A1', 5.4795],['CZ', 13.9860],['KE', 2.8369],['ET', 3.6496],['TH', 2.3438],['EE', 13.7097],['KZ', 2.4194],['LV', 14.4068],['LT', 7.8947],['LK', 0.8929],['JO', 3.7736]
+    ]);
+
+      var options = {};
+      options['dataMode'] = 'regions';
+      options['width'] = 1000;
+      options['height'] = 600;
+      options['showLegend'] = true;
+      options['colors']=[0xffffaa, 0xCC3300]; // yellow to red
+      
+        var container = document.getElementById('map_canvas');
+      var geomap = new google.visualization.GeoMap(container);
+      geomap.draw(data, options);
+  };
+  </script>
+    </head>
+    
+    <body>
+    Percentage of students who got a certificate<br/> <br/>
+      <div id='map_canvas'></div>
+    </body>
+    
+    </html>
+    

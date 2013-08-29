@@ -1,0 +1,4 @@
+grade,occurrences,MIN(observed_events.observed_event_duration),MAX(observed_events.observed_event_duration),AVG(observed_events.observed_event_duration),STD(observed_events.observed_event_duration),"SUM(observed_events.observed_event_duration) / letter_grade.number_of_students"
+1,9767.0976,0,3600,69.0064,252.76912406242928,673991.7744
+0.75,9825.4858,0,3600,69.0248,250.2135853303713,678202.2055
+0.5,8011.2915,0,3600,66.7430,244.07832619531752,534697.3936

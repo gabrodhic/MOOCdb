@@ -1,0 +1,123 @@
+<!--  https://developers.google.com/chart/interactive/docs/gallery/geomap?hl=en#Configuration_Options -->
+<!-- https://developers.google.com/chart/interactive/docs/gallery/geochart -->
+
+<html>
+<head>
+  <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+  <script type='text/javascript'>
+   google.load('visualization', '1', {'packages': ['geomap']});
+   google.setOnLoadCallback(drawMap);
+
+    function drawMap() {
+      var data = google.visualization.arrayToDataTable([
+         ['Country', 'Average number of days before students drop out per country'], ['CL',27],
+				['IE',28],
+				['GB',29],
+				['CR',30],
+				['JO',31],
+				['PE',33],
+				['AE',33],
+				['FI',34],
+				['NO',34],
+				['TH',34],
+				['SA',35],
+				['NZ',34],
+				['LK',34],
+				['PK',35],
+				['AU',35],
+				['EU',35],
+				['GT',35],
+				['DO',36],
+				['AR',35],
+				['BO',35],
+				['CA',35],
+				['CO',36],
+				['TR',36],
+				['US',37],
+				['DE',37],
+				['MX',38],
+				['SV',37],
+				['PY',37],
+				['BD',38],
+				['BR',37],
+				['MA',39],
+				['NG',40],
+				['VE',40],
+				['ZA',40],
+				['CN',39],
+				['ET',40],
+				['SE',40],
+				['PH',41],
+				['GH',41],
+				['KE',41],
+				['JP',41],
+				['RS',41],
+				['DZ',42],
+				['EG',42],
+				['DK',43],
+				['ES',43],
+				['CZ',44],
+				['NL',43],
+				['BE',43],
+				['NP',44],
+				['FR',44],
+				['KZ',44],
+				['GR',45],
+				['HU',44],
+				['CH',43],
+				['MY',44],
+				['IL',45],
+				['ID',45],
+				['IN',45],
+				['AT',45],
+				['RU',45],
+				['HR',46],
+				['SG',46],
+				['RO',46],
+				['UA',46],
+				['BG',47],
+				['PL',48],
+				['KR',47],
+				['TW',47],
+				['LT',48],
+				['LV',48],
+				['IR',49],
+				['IT',48],
+				['EC',48],
+				['HK',48],
+				['PT',49],
+				['A1',51],
+				['EE',53],
+				['VN',55],
+				['BY',64],
+
+      ]);
+
+      var options = {};
+      options['dataMode'] = 'regions';
+      options['width'] = 1000;
+      options['height'] = 600;
+      options['showLegend'] = true;
+       // options['colors']=[0XEBEBEB,0XA3D5F8];
+       // options['colors']=[0x99FF33, 0XFFFF00, 0XFF3300, 0XCC0033];
+        // options['colors']=[0XFFFFCC, 0x99FF33, 0XFF6633, 0XFFFF00, 0XCC0033, 0XFF3300, 0XFF0033];
+        options['colors']=[0XFFFFFF, 0X000000]; // black and white
+        options['colors']=[0xffffaa, 0xCC3300]; // black and white
+       //options['colors']=[0XFFFFCC, 0x99FF33, 0XFF6633, 0XCC0033, 0XFFFF00, 0XFF3300, 0XFF0033];
+      // options['colors'] = [0xbaecc7, 0x3bc75f]; // light to dark green
+      //options['colorAxis'] = ['blue', 'red'];
+      
+
+      var container = document.getElementById('map_canvas');
+      var geomap = new google.visualization.GeoMap(container);
+      geomap.draw(data, options);
+  };
+  </script>
+</head>
+
+<body>
+Average number of days before students drop out per country (countries with less than 100 students were removed): <br/> <br/>
+  <div id='map_canvas'></div>
+</body>
+
+</html>

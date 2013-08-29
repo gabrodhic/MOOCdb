@@ -1,0 +1,4 @@
+user_final_grade,"SUM(LENGTH(collaborations.collaboration_content)) / letter_grade.number_of_users",COUNT(*),"SUM(LENGTH(collaborations.collaboration_content)) / COUNT(*)"
+0.5,1252.0062,4354,233.7807
+0.75,2511.3722,18605,285.0856
+1,3545.9868,51354,292.2881

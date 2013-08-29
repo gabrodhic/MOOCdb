@@ -1,0 +1,29 @@
+
+    <html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['day', 'Number of days between the last submission and the deadline for the midterm'],[-2, 1],[0, 225],[1, 76367],[2, 84692],[3, 51522],[4, 34757],[5, 12816]
+        ]);
+    
+            var options = {
+              title: 'Number of days between the last submission and the deadline for the midterm',
+              hAxis: {title: 'Day #' ,  titleTextStyle: {color: 'blue'}},
+              vAxis: {title: 'Number of submissions',  titleTextStyle: {color: 'blue'}}
+            };
+    
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+          }
+        </script>
+      </head>
+      <body>    
+          Number of days between the last submission and the deadline for the midterm
+          <div id="chart_div" style="width: 1200px; height: 500px;"></div>
+      </body>
+    </html>
+    

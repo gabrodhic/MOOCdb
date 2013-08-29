@@ -1,0 +1,29 @@
+
+    <html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['day', 'Number of days between the last submission and the deadline for all homework'],[-21, 2],[-7, 2],[-6, 13],[-4, 1],[-3, 12],[-2, 119],[-1, 47431],[0, 449200],[1, 242793],[2, 169011],[3, 119794],[4, 91702],[5, 80122],[6, 76950],[7, 76057],[8, 61231],[9, 46756],[10, 43243],[11, 41887],[12, 42002],[13, 39530],[14, 17164],[15, 12749],[16, 11434],[17, 11777],[18, 12310],[19, 11957],[20, 7640],[21, 1587],[22, 880]
+        ]);
+    
+            var options = {
+              title: 'Number of days between the last submission and the deadline for all homework',
+              hAxis: {title: 'Day #' ,  titleTextStyle: {color: 'blue'}},
+              vAxis: {title: 'Number of submissions',  titleTextStyle: {color: 'blue'}}
+            };
+    
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+          }
+        </script>
+      </head>
+      <body>    
+          Number of days between the last submission and the deadline for all homework
+          <div id="chart_div" style="width: 1200px; height: 500px;"></div>
+      </body>
+    </html>
+    

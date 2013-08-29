@@ -1,0 +1,29 @@
+
+    <html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Day', 'Number of new registered students'],[0, 12893],[1, 17248],[2, 15077],[3, 7874],[4, 5608],[5, 5012],[6, 3297],[7, 4202],[8, 3010],[9, 2999],[10, 2664],[11, 1751],[12, 1399],[13, 1382],[14, 1778],[15, 1846],[16, 2252],[17, 1846],[18, 1802],[19, 1568],[20, 2758],[21, 7181],[22, 4796],[23, 3146],[24, 2135],[25, 1491],[26, 1103],[27, 1065],[28, 1323],[29, 1148],[30, 1065],[31, 893],[32, 915],[33, 698],[34, 721],[35, 686],[36, 673],[37, 522],[38, 419],[39, 438],[40, 402],[41, 465],[42, 435],[43, 447],[44, 377],[45, 338],[46, 318],[47, 305],[48, 291],[49, 319],[50, 243],[51, 319],[52, 251],[53, 211],[54, 282],[55, 238],[56, 266],[57, 233],[58, 188],[59, 179],[60, 168],[61, 161],[62, 171],[63, 184],[64, 232],[65, 221],[66, 270],[67, 279],[68, 194],[69, 245],[70, 234],[71, 206],[72, 259],[73, 352],[74, 347],[75, 397],[76, 409],[77, 172],[78, 169],[79, 2056],[80, 2114],[81, 1400],[82, 723],[83, 558],[84, 601],[85, 475],[86, 404],[87, 349],[88, 251],[89, 246],[90, 237],[91, 262],[92, 253],[93, 266],[94, 235],[95, 175],[96, 134],[97, 190],[98, 196],[99, 183],[100, 147],[101, 165],[102, 219],[103, 202],[104, 156],[105, 164],[106, 183],[107, 161],[108, 190],[109, 116],[110, 128],[111, 129],[112, 160],[113, 137],[114, 120],[115, 240],[116, 264],[117, 402],[118, 341],[119, 269],[120, 143],[121, 120],[136, 5],[141, 6]
+        ]);
+    
+            var options = {
+              title: 'New registered students every day from February 13, 2012',
+              hAxis: {title: 'Day (Day 0 is February 13, 2012)' ,  titleTextStyle: {color: 'blue'}},
+              vAxis: {title: 'New registered students' ,  titleTextStyle: {color: 'blue'}}
+            };
+    
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+          }
+        </script>
+      </head>
+      <body>    
+          New registered students every day from February 13, 2012
+          <div id="chart_div" style="width: 900px; height: 500px;"></div>
+      </body>
+    </html>
+    

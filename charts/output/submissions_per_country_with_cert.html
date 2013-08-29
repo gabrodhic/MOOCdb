@@ -1,0 +1,34 @@
+
+    <html>
+    <head>
+      <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+      <script type='text/javascript'>
+       google.load('visualization', '1', {'packages': ['geomap']});
+       google.setOnLoadCallback(drawMap);
+    
+        function drawMap() {
+          var data = google.visualization.arrayToDataTable([
+        ['user_country', 'Average number of submissions per country for students who got a certificate (countries with less than 50 students were removed)'],['GR', 245.7585],['HU', 223.6568],['LV', 206.7119],['ES', 204.4083],['EE', 202.5645],['CZ', 201.6783],['PL', 199.0131],['MN', 198.0370],['EC', 187.5311],['DK', 187.3458],['SI', 186.5106],['PR', 184.3492],['GT', 177.9096],['RS', 173.9662],['PA', 173.6842],['UY', 172.2111],['BG', 171.1457],['FR', 164.1173],['IT', 161.4666],['PT', 161.2814],['BE', 160.8111],['HR', 158.6053],['DO', 150.2038],['RU', 140.9325],['RO', 139.1945],['UA', 134.7301],['AT', 131.8779],['AL', 129.4364],['SE', 129.1429],['PY', 127.1356],['SV', 126.3486],['BY', 122.1184],['ZA', 120.7262],['CH', 119.8061],['CY', 116.0847],['NZ', 113.9490],['TW', 113.2528],['VE', 112.8254],['CO', 109.5046],['AR', 107.9855],['DE', 101.5261],['GB', 99.0702],['DZ', 94.5591],['IL', 91.2881],['NL', 90.6888],['JP', 88.2100],['HK', 86.8973],['AU', 86.2473],['LT', 85.7456],['CA', 85.2045],['SG', 84.1639],['GH', 78.8658],['FI', 78.4262],['NO', 78.0476],['SD', 76.7358],['IN', 75.2129],['US', 74.4894],['MX', 74.4164],['TN', 73.3333],['PH', 72.3656],['BR', 72.1483],['PE', 71.5635],['NP', 68.6358],['BO', 65.7243],['PK', 62.6837],['CL', 62.5998],['AE', 60.2313],['EG', 59.5251],['CR', 59.2693],['BA', 54.8056],['IE', 54.7228],['QA', 53.9833],['MY', 53.1444],['MA', 52.7835],['JO', 52.7547],['LB', 51.4789],['NG', 50.0787],['BD', 49.4839],['TT', 47.7966],['ID', 41.7632],['VN', 39.8039],['KE', 38.1773],['SA', 34.4787],['TH', 32.9688],['HN', 31.0353],['CN', 28.7825],['KZ', 28.7581],['IR', 28.3288],['ET', 28.1460],['TR', 26.6794],['LK', 16.2857],['UG', 14.0000],['KR', 11.9944]
+    ]);
+
+      var options = {};
+      options['dataMode'] = 'regions';
+      options['width'] = 1000;
+      options['height'] = 600;
+      options['showLegend'] = true;
+      options['colors']=[0xffffaa, 0xCC3300]; // yellow to red
+      
+        var container = document.getElementById('map_canvas');
+      var geomap = new google.visualization.GeoMap(container);
+      geomap.draw(data, options);
+  };
+  </script>
+    </head>
+    
+    <body>
+    Average number of submissions per country for students who got a certificate (countries with less than 50 students were removed)<br/> <br/>
+      <div id='map_canvas'></div>
+    </body>
+    
+    </html>
+    

@@ -1,0 +1,29 @@
+
+    <html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Number of observed events', 'Number of students'],[1, 3669],[2, 2339],[3, 1910],[4, 1632],[5, 1336],[6, 1182],[7, 1034],[8, 936],[9, 919],[10, 910],[11, 924],[12, 909],[13, 848],[14, 839],[15, 799],[16, 703],[17, 682],[18, 690],[19, 623],[20, 622],[21, 577],[22, 595],[23, 621],[24, 571],[25, 546],[26, 534],[27, 547],[28, 533],[29, 485],[30, 460],[31, 469],[32, 515],[33, 479],[34, 474],[35, 478],[36, 430],[37, 475],[38, 448],[39, 396],[40, 398],[41, 444],[42, 427],[43, 431],[44, 395],[45, 388],[46, 395],[47, 379],[48, 364],[49, 369],[50, 345],[51, 349],[52, 360],[53, 289],[54, 336],[55, 317],[56, 329],[57, 299],[58, 314],[59, 289],[60, 301],[61, 287],[62, 322],[63, 328],[64, 293],[65, 297],[66, 252],[67, 263],[68, 261],[69, 240],[70, 250],[71, 265],[72, 236],[73, 241],[74, 275],[75, 254],[76, 231],[77, 234],[78, 259],[79, 217],[80, 202],[81, 236],[82, 223],[83, 227],[84, 229],[85, 217],[86, 211],[87, 215],[88, 191],[89, 210],[90, 220],[91, 226],[92, 209],[93, 194],[94, 212],[95, 205],[96, 189],[97, 214],[98, 156],[99, 173]
+        ]);
+    
+            var options = {
+              title: 'Number of students per number of observed events',
+              hAxis: {title: 'Number of observed events' ,  titleTextStyle: {color: 'blue'}},
+              vAxis: {title: 'Number of students' ,  titleTextStyle: {color: 'blue'}}
+            };
+    
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+          }
+        </script>
+      </head>
+      <body>    
+          Number of students per number of observed events - Cutoff 100
+          <div id="chart_div" style="width: 1200px; height: 500px;"></div>
+      </body>
+    </html>
+    

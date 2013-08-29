@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Total length of posts', 'Grade A', 'Grade B', 'Grade C'],
+          ['Total length of posts',  9868.51354 / 100,  2511.3722 / 100, 1252.0062 / 100],
+          ['Average length of posts',  292.2881 / 10,  285.0856 / 10, 233.7807 / 10],
+          ['Number of posts',   12.1318,     8.8092, 5.3555 ]
+        ]);
+
+        var options = {
+          title: 'Forum participation vs. Final Grade',
+          hAxis: {title: 'Forum participation', titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+	Notes: Total length of posts is in hundreds, Average length of posts is in tens.
+  </body>
+</html>
