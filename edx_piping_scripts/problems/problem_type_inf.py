@@ -168,7 +168,7 @@ def main():
     This is the main function
     '''
     global problems_id_name_mapping, problems_type_name_id_mapping
-    connection = mdb.connect('127.0.0.1', 'root', '', 'moocdb') #, charset='utf8', use_unicode=True);
+    connection = mdb.connect('127.0.0.1', 'root', 'database_password', 'moocdb') #, charset='utf8', use_unicode=True);
     
     print "Creating a temporary table"
     #create_temp_br_logs(connection)

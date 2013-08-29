@@ -368,7 +368,7 @@ def main():
     '''
     global username_id, problems_id_name_mapping
     
-    connection = mdb.connect('127.0.0.1', 'root', '', 'moocdb') #, charset='utf8', use_unicode=True);
+    connection = mdb.connect('127.0.0.1', 'root', 'database_password', 'moocdb') #, charset='utf8', use_unicode=True);
     #clear_submissions(connection)
     username_id_mapping = retrieve_username_id_mapping(connection)
     problems_id_name_mapping = retrieve_problems_id_name_mapping(connection)

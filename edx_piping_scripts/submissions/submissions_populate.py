@@ -199,7 +199,7 @@ def main():
     This is the main function
     '''
     
-    connection = mdb.connect('127.0.0.1', 'root', '', 'moocdb') #, charset='utf8', use_unicode=True);
+    connection = mdb.connect('127.0.0.1', 'root', 'database_password', 'moocdb') #, charset='utf8', use_unicode=True);
     clear_submissions(connection)
     insert_submissions(connection)
     

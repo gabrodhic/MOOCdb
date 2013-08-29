@@ -37,7 +37,7 @@ import MySQLdb as mdb
 import json
 
 
-connection = mdb.connect('127.0.0.1', 'root', '', 'moocdb');
+connection = mdb.connect('127.0.0.1', 'root', 'database_password', 'moocdb');
 cursor = connection.cursor()
 
 '''
