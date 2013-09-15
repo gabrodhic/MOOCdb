@@ -1,6 +1,6 @@
 -- take  seconds to execute
 -- Created on June 18, 2013
--- @author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 
 CREATE DATABASE  IF NOT EXISTS `moocdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `moocdb`;

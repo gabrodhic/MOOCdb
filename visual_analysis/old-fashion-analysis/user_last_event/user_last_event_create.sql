@@ -1,3 +1,7 @@
+-- take 1 second to execute
+-- Created on June 22, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
+
 --
 -- Table structure for table `user_last_event`
 --

@@ -1,4 +1,6 @@
--- Takes 1100 seconds to execute
+-- take 1100 seconds to execute
+-- Created on July 13, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 
 SELECT resource_types.resource_type_name, 
 	count(*) as occurrences, 

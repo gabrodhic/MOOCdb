@@ -16,7 +16,7 @@ Pre-requisites:
 2. The problem_types table must have been populated first
 
 Created on Jun 23, 2013
-@author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+@author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 '''
 
 #!/usr/bin/python

@@ -1,5 +1,6 @@
--- Takes 1 seconds to execute
--- @author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+-- take  seconds to execute
+-- Created on July 2, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 USE moocdb;
 
 -- we first create a temporary table that contains the students of certificates per country

@@ -1,7 +1,7 @@
 '''
 
 Created on Jun 24, 2013
-@author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+@author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 '''
 
 # Download it at http://sourceforge.net/projects/mysql-python/?source=dlp

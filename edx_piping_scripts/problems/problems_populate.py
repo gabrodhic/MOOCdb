@@ -21,7 +21,7 @@ Pre-requisites:
 
    
 Created on Jun 10, 2013
-@author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+@author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 '''
 
 

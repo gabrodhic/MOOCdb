@@ -1,4 +1,7 @@
--- Takes 1 second to execute
+-- take 1 second to execute
+-- Created on July 2, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
+
 SELECT letter_grade.letter,  COUNT(*) 
 FROM moocdb.users AS users, moocdb.letter_grade AS letter_grade
 WHERE users.user_final_grade = letter_grade.grade

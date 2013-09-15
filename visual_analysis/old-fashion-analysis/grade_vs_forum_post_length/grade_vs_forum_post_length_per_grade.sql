@@ -1,4 +1,7 @@
--- Takes 1 second to execute
+-- take 1 second to execute
+-- Created on July 13, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
+
 SELECT users.user_final_grade, 
 	SUM(LENGTH(collaborations.collaboration_content)) / letter_grade.number_of_users, 
 	COUNT(*) / letter_grade.number_of_users, 

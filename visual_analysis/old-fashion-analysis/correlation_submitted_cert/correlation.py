@@ -14,7 +14,7 @@ import scipy.stats as stats
 import numpy 
 
 def main():
-	connection = mdb.connect(user="root",passwd="database_password",db="moocdb")
+	connection = mdb.connect(user="root",passwd="edx2013",db="moocdb")
 	cursor = connection.cursor()
 
 	sql = '''CREATE OR REPLACE VIEW temp_students_per_country AS

@@ -1,6 +1,6 @@
 -- Takes 1 second to execute
 -- Created on June 17, 2013
--- @author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 
 -- Letters can be A, B, C and D.
 -- D is a special case, it correspond when the user didn't get any final grade,

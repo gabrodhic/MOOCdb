@@ -1,6 +1,6 @@
 -- Takes 12 seconds to execute
 -- Created on Jun 25, 2013
--- @author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 
 DROP PROCEDURE IF EXISTS Alter_Table;
 

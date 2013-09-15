@@ -1,4 +1,6 @@
--- Takes around 2 seconds to execute
+-- Takes 2 seconds
+-- Created on June 18, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 
 UPDATE moocdb.users as users
 SET users.user_final_grade = (

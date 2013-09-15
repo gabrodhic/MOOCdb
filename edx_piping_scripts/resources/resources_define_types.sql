@@ -1,3 +1,7 @@
+-- Takes 1 second
+-- Created on June 30, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
+
 -- courseware
 UPDATE moocdb.resources 
 SET resource_type_id=1

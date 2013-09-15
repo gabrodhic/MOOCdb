@@ -1,6 +1,6 @@
 -- Takes 130 seconds to execute
 -- Created on Jun 30, 2013
--- @author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 
 -- Takes 4 seconds to execute
 ALTER TABLE `moocdb`.`users` 

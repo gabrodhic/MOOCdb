@@ -14,7 +14,7 @@ Pre-requisites:
 2. The problems table must have been compulated first
 
 Created on Jun 11, 2013
-@author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+@author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 '''
 
 

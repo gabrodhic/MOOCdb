@@ -22,7 +22,7 @@ ALTER TABLE `logs`.`br_logs4` DROP COLUMN `filenum` , DROP COLUMN `session` , DR
 
 
 Created on Jun 19, 2013
-@author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+@author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 '''
 
 

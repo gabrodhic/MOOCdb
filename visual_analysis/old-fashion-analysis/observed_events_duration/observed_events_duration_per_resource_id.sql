@@ -1,4 +1,7 @@
--- Takes 1000 seconds to execute
+-- take 1000 seconds to execute
+-- Created on July 13, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
+
 SELECT resources.resource_name,
 	COUNT(*) AS occurrences, 
 	MIN(observed_events.observed_event_duration),

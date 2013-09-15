@@ -1,7 +1,7 @@
 '''
 Takes 300 seconds to execute
 Created on Jun 30, 2013
-@author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+@author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 '''
 
 #!/usr/bin/python

@@ -1,6 +1,6 @@
 -- Takes 100 seconds to execute IF THE FOLLOWING INDEX IS CREATED (will take forever otherwise)
 -- Created on Jun 27, 2013
--- @author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 
 -- First create index:  (takes 250 seconds to run)
 -- ALTER TABLE `moocdb`.`submissions` 

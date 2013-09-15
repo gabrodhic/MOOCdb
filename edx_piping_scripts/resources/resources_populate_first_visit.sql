@@ -1,4 +1,6 @@
-
+-- Takes  seconds to execute
+-- Created on June 30, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 SELECT observed_events.resource_id
 FROM  moocdb.resources AS resources
  INNER JOIN moocdb.observed_events AS observed_events

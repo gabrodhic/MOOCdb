@@ -1,6 +1,6 @@
 -- Takes 40 seconds for one iteration
 -- Created on June 18, 2013
--- @author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 
 -- Create INDEX on active.source_cw_id
 drop procedure if exists load_attempts;

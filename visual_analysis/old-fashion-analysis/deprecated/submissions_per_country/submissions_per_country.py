@@ -1,7 +1,7 @@
 '''
 Created on Jun 22, 2013
 
-@author: francky
+@author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 '''
 
 def main():

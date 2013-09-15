@@ -1,6 +1,6 @@
 -- take seconds to execute
 -- Created on June 18, 2013
--- @author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 UPDATE moocdb.ip_country AS ip_country
 SET ip_country.number_of_users = (
 	SELECT  COUNT(*)  

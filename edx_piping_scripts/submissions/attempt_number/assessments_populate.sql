@@ -1,4 +1,6 @@
 -- Takes 2000 seconds to run
+-- Created on June 30, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 
 -- Sometimes the maximum number of attempts is different between the table submissions (which comes from courseware table)
 -- and the table submissions2 (which comes from courseware table)

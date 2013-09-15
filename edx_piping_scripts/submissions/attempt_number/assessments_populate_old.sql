@@ -1,4 +1,6 @@
--- Takes seconds to run
+-- Takes  seconds to execute
+-- Created on June 30, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 
 TRUNCATE TABLE moocdb.assessments2;
 

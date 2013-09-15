@@ -1,5 +1,7 @@
 -- duration_per_grade.sql
--- Takes 900 seconds to execute
+-- take 90 seconds to execute
+-- Created on July 13, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 SELECT letter_grade.grade,
 	(COUNT(*) / letter_grade.number_of_students) AS occurrences,
 	MIN(observed_events.observed_event_duration),

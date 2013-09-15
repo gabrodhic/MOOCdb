@@ -2,7 +2,7 @@
 This function plots the final grade distribution
 
 Created on Jun 25, 2013
-@author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+@author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 '''
 
 #!/usr/bin/python

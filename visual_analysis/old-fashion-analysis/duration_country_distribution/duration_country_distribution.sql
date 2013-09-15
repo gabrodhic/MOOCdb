@@ -1,4 +1,7 @@
--- Takes 2000 seconds to execute
+-- take 2000 seconds to execute
+-- Created on July 2, 2013
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
+
 SELECT users.user_country,	
 	COUNT(*) AS occurrences, 
 	MIN(observed_events.observed_event_duration),

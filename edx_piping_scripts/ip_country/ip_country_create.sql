@@ -1,6 +1,6 @@
 -- take 1 second to execute
 -- Created on June 11, 2013
--- @author: Franck for ALFA, MIT lab: franck.dernoncourt@gmail.com
+-- @author: Franck Dernoncourt for ALFA, MIT lab: franck.dernoncourt@gmail.com
 
 CREATE  TABLE `moocdb`.`ip_country` (
   `ip_start` VARCHAR(15) NOT NULL ,

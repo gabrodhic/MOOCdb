@@ -29,8 +29,8 @@ utc=pytz.UTC
 def main():
 	start = datetime.datetime.now()
 
-	db=mdb.connect(user="root",passwd="database_password",db="moocdb")
-	db2=mdb.connect(user="root",passwd="database_password",db="moocdb")
+	db=mdb.connect(user="root",passwd="edx2013",db="moocdb")
+	db2=mdb.connect(user="root",passwd="edx2013",db="moocdb")
 
 	cursor = db.cursor()
 	cursor2 = db2.cursor()
