@@ -1,4 +1,4 @@
-# Created on Sept 23, 2013
+# Created on Oct 3rd, 2013
 # @author: Sherwin Wu for ALFA, MIT lab: sherwu@mit.edu
 # =============================
 # IMPORTANT!!!
