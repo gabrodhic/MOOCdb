@@ -9,8 +9,6 @@ import MySQLdb as mdb
 import json
 
 if __name__ == "__main__":
-    connection = mdb.connect('127.0.0.1', '', '', 'moocdb', port=3316, charset='utf8')
-
     with open('percent_duration_by_user_grade.csv') as f:
         infos = f.readlines()
     del infos[0]
@@ -111,4 +109,3 @@ if __name__ == "__main__":
                     str(C_resources['wiki'])+'\n')
 
     out_csv.close()
-    connection.close()
