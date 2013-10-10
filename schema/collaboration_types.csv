@@ -1,1 +1,8 @@
-,coursera,,6.002x,,MOOCdb1,forum_post,,,,2,forum_comment,,,,
+;;;;;;
+;;;;;;
+;Type;Insert or delete;;coursera;;6.002x
+;forum_post;{insert, delete};1;forum_post;;
+;forum_answer;{insert, delete};2;forum_comment;;
+;forum_comment;{insert, delete};;;;
+;forum_vote;{insert, delete};;;;
+;wiki_edit;;;;;
