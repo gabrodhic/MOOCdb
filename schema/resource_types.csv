@@ -1,0 +1,25 @@
+Proposed types;;;;;;;;;
+Content;Medium;;coursera;;6.002x;;MOOCDB;standard;types
+Lecture;{Video, text, etc};;unit;;;;;;
+Tutorial;{Video, text, etc};;video;;courseware;;video_lecture;;
+Informational;{Video, text, etc};;;;;;instructional_video;;
+Problems;;;forum;;;;forum;;
+Wiki;;;forum_thread;;;;forum_thread?;;
+Forum;;;quiz_quiz;?;;;;;
+Profile;;;quiz_video;;;;class;exercise;
+Index;;;quiz_exam;;exam;;exam;;
+Book;;;quiz_homework;;homework;;homework;;
+Survey;;;quiz_survey;;;;survey;;
+Home;;;wiki_page;;wiki;;wiki;;
+Other;;;assignment;?;;;;;
+;;;home;;;;home;;
+;;;lecture_index;;info;;info;;
+;;;quiz_index;?;profile;;info;;
+;;;wiki_index;?;;;info;;
+;;;calendar_index;;;;info;;
+;;;assignment_index;;;;info;;
+;;;forum_index;;;;info;;
+;;;;;;;lab;;
+;;;;;testing;;other;;
+;;;;;tutorial;;tutorial;;
+;;;;;book;;book;;
