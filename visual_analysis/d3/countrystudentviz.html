@@ -28,12 +28,12 @@ body {
 
 </style>
 <body style="text-align:center;">
-<h1>Relative Time Spent on Different Resources for A, B, C, and other students</h1>
+<h1>Relative Time Spent on Different Resources for US, India, and China students</h1>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
 var margin = {top: 20, right: 100, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
+    width = 400 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
@@ -60,7 +60,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("user_grade_data.csv", function(error, data) {
+d3.csv("country_time_data.csv", function(error, data) {
   color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
 
   data.forEach(function(d) {
