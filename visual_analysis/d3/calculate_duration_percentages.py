@@ -1,12 +1,25 @@
 # Created on Oct 3rd, 2013
+# Refactored on Oct 11, 2013
 # @author: Sherwin Wu for ALFA, MIT lab: sherwu@mit.edu
+# @author: Colin Taylor, colin_t@mit.edu
 # =============================
 # IMPORTANT!!!
-# This script will output a file called 'percent_duration_by_user_grade.csv'
+# This script will output a file called 'duration_by_user_grade.csv'
 # =============================
 
 import MySQLdb as mdb
 import json
+import csv
+
+def write_column_to_csv(csv, column):
+    csv.write(str(column))
+    csv.write(',')
+
+def initialize_dict(resource_types):
+    temp_dict = {}
+    for resource_type in resource_types:
+        temp_dict[resource_type] = 0
+    return temp_dict
 
 if __name__ == "__main__":
     connection = mdb.connect('127.0.0.1', '', '', 'moocdb', port=3316, charset='utf8')
@@ -17,7 +30,7 @@ if __name__ == "__main__":
             SUM(observed_events.observed_event_duration),
             users.user_final_grade,
             users.user_country,
-            resource_types.resource_type_name
+            resource_types.resource_type_content
         FROM moocdb.observed_events AS observed_events,
             moocdb.users AS users, moocdb.resources_urls AS resources_urls,
             moocdb.resources AS resources, moocdb.resource_types AS resource_types
@@ -26,16 +39,25 @@ if __name__ == "__main__":
             AND resources_urls.url_id = observed_events.url_id
             AND resources.resource_id = resources_urls.resource_id
             AND resource_types.resource_type_id = resources.resource_type_id
-        GROUP BY resource_types.resource_type_name;
+        GROUP BY resource_types.resource_type_content;
     """)
     
-    out_csv = open('percent_duration_by_user_grade.csv', 'wb')
-    out_csv.write('user_id,grade,country,book,courseware,exam,homework, \
-                    info,profile,tutorial,unknown,wiki\n')
+    out_csv = csv.writer(open('duration_by_user_grade.csv', 'wb'))
+    resource_types = ['lecture', 'tutorial', 'informational', 'problem', \
+        'exam', 'wiki', 'forum', 'profile', 'index', 'book', 'survey', 'home', \
+        'other']
+
+    #write column headers to csv
+    write_column_to_csv(out_csv, 'user_id')
+    write_column_to_csv(out_csv, 'grade')
+    write_column_to_csv(out_csv, 'country')
+    for resource_type in resource_types:
+        write_column_to_csv(out_csv, resource_type)
+    write_column_to_csv(out_csv, '\n')
 
     current_user_id = None
-    resource_to_time = {'book':0, 'courseware':0, 'exam':0, 'homework':0, 'info':0, 'profile':0, \
-                        'tutorial':0, 'unknown': 0, 'wiki': 0}
+    resource_to_time = initialize_dict(resource_types)
+
     total_time = 0
     for i in range(cursor.rowcount):
         (user_id,total_duration,final_grade,user_country,resource_name) = cursor.fetchone()
@@ -53,21 +75,19 @@ if __name__ == "__main__":
             current_user_id = user_id
 
         if user_id != current_user_id:
-            book_ratio = resource_to_time['book']/float(total_time)
-            courseware_ratio = resource_to_time['courseware']/float(total_time)
-            exam_ratio = resource_to_time['exam']/float(total_time)
-            homework_ratio = resource_to_time['homework']/float(total_time)
-            info_ratio = resource_to_time['info']/float(total_time)
-            profile_ratio = resource_to_time['profile']/float(total_time)
-            tutorial_ratio = resource_to_time['tutorial']/float(total_time)
-            unknown_ratio = resource_to_time['unknown']/float(total_time)
-            wiki_ratio = resource_to_time['wiki']/float(total_time)
-            
-            out_csv.write(str(current_user_id)+","+final_grade+","+user_country+","+str(book_ratio)+","+str(courseware_ratio)+","+str(exam_ratio)+"," \
-                            +str(homework_ratio)+","+str(info_ratio)+","+str(profile_ratio)+","+str(tutorial_ratio)+"," \
-                            +str(unknown_ratio)+","+str(wiki_ratio)+"\n")
+            ratios = initialize_dict(resource_types)
+            for resource_type in resource_types:
+                ratios[resource_type] = resource_to_time[resource_type] / float(total_time)
 
-            resource_to_time = {'book':0, 'courseware':0, 'exam':0, 'homework':0, 'info':0, 'profile':0, 'tutorial':0, 'unknown': 0, 'wiki': 0}
+            #write row to csv with the ratios
+            write_column_to_csv(out_csv, current_user_id)
+            write_column_to_csv(out_csv, final_grade)
+            write_column_to_csv(out_csv, user_country)
+            for resource_type in resource_types:
+                write_column_to_csv(out_csv, ratios[resource_type]
+            write_column_to_csv(out_csv, '\n')
+
+            resource_to_time = initialize_dict(resource_types)            
             total_time = 0
             current_user_id = user_id
 
