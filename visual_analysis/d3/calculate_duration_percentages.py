@@ -11,88 +11,86 @@ import MySQLdb as mdb
 import json
 import csv
 
-def write_column_to_csv(csv, column):
-    csv.write(str(column))
-    csv.write(',')
-
 def initialize_dict(resource_types):
-    temp_dict = {}
-    for resource_type in resource_types:
-        temp_dict[resource_type] = 0
-    return temp_dict
+	temp_dict = {}
+	for resource_type in resource_types:
+		temp_dict[resource_type] = 0
+	return temp_dict
 
 if __name__ == "__main__":
-    connection = mdb.connect('127.0.0.1', '', '', 'moocdb', port=3316, charset='utf8')
+	connection = mdb.connect('127.0.0.1', '', '', 'moocdb', port=3316, charset='utf8')
 
-    cursor = connectin.cursor()
-    cursor.execute("""
-        SELECT observed_events.user_id,
-            SUM(observed_events.observed_event_duration),
-            users.user_final_grade,
-            users.user_country,
-            resource_types.resource_type_content
-        FROM moocdb.observed_events AS observed_events,
-            moocdb.users AS users, moocdb.resources_urls AS resources_urls,
-            moocdb.resources AS resources, moocdb.resource_types AS resource_types
-        WHERE (users.user_final_grade=1 OR users.user_final_grade=2 OR users.user_final_grade=0.5)
-            AND users.user_id = observed_events.user_id
-            AND resources_urls.url_id = observed_events.url_id
-            AND resources.resource_id = resources_urls.resource_id
-            AND resource_types.resource_type_id = resources.resource_type_id
-        GROUP BY resource_types.resource_type_content;
-    """)
-    
-    out_csv = csv.writer(open('duration_by_user_grade.csv', 'wb'))
-    resource_types = ['lecture', 'tutorial', 'informational', 'problem', \
-        'exam', 'wiki', 'forum', 'profile', 'index', 'book', 'survey', 'home', \
-        'other']
+	cursor = connection.cursor()
+	cursor.execute("""
+		SELECT observed_events.user_id AS user_id,
+			SUM(observed_events.observed_event_duration) AS duration,
+			users.user_final_grade AS grade,
+			users.user_country AS country,
+			resource_types.resource_type_content AS resource_type
+		FROM moocdb.observed_events AS observed_events,
+			moocdb.users AS users, moocdb.resources_urls AS resources_urls,
+			moocdb.resources AS resources, moocdb.resource_types AS resource_types
+		WHERE (users.user_final_grade=1 OR users.user_final_grade=0.75 OR users.user_final_grade=0.5)
+			AND users.user_id = observed_events.user_id
+			AND resources_urls.url_id = observed_events.url_id
+			AND resources.resource_id = resources_urls.resource_id
+			AND resource_types.resource_type_id = resources.resource_type_id
+		GROUP BY resource_types.resource_type_content;
+	""")
+	
 
-    #write column headers to csv
-    write_column_to_csv(out_csv, 'user_id')
-    write_column_to_csv(out_csv, 'grade')
-    write_column_to_csv(out_csv, 'country')
-    for resource_type in resource_types:
-        write_column_to_csv(out_csv, resource_type)
-    write_column_to_csv(out_csv, '\n')
+	out_csv = open('duration_by_user_grade.csv', 'wb')
+	resource_types = ['lecture', 'tutorial', 'informational', 'problem', \
+		'exam', 'wiki', 'forum', 'profile', 'index', 'book', 'survey', 'home', \
+		'other']
 
-    current_user_id = None
-    resource_to_time = initialize_dict(resource_types)
+	header = ['grade', 'country'] + resource_types
+	csv_writer = csv.DictWriter(out_csv, delimiter= ',', fieldnames= header)
 
-    total_time = 0
-    for i in range(cursor.rowcount):
-        (user_id,total_duration,final_grade,user_country,resource_name) = cursor.fetchone()
-        user_id = int(user_id)
-        total_duration = int(total_duration)
-        final_grade = float(final_grade)
-        if final_grade == 1:
-            final_grade = 'A'
-        elif final_grade == 0.75:
-            final_grade = 'B'
-        elif final_grade == 0.5:
-            final_grade = 'C'
 
-        if current_user_id = None:
-            current_user_id = user_id
+	current_user_id = None
+	grades_dict = {1: 'A', 0.75: 'B', 0.5: 'C', None: 'no grade'}
 
-        if user_id != current_user_id:
-            ratios = initialize_dict(resource_types)
-            for resource_type in resource_types:
-                ratios[resource_type] = resource_to_time[resource_type] / float(total_time)
+	for i in range(cursor.rowcount):
+		(user_id,total_duration,final_grade,user_country,resource_name) = cursor.fetchone()
+		user_id = int(user_id)
+		total_duration = int(total_duration)		
 
-            #write row to csv with the ratios
-            write_column_to_csv(out_csv, current_user_id)
-            write_column_to_csv(out_csv, final_grade)
-            write_column_to_csv(out_csv, user_country)
-            for resource_type in resource_types:
-                write_column_to_csv(out_csv, ratios[resource_type]
-            write_column_to_csv(out_csv, '\n')
+		if current_user_id == None:
+			current_user_id = user_id
+			old_country = country
+			old_final_grade = final_grade
+			total_time = 0
+			resource_to_time = initialize_dict(resource_types)
 
-            resource_to_time = initialize_dict(resource_types)            
-            total_time = 0
-            current_user_id = user_id
+		if user_id != current_user_id: #found a new user- write the old row to csv
+			for resource_type in resource_types:
+				resource_to_time[resource_type] /= float(total_time)
 
-        resource_to_time[resource_name] = total_duration
-        total_time += total_duration
-        
-    out_csv.close()
-    connection.close()
+			resource_to_time['grade'] = grades_dict[float(old_final_grade)]
+			resource_to_time['country'] = old_country
+
+			csv_writer.writerow(resource_to_time)
+
+			#create the new dictionary for new user
+			resource_to_time = initialize_dict(resource_types)            
+			total_time = 0
+			current_user_id = user_id
+			old_final_grade = final_grade
+			old_country = country
+
+		resource_to_time[resource_name] = total_duration
+		total_time += total_duration
+
+		if i == cursor.rowcount - 1: #last user- write old row to csv
+			for resource_type in resource_types:
+				resource_to_time[resource_type] /= float(total_time)
+
+			resource_to_time['grade'] = grades_dict[float(old_final_grade)]
+			resource_to_time['country'] = old_country
+
+			csv_writer.writerow(resource_to_time)
+		
+		
+	out_csv.close()
+	connection.close()

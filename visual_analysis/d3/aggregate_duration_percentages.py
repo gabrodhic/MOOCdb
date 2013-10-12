@@ -9,7 +9,6 @@
 # =============================
 import json
 import csv
-from collections import OrderedDict
 
 def initialize_dict(types):
 	temp_dict = {}
@@ -18,24 +17,28 @@ def initialize_dict(types):
 	return temp_dict
 
 if __name__ == "__main__":
-	input_csv = csv.DictReader(open('duration_by_user_grade.csv'))
+	in_csv = open('duration_by_user_grade.csv')
+	csv_reader = csv.DictReader(in_csv)
 	grades = ['A', 'B', 'C']
 
-	fields = input_csv.fieldnames
+	fields = csv_reader.fieldnames
 	assert('grade' == fields[1])
 	assert('country' == fields[2])
 	resource_types = fields[3:] #get the resource type names from the input csv
 
 	header = ['grade'] + resource_types
-	out_csv = csv.DictWriter(open('duration_aggregate_by_grade.csv', 'wb'), delimiter= ',', fieldnames= header)
+	out_csv = open('duration_aggregate_by_grade.csv', 'wb')
+	csv_writer = csv.DictWriter(out_csv, delimiter= ',', fieldnames= header)
+	csv_writer.writeheader()
+
 
 	grade_counts = initialize_dict(grades)
 	grade_resources = {}
 	for grade in grades:
 		grade_resources[grade] = initialize_dict(resource_types)
 
-	
-	for row in input_csv:
+	#sum up the durations for each grade and resource_type
+	for row in csv_reader:
 		grade = row['grade']
 		resources_dict = grade_resources[grade] #pick the resources_dict by the grade of the user
 		for resource_type in resource_types:
@@ -43,15 +46,15 @@ if __name__ == "__main__":
 			resources_dict[resource_type] += value #add the value of each resource type to the total
 		grade_counts[grade] += 1
 
-	output = []
+	# write the duration for each grade
 	for grade in grades:
 		resources_dict = grade_resources[grade] #pick the resources_dict by the grade of the user
 		grade_count = grade_counts[grade]
 		for resource_type in resource_types:
 			resources_dict[resource_type] /= grade_count
 		resources_dict['grade'] = grade
-		output.append(resources_dict)
+		csv_writer.writerow(resources_dict)
 
-	out_csv.writeheader()
-	for row in output:
-		out_csv.writerow(row)
+	out_csv.close()
+	in_csv.close()
+
