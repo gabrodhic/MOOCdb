@@ -17,8 +17,26 @@ def initialize_dict(resource_types):
 		temp_dict[resource_type] = 0
 	return temp_dict
 
+def write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, csv_writer):
+	for resource_type in resource_types:
+		resource_to_time[resource_type] /= float(total_time)
+
+		resource_to_time['grade'] = grades_dict[float(old_final_grade)]
+		resource_to_time['country'] = old_country
+
+		csv_writer.writerow(resource_to_time)
+
+def initialize_state(user_id, user_country, final_grade, resource_types):
+	current_user_id = user_id
+	old_country = user_country
+	old_final_grade = final_grade
+	total_time = 0
+	resource_to_time = initialize_dict(resource_types)
+	return (current_user_id, old_country, old_final_grade, total_time, resource_to_time)
+
+
 if __name__ == "__main__":
-	connection = mdb.connect('127.0.0.1', '', '', 'moocdb', port=3316, charset='utf8')
+	connection = mdb.connect('127.0.0.1', 'root', '', 'moocdb', port=3306, charset='utf8')
 
 	cursor = connection.cursor()
 	cursor.execute("""
@@ -57,39 +75,22 @@ if __name__ == "__main__":
 		total_duration = int(total_duration)		
 
 		if current_user_id == None:
-			current_user_id = user_id
-			old_country = user_country
-			old_final_grade = final_grade
-			total_time = 0
-			resource_to_time = initialize_dict(resource_types)
+			current_user_id, old_country, old_final_grade, total_time, resource_to_time = \
+				initialize_state(user_id, user_country, final_grade, resource_types)
 
 		if user_id != current_user_id: #found a new user- write the old row to csv
-			for resource_type in resource_types:
-				resource_to_time[resource_type] /= float(total_time)
+			write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, csv_writer)
 
-			resource_to_time['grade'] = grades_dict[float(old_final_grade)]
-			resource_to_time['country'] = old_country
-
-			csv_writer.writerow(resource_to_time)
 
 			#create the new dictionary for new user
-			resource_to_time = initialize_dict(resource_types)            
-			total_time = 0
-			current_user_id = user_id
-			old_final_grade = final_grade
-			old_country = user_country
+			current_user_id, old_country, old_final_grade, total_time, resource_to_time = \
+				initialize_state(user_id, user_country, final_grade, resource_types)
 
 		resource_to_time[resource_name] = total_duration
 		total_time += total_duration
 
 		if i == cursor.rowcount - 1: #last user- write old row to csv
-			for resource_type in resource_types:
-				resource_to_time[resource_type] /= float(total_time)
-
-			resource_to_time['grade'] = grades_dict[float(old_final_grade)]
-			resource_to_time['country'] = old_country
-
-			csv_writer.writerow(resource_to_time)
+			write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, csv_writer)
 		
 		
 	out_csv.close()
