@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
 		if current_user_id == None:
 			current_user_id = user_id
-			old_country = country
+			old_country = user_country
 			old_final_grade = final_grade
 			total_time = 0
 			resource_to_time = initialize_dict(resource_types)
@@ -77,7 +77,7 @@ if __name__ == "__main__":
 			total_time = 0
 			current_user_id = user_id
 			old_final_grade = final_grade
-			old_country = country
+			old_country = user_country
 
 		resource_to_time[resource_name] = total_duration
 		total_time += total_duration
