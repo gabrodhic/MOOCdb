@@ -65,7 +65,6 @@ if __name__ == "__main__":
 	out_csv_grade, grade_csv_writer = initialize_csv('grade', 'duration_aggregate_by_grade.csv')
 	out_csv_country, country_csv_writer = initialize_csv('country', 'duration_aggregate_by_country.csv')
 
-
 	grade_counts, grade_resources = initialize_variable_dict(grades, resource_types)
 	country_counts, country_resources = initialize_variable_dict(countries, resource_types)
 

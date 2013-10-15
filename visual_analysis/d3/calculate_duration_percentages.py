@@ -36,7 +36,7 @@ def initialize_state(user_id, user_country, final_grade, resource_types):
 
 
 if __name__ == "__main__":
-	connection = mdb.connect('127.0.0.1', 'root', '', 'moocdb', port=3306, charset='utf8')
+	connection = mdb.connect('127.0.0.1', '', '', 'moocdb', port=3306, charset='utf8')
 
 	cursor = connection.cursor()
 	cursor.execute("""
@@ -81,17 +81,16 @@ if __name__ == "__main__":
 		if user_id != current_user_id: #found a new user- write the old row to csv
 			write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, csv_writer)
 
-
 			#create the new dictionary for new user
 			current_user_id, old_country, old_final_grade, total_time, resource_to_time = \
 				initialize_state(user_id, user_country, final_grade, resource_types)
 
-		resource_to_time[resource_name] = total_duration
+		if resource_name in resource_to_time:
+			resource_to_time[resource_name] = total_duration
 		total_time += total_duration
 
 		if i == cursor.rowcount - 1: #last user- write old row to csv
-			write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, csv_writer)
-		
+			write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, csv_writer)		
 		
 	out_csv.close()
 	connection.close()
