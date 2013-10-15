@@ -24,7 +24,7 @@ def write_row_to_csv(resource_types, resource_to_time, total_time, old_final_gra
 		resource_to_time['grade'] = grades_dict[float(old_final_grade)]
 		resource_to_time['country'] = old_country
 
-		csv_writer.writerow(resource_to_time)
+	csv_writer.writerow(resource_to_time)
 
 def initialize_state(user_id, user_country, final_grade, resource_types):
 	current_user_id = user_id
