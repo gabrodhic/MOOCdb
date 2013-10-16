@@ -4,7 +4,7 @@
 # @author: Colin Taylor, colin_t@mit.edu
 # =============================
 # IMPORTANT!!!
-# This script requires a file called 'duration_by_user_grade.csv'
+# This script requires a file called 'percent_duration_by_user_grade.csv' or 'total_duration_by_user_grade.csv'
 # and will output a file called 'duration_aggregate_by_grade.csv' and 'duration_aggregate_by_country.csv'
 # =============================
 import json
@@ -66,7 +66,8 @@ def write_agg_durations(aggregate_variable_name, aggregate_variables, counts, ag
 
 
 if __name__ == "__main__":
-	in_csv = open('duration_by_user_grade.csv')
+	in_csv = open('percent_duration_by_user_grade.csv')
+	# in_csv = open('total_duration_by_user_grade.csv')
 	csv_reader = csv.DictReader(in_csv)
 	grades = ['A', 'B', 'C']
 	countries = ['US', 'IN', 'LV', 'HU']
@@ -85,7 +86,9 @@ if __name__ == "__main__":
 		aggregate_durations(row, 'country', country_counts, country_resources, resource_types)
 
 	# write the duration for each grade/country
-	write_agg_durations('grade', grades, grade_counts, grade_resources, resource_types, 'duration_aggregate_by_grade.csv')
-	write_agg_durations('country', countries, country_counts, country_resources, resource_types, 'duration_aggregate_by_country.csv')
+	write_agg_durations('grade', grades, grade_counts, grade_resources, resource_types, 'percent_duration_aggregate_by_grade.csv')
+	write_agg_durations('country', countries, country_counts, country_resources, resource_types, 'percent_duration_aggregate_by_country.csv')
+	# write_agg_durations('grade', grades, grade_counts, grade_resources, resource_types, 'total_duration_aggregate_by_grade.csv')
+	# write_agg_durations('country', countries, country_counts, country_resources, resource_types, 'total_duration_aggregate_by_country.csv')
 
 	in_csv.close()

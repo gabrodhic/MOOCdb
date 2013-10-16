@@ -17,14 +17,16 @@ def initialize_dict(resource_types):
 		temp_dict[resource_type] = 0
 	return temp_dict
 
-def write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, csv_writer):
+def write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, percent_csv_writer, total_csv_writer):
+	resource_to_time['grade'] = grades_dict[float(old_final_grade)]
+	resource_to_time['country'] = old_country
+
+	total_csv_writer.writerow(resource_to_time)
+
 	for resource_type in resource_types:
 		# resource_to_time[resource_type] /= float(total_time)
 
-		resource_to_time['grade'] = grades_dict[float(old_final_grade)]
-		resource_to_time['country'] = old_country
-
-	csv_writer.writerow(resource_to_time)
+	percent_csv_writer.writerow(resource_to_time)
 
 def initialize_state(user_id, user_country, final_grade, resource_types):
 	current_user_id = user_id
@@ -57,14 +59,17 @@ if __name__ == "__main__":
 	""")
 	
 
-	out_csv = open('duration_by_user_grade.csv', 'wb')
+	percent_out_csv = open('percent_duration_by_user_grade.csv', 'wb')
+	total_out_csv = open('total_duration_by_user_grade.csv', 'wb')
 	resource_types = ['lecture', 'tutorial', 'informational', 'problem', \
 		'exam', 'wiki', 'forum', 'profile', 'index', 'book', 'survey', 'home', \
 		'other']
 
 	header = ['grade', 'country'] + resource_types
-	csv_writer = csv.DictWriter(out_csv, delimiter= ',', fieldnames= header)
-	csv_writer.writeheader()
+	percent_csv_writer = csv.DictWriter(percent_out_csv, delimiter= ',', fieldnames= header)
+	percent_csv_writer.writeheader()
+	total_csv_writer = csv.DictWriter(total_out_csv, delimiter= ',', fieldnames= header)
+	total_csv_writer.writeheader()
 
 
 	current_user_id = None
@@ -80,7 +85,7 @@ if __name__ == "__main__":
 				initialize_state(user_id, user_country, final_grade, resource_types)
 
 		if user_id != current_user_id: #found a new user- write the old row to csv
-			write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, csv_writer)
+			write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, percent_csv_writer, total_csv_writer)
 
 			#create the new dictionary for new user
 			current_user_id, old_country, old_final_grade, total_time, resource_to_time = \
@@ -91,7 +96,8 @@ if __name__ == "__main__":
 		total_time += total_duration
 
 		if i == cursor.rowcount - 1: #last user- write old row to csv
-			write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, csv_writer)		
+			write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, percent_csv_writer, total_csv_writer)		
 		
-	out_csv.close()
+	percent_out_csv.close()
+	total_out_csv.close()
 	connection.close()
