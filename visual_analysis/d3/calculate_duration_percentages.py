@@ -53,7 +53,7 @@ if __name__ == "__main__":
 			AND resources_urls.url_id = observed_events.url_id
 			AND resources.resource_id = resources_urls.resource_id
 			AND resource_types.resource_type_id = resources.resource_type_id
-		GROUP BY resource_types.resource_type_content;
+		GROUP BY user_id, resource_type;
 	""")
 	
 
