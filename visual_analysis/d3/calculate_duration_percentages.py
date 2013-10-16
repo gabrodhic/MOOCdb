@@ -19,7 +19,7 @@ def initialize_dict(resource_types):
 
 def write_row_to_csv(resource_types, resource_to_time, total_time, old_final_grade, old_country, csv_writer):
 	for resource_type in resource_types:
-		resource_to_time[resource_type] /= float(total_time)
+		# resource_to_time[resource_type] /= float(total_time)
 
 		resource_to_time['grade'] = grades_dict[float(old_final_grade)]
 		resource_to_time['country'] = old_country
