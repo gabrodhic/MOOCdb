@@ -16,12 +16,6 @@ def initialize_dict(types):
 		temp_dict[type1] = 0
 	return temp_dict
 
-def initialize_csv(aggregate_variable_name, out_csv_name):
-	header = [aggregate_variable_name] + resource_types
-	out_csv = open(out_csv_name, 'wb')
-	csv_writer = csv.DictWriter(out_csv, delimiter= ',', fieldnames= header)
-	csv_writer.writeheader()
-	return (out_csv, csv_writer)
 
 def initialize_variable_dict(aggregate_variables, resource_types):
 	counts = initialize_dict(aggregate_variables)
@@ -42,15 +36,34 @@ def aggregate_durations(row, aggregate_variable_name, counts, agg_resources_dict
 	except KeyError:
 		pass #grade or country is not in resources we are trying to capture
 
-def write_agg_durations(aggregate_variable_name, aggregate_variables, counts, agg_resources_dict, resource_types, csv_writer):
+def write_agg_durations(aggregate_variable_name, aggregate_variables, counts, agg_resources_dict, resource_types, out_csv_name):
 	for aggregate_variable in aggregate_variables:
 		resources_dict = agg_resources_dict[aggregate_variable] #pick the resources_dict by the grade/country of the user
 		count = counts[aggregate_variable]
-		for resource_type in resource_types:
+
+		for resource_type in resources_dict.keys():
 			if count != 0:
 				resources_dict[resource_type] /= count
-		resources_dict[aggregate_variable_name] = aggregate_variable
+			if resources_dict[resource_type] == 0 and resource_type in resource_types:
+				resource_types.remove(resource_type) #remove from resource_types list because all resources don't have!
+		
+	header = [aggregate_variable_name] + resource_types
+	resources_dict[aggregate_variable_name] = aggregate_variable
+	out_csv = open(out_csv_name, 'wb')
+	csv_writer = csv.DictWriter(out_csv, delimiter= ',', fieldnames= header)
+	csv_writer.writeheader()
+
+	# remove resources not in list, write to csv
+	for aggregate_variable in aggregate_variables: 
+		resources_dict = agg_resources_dict[aggregate_variable] 	
+		for resource_type in resources_dict.keys():
+			if resource_type not in resource_types:
+				resources_dict.pop(resource_type)
+		resources_dict[aggregate_variable_name] = aggregate_variable 
 		csv_writer.writerow(resources_dict)
+
+	out_csv.close()
+
 
 if __name__ == "__main__":
 	in_csv = open('duration_by_user_grade.csv')
@@ -63,9 +76,6 @@ if __name__ == "__main__":
 	assert('country' == fields[1])
 	resource_types = fields[2:] #get the resource type names from the input csv
 
-	out_csv_grade, grade_csv_writer = initialize_csv('grade', 'duration_aggregate_by_grade.csv')
-	out_csv_country, country_csv_writer = initialize_csv('country', 'duration_aggregate_by_country.csv')
-
 	grade_counts, grade_resources = initialize_variable_dict(grades, resource_types)
 	country_counts, country_resources = initialize_variable_dict(countries, resource_types)
 
@@ -75,10 +85,7 @@ if __name__ == "__main__":
 		aggregate_durations(row, 'country', country_counts, country_resources, resource_types)
 
 	# write the duration for each grade/country
-	write_agg_durations('grade', grades, grade_counts, grade_resources, resource_types, grade_csv_writer)
-	write_agg_durations('country', countries, country_counts, country_resources, resource_types, country_csv_writer)
+	write_agg_durations('grade', grades, grade_counts, grade_resources, resource_types, 'duration_aggregate_by_grade.csv')
+	write_agg_durations('country', countries, country_counts, country_resources, resource_types, 'duration_aggregate_by_country.csv')
 
-	out_csv_grade.close()
-	out_csv_country.close()
 	in_csv.close()
-
