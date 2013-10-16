@@ -64,6 +64,7 @@ if __name__ == "__main__":
 
 	header = ['grade', 'country'] + resource_types
 	csv_writer = csv.DictWriter(out_csv, delimiter= ',', fieldnames= header)
+	csv_writer.writeheader()
 
 
 	current_user_id = None
