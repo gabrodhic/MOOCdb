@@ -69,7 +69,7 @@ if __name__ == "__main__":
 	in_csv = open('duration_by_user_grade.csv')
 	csv_reader = csv.DictReader(in_csv)
 	grades = ['A', 'B', 'C']
-	countries = ['US', 'IN', 'CH']
+	countries = ['US', 'IN', 'LV', 'HU']
 
 	fields = csv_reader.fieldnames
 	assert('grade' == fields[0])
