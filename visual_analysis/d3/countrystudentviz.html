@@ -60,8 +60,8 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("country_time_data.csv", function(error, data) {
-  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "grade"; }));
+d3.csv("duration_aggregate_by_country.csv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "country"; }));
 
   data.forEach(function(d) {
     var y0 = 0;
@@ -71,7 +71,7 @@ d3.csv("country_time_data.csv", function(error, data) {
 
   data.sort(function(a, b) { return b[0] > a[0]; });
 
-  x.domain(data.map(function(d) { return d.grade; }));
+  x.domain(data.map(function(d) { return d.country; }));
 
   svg.append("g")
       .attr("class", "x axis")
@@ -86,7 +86,7 @@ d3.csv("country_time_data.csv", function(error, data) {
       .data(data)
     .enter().append("g")
       .attr("class", "state")
-      .attr("transform", function(d) { return "translate(" + x(d.grade) + ",0)"; });
+      .attr("transform", function(d) { return "translate(" + x(d.country) + ",0)"; });
 
   state.selectAll("rect")
       .data(function(d) { return d.ages; })
