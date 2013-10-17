@@ -40,6 +40,7 @@ def write_agg_durations(aggregate_variable_name, aggregate_variables, counts, ag
 	for aggregate_variable in aggregate_variables:
 		resources_dict = agg_resources_dict[aggregate_variable] #pick the resources_dict by the grade/country of the user
 		count = counts[aggregate_variable]
+		# print aggregate_variable, count
 
 		for resource_type in resources_dict.keys():
 			if count != 0:
@@ -70,7 +71,7 @@ if __name__ == "__main__":
 	# in_csv = open('total_duration_by_user_grade.csv')
 	csv_reader = csv.DictReader(in_csv)
 	grades = ['A', 'B', 'C']
-	countries = ['US', 'IN', 'CH', 'RU', 'DE', 'SE']
+	countries = ['US', 'IN', 'CN', 'RU', 'DE', 'PL', 'BR']
 
 	fields = csv_reader.fieldnames
 	assert('grade' == fields[0])
