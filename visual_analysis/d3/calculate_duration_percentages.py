@@ -24,7 +24,7 @@ def write_row_to_csv(resource_types, resource_to_time, total_time, old_final_gra
 	total_csv_writer.writerow(resource_to_time)
 
 	for resource_type in resource_types:
-		# resource_to_time[resource_type] /= float(total_time)
+		resource_to_time[resource_type] /= float(total_time)
 
 	percent_csv_writer.writerow(resource_to_time)
 
