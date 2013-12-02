@@ -24,6 +24,7 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.0ms)
 
 
+<<<<<<< Updated upstream
 Started GET "/" for 127.0.0.1 at 2013-12-01 16:09:03 -0500
 Processing by Rails::WelcomeController#index as HTML
   Rendered /var/lib/gems/1.9.1/gems/railties-4.0.1/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
@@ -136,6 +137,93 @@ Started GET "/" for 127.0.0.1 at 2013-12-01 19:21:58 -0500
 
 AbstractController::ActionNotFound (The action 'index' could not be found for HomeController):
   actionpack (4.0.1) lib/abstract_controller/base.rb:131:in `process'
+=======
+Started GET "/" for 127.0.0.1 at 2013-12-01 16:08:25 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/railties-4.0.1/lib/rails/templates/rails/welcome/index.html.erb (2.9ms)
+Completed 200 OK in 36ms (Views: 12.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (2.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsersAndUserSessions (20131201212118)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "email" varchar(255), "crypted_password" varchar(255), "password_salt" varchar(255), "persistence_token" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "user_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_session_id" varchar(255) NOT NULL, "date" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_user_sessions_on_user_session_id" ON "user_sessions" ("user_session_id")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_user_sessions_on_updated_at" ON "user_sessions" ("updated_at")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20131201212118"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 17:24:00 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/railties-4.0.1/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 35ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 17:24:07 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/railties-4.0.1/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateVisualizations (20131201223322)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "visualizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "visualization_type_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20131201223322"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 17:38:39 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VisualizationsController#index as HTML
+Completed 500 Internal Server Error in 30ms
+
+ActionView::MissingTemplate (Missing template visualizations/index, application/index with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder, :haml]}. Searched in:
+  * "/Users/sherwin/alfa_lab_urop/MOOCdb/moocenimages/app/views"
+):
+  actionpack (4.0.1) lib/action_view/path_set.rb:46:in `find'
+  actionpack (4.0.1) lib/action_view/lookup_context.rb:115:in `find'
+  actionpack (4.0.1) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionpack (4.0.1) lib/action_view/renderer/template_renderer.rb:35:in `determine_template'
+  actionpack (4.0.1) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionpack (4.0.1) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.1) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.1) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.1) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.1) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.1) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.1) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.1) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.1) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/sherwin/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (4.0.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.1) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.1) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.1) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.1) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.1) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.1) lib/active_support/callbacks.rb:413:in `_run__594174390943526789__process_action__callbacks'
+  activesupport (4.0.1) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.1) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.1) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.1) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.1) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.1) lib/abstract_controller/base.rb:136:in `process'
+>>>>>>> Stashed changes
   actionpack (4.0.1) lib/abstract_controller/rendering.rb:44:in `process'
   actionpack (4.0.1) lib/action_controller/metal.rb:195:in `dispatch'
   actionpack (4.0.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
@@ -159,7 +247,11 @@ AbstractController::ActionNotFound (The action 'index' could not be found for Ho
   activerecord (4.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
   activerecord (4.0.1) lib/active_record/migration.rb:369:in `call'
   actionpack (4.0.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+<<<<<<< Updated upstream
   activesupport (4.0.1) lib/active_support/callbacks.rb:373:in `_run__2008284467886122357__call__callbacks'
+=======
+  activesupport (4.0.1) lib/active_support/callbacks.rb:373:in `_run__3296952914277522164__call__callbacks'
+>>>>>>> Stashed changes
   activesupport (4.0.1) lib/active_support/callbacks.rb:80:in `run_callbacks'
   actionpack (4.0.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
   actionpack (4.0.1) lib/action_dispatch/middleware/reloader.rb:64:in `call'
@@ -184,6 +276,7 @@ AbstractController::ActionNotFound (The action 'index' could not be found for Ho
   rack (1.5.2) lib/rack/lock.rb:17:in `call'
   rack (1.5.2) lib/rack/content_length.rb:14:in `call'
   rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+<<<<<<< Updated upstream
   /usr/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
   /usr/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
   /usr/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
@@ -244,3 +337,903 @@ Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 19:26:40 -0500
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 19:26:40 -0500
+=======
+  /Users/sherwin/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/sherwin/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/sherwin/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 17:39:01 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.8ms)
+  Rendered layouts/_mast.html.haml (0.8ms)
+  Rendered layouts/_footer.html.haml (0.6ms)
+Completed 200 OK in 419ms (Views: 418.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 17:39:01 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 17:39:01 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 17:39:01 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 17:39:01 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 17:39:01 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 17:39:01 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 17:39:01 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 17:39:01 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 17:39:01 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:00:42 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (2.4ms)
+  Rendered layouts/_mast.html.haml (7.7ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 96ms (Views: 86.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:00:43 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:00:43 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:00:43 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:00:43 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:00:43 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:00:43 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:00:43 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:00:43 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:00:43 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:01:11 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.2ms)
+  Rendered layouts/_mast.html.haml (1.3ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:01:11 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:01:11 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:11 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:01:11 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:11 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:11 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:11 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:11 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:11 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:01:17 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (0.1ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 39ms (Views: 38.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:01:17 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:01:17 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:17 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:01:17 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:17 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:17 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:17 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:17 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:17 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:01:23 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (0.1ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:01:23 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:23 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:23 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:01:23 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:23 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:01:23 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:23 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:23 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:01:23 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:03:16 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.8ms)
+  Rendered layouts/_mast.html.haml (0.2ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 47ms (Views: 39.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:16 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:16 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:16 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:16 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:16 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:16 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:16 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:16 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:16 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:03:25 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (5.4ms)
+  Rendered layouts/_footer.html.haml (0.2ms)
+Completed 200 OK in 16ms (Views: 14.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:25 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:25 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:25 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:26 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:26 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:26 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:26 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:26 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:26 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:03:48 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (1.6ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:48 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:48 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:48 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:48 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:48 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:48 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:48 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:48 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:48 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:03:53 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (1.5ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:53 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:54 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:54 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:54 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:03:54 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:54 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:54 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:54 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:03:54 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:04:17 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (1.8ms)
+  Rendered layouts/_footer.html.haml (0.2ms)
+Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:04:17 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:04:17 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:04:17 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:04:17 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:04:17 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:04:17 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:04:17 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:04:17 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:04:17 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:05:06 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.2ms)
+  Rendered layouts/_mast.html.haml (0.1ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 42ms (Views: 41.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:05:06 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:05:06 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:05:06 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:05:06 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:05:06 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:05:06 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:05:06 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:05:06 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:05:06 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:55:26 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (2.0ms)
+  Rendered layouts/_mast.html.haml (3.4ms)
+  Rendered layouts/_footer.html.haml (0.4ms)
+Completed 200 OK in 72ms (Views: 61.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:55:26 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:55:26 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:26 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:26 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:55:26 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:26 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:26 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:26 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:26 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:55:31 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (0.2ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 18:55:31 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 18:55:31 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 18:55:31 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:31 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:31 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:31 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:31 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:31 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 18:55:31 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 18:59:53 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.9ms)
+  Rendered layouts/_mast.html.haml (59.5ms)
+Completed 500 Internal Server Error in 204ms
+
+ActionView::Template::Error (`attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.):
+    2:   .left
+    3:     = link_to "MOOCEnimages", root_path
+    4:   .right
+    5:     - if logged_in?
+    6:       
+    7:     - else
+    8:       Login
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/application_controller.rb:19:in `logged_in?'
+  app/views/layouts/_mast.html.haml:5:in `_app_views_layouts__mast_html_haml___2494588142619362524_70245012035280'
+  app/views/layouts/application.html.erb:10:in `_app_views_layouts_application_html_erb___4520851448932455601_70245016823840'
+
+
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (21.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:01:05 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.2ms)
+  Rendered layouts/_mast.html.haml (35.6ms)
+Completed 500 Internal Server Error in 47ms
+
+ActionView::Template::Error (`attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.):
+    2:   .left
+    3:     = link_to "MOOCEnimages", root_path
+    4:   .right
+    5:     - if logged_in?
+    6:       Logout
+    7:     - else
+    8:       Login
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/application_controller.rb:19:in `logged_in?'
+  app/views/layouts/_mast.html.haml:5:in `_app_views_layouts__mast_html_haml___2494588142619362524_70245000563040'
+  app/views/layouts/application.html.erb:10:in `_app_views_layouts_application_html_erb___4520851448932455601_70245016823840'
+
+
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:01:06 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (8.8ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (`attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.):
+    2:   .left
+    3:     = link_to "MOOCEnimages", root_path
+    4:   .right
+    5:     - if logged_in?
+    6:       Logout
+    7:     - else
+    8:       Login
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/application_controller.rb:19:in `logged_in?'
+  app/views/layouts/_mast.html.haml:5:in `_app_views_layouts__mast_html_haml___2494588142619362524_70245000563040'
+  app/views/layouts/application.html.erb:10:in `_app_views_layouts_application_html_erb___4520851448932455601_70245016823840'
+
+
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:01:06 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (34.5ms)
+Completed 500 Internal Server Error in 43ms
+
+ActionView::Template::Error (`attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.):
+    2:   .left
+    3:     = link_to "MOOCEnimages", root_path
+    4:   .right
+    5:     - if logged_in?
+    6:       Logout
+    7:     - else
+    8:       Login
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/application_controller.rb:19:in `logged_in?'
+  app/views/layouts/_mast.html.haml:5:in `_app_views_layouts__mast_html_haml___2494588142619362524_70245000563040'
+  app/views/layouts/application.html.erb:10:in `_app_views_layouts_application_html_erb___4520851448932455601_70245016823840'
+
+
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:01:37 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (0.5ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 19:01:37 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 19:01:37 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 19:01:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 19:01:37 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 19:01:37 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 19:01:37 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 19:01:37 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 19:01:37 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 19:01:37 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:01:44 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.9ms)
+  Rendered layouts/_mast.html.haml (2.0ms)
+  Rendered layouts/_footer.html.haml (0.8ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:01:44 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.2ms)
+  Rendered layouts/_mast.html.haml (0.3ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:02:04 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.2ms)
+  Rendered layouts/_mast.html.haml (0.4ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 19:02:04 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:04 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 19:02:04 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:04 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 19:02:05 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:05 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:05 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:05 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:05 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:02:06 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (0.4ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:02:25 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (0.3ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 18ms (Views: 17.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 19:02:25 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 19:02:25 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 19:02:25 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:25 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:25 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:25 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:25 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:25 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 19:02:25 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:02:26 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (0.7ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:02:28 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.2ms)
+  Rendered layouts/_mast.html.haml (0.3ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:02:28 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (0.4ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:03:30 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (12.8ms)
+Completed 500 Internal Server Error in 24ms
+
+ActionView::Template::Error (`attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.):
+    2:   .left
+    3:     = link_to "MOOCEnimages", root_path
+    4:   .right
+    5:     - if logged_in?
+    6:       Logout
+    7:     - else
+    8:       Login
+  app/models/user.rb:3:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/application_controller.rb:19:in `logged_in?'
+  app/views/layouts/_mast.html.haml:5:in `_app_views_layouts__mast_html_haml___2494588142619362524_70245000563040'
+  app/views/layouts/application.html.erb:10:in `_app_views_layouts_application_html_erb___4520851448932455601_70245016823840'
+
+
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/sherwin/.rvm/gems/ruby-2.0.0-p353@global/gems/actionpack-4.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:05:09 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (2.6ms)
+  Rendered layouts/_mast.html.haml (20.2ms)
+  Rendered layouts/_footer.html.haml (0.8ms)
+Completed 200 OK in 152ms (Views: 128.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 19:05:10 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 19:05:10 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:10 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 19:05:10 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:10 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:10 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:10 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:10 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:10 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:05:12 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (1.4ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 19:05:13 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 19:05:13 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:13 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:13 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 19:05:13 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:13 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:13 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:13 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 19:05:13 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:12:23 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (1.0ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 21ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 19:12:23 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 19:12:23 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 19:12:23 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 19:12:23 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 19:12:23 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 19:12:23 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 19:12:23 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 19:12:23 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 19:12:23 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:12:25 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (1.1ms)
+  Rendered layouts/_mast.html.haml (2.9ms)
+  Rendered layouts/_footer.html.haml (0.8ms)
+Completed 200 OK in 16ms (Views: 14.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:12:26 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (0.9ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:12:26 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (0.9ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:12:27 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (1.1ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:12:27 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.2ms)
+  Rendered layouts/_mast.html.haml (1.2ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:12:27 -0500
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (0.1ms)
+  Rendered layouts/_mast.html.haml (1.0ms)
+  Rendered layouts/_footer.html.haml (0.1ms)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+>>>>>>> Stashed changes
