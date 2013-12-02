@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `mock` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `mock`;
+CREATE DATABASE  IF NOT EXISTS `small_mock` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `small_mock`;
 -- MySQL dump 10.13  Distrib 5.6.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: mock
+-- Host: localhost    Database: small_mock
 -- ------------------------------------------------------
 -- Server version	5.6.12-log
 

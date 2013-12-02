@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `mock` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `mock`;
+CREATE DATABASE  IF NOT EXISTS `smalL_mock` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `small_mock`;
 
 --
 -- Table structure for table `users`
