@@ -1,0 +1,8 @@
+.mast
+  .left
+    = link_to "MOOCEnimages", root_path
+  .right
+    - if logged_in?
+      Logout
+    - else
+      Login
