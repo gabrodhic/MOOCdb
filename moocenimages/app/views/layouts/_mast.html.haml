@@ -3,6 +3,11 @@
     = link_to "MOOCEnimages", root_path
   .right
     - if logged_in?
-      Logout
+      Welcome, 
+      = current_user.username
+      = link_to "Logout", logout_path
     - else
-      Login
+      %span.sign-up
+        = link_to "Sign up", new_user_path
+      %span.login
+        = link_to "Login", login_path

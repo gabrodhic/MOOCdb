@@ -1,0 +1,14 @@
+.login-box
+	.login-title
+		Login
+	.login-form
+		= form_for @user_session, :url => user_sessions_path do |form|
+			%br
+			= form.text_field :username, :placeholder => 'username'
+			%br
+			= form.password_field :password, :placeholder => 'password' 
+			%br
+			- if flash[:notice]
+				.login-message
+					= flash[:notice]
+			= form.submit 'Login'
