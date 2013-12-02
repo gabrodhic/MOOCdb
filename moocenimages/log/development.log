@@ -1237,3 +1237,39 @@ Processing by VisualizationsController#index as HTML
   Rendered layouts/_footer.html.haml (0.1ms)
 Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
 >>>>>>> Stashed changes
+
+
+Started GET "/" for 127.0.0.1 at 2013-12-01 19:33:49 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VisualizationsController#index as HTML
+  Rendered visualizations/index.html.haml within layouts/application (2.1ms)
+  Rendered layouts/_mast.html.haml (17.5ms)
+  Rendered layouts/_footer.html.haml (0.7ms)
+Completed 200 OK in 157ms (Views: 129.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-12-01 19:33:49 -0500
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-12-01 19:33:49 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-12-01 19:33:49 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2013-12-01 19:33:49 -0500
+
+
+Started GET "/assets/visualizations.css?body=1" for 127.0.0.1 at 2013-12-01 19:33:49 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-12-01 19:33:49 -0500
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-12-01 19:33:50 -0500
+
+
+Started GET "/assets/visualizations.js?body=1" for 127.0.0.1 at 2013-12-01 19:33:50 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-12-01 19:33:50 -0500
