@@ -5,7 +5,6 @@ class VisualizationsController < ApplicationController
   end
 
   def index
-    @visualizations = Visualization.find(:all)
   end
 
   def get_file
@@ -15,7 +14,6 @@ class VisualizationsController < ApplicationController
 
     respond_to do |format|
         format.json { render json: @file }
-      end
     end
   end
 end
