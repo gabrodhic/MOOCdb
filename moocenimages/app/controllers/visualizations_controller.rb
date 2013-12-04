@@ -8,20 +8,19 @@ class VisualizationsController < ApplicationController
   end
 
   def new
-
+    @upload = Upload.new
   end
   
   def show
     @visualization = Visualization.find(params[:id])
   end
 
-  def get_file
-    name = params[:name]
-    viz = Visualization.find(:id => 5)
-    @file = viz.content
+  def get_upload
+    visualization = Visualization.find(params[:visualization_id])
+    offering = visualization.offerings.find(params[:offering_id])
+    upload = offering.uploads.find_by_visualization_step_id(params[:visualization_step_id])
 
-    respond_to do |format|
-        format.json { render json: @file }
-    end
+    upload_contents = File.open(upload.content.path).read
+    
   end
 end
