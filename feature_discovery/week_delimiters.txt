@@ -1,0 +1,5 @@
+following is sample SQL demonstrating how we generate consistent week_ids
+note that submissions.submission_timestamp can be replaced with timestamp fields of other tables
+
+SELECT FLOOR((UNIX_TIMESTAMP(submissions.submission_timestamp) 
+			- UNIX_TIMESTAMP('2012-03-05 12:00:00')) / (3600 * 24 * 7)) AS week;
