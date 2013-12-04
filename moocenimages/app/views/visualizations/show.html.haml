@@ -2,39 +2,43 @@
   = @visualization.name
   %small= "by #{@visualization.user.username}"
 
+%select.form-control.offering
+  %option= "6.002x Fall 2013"
+  %option= "6.002x Spring 2014"
+
 .jumbotron.visualization-panel
   = image_tag "http://i.imgur.com/df1nVYc.png", :height => 400
 
 .comment
   %h2
     %small
-      This visualization plots the relative time spent per different type of resource for students who earned different final grades in the course. The interesting trend to see is that as student grades get lower, the time they spend on exams increases - A students seemed to breeze through the exams and finish quickly.
+      = @visualization.description
 
 .pipeline
   %ul.nav.nav-pills
     %li
-      %a{:href => "#"}
+      %a{:href => "#", :data =>{:vizstep => 1}}
         %i.glyphicon.glyphicon-hdd
         %br
         %span.pipeline-text{ :style => "margin-left:20px;" }
           %strong MOOCDB
 
     %li.active
-      %a{:href => "#"}
+      %a{:href => "#", :data =>{:vizstep => 2}}
         %i.glyphicon.glyphicon-arrow-right
         %br
         %span.pipeline-text{ :style => "margin-left:0px;" }
           %strong DB to Data script
 
     %li
-      %a{:href => "#"}
+      %a{:href => "#", :data =>{:vizstep => 3}}
         %i.glyphicon.glyphicon-file
         %br
         %span.pipeline-text{ :style => "margin-left:12px;" }
           %strong Private Data
 
     %li
-      %a{:href => "#"}
+      %a{:href => "#", :data =>{:vizstep => 4}}
         &nbsp;
         %i.glyphicon.glyphicon-arrow-right
         %br
@@ -42,14 +46,14 @@
           %strong Data to Data Script
 
     %li
-      %a{:href => "#"}
+      %a{:href => "#", :data =>{:vizstep => 5}}
         %i.glyphicon.glyphicon-file
         %br
         %span.pipeline-text{ :style => "margin-left:14px;" }
           %strong Public Data
 
     %li
-      %a{:href => "#"}
+      %a{:href => "#", :data =>{:vizstep => 6}}
         &nbsp;
         %i.glyphicon.glyphicon-arrow-right
         %br
@@ -57,7 +61,7 @@
           %strong Data to Vis Script
 
     %li
-      %a{:href => "#"}
+      %a{:href => "#", :data =>{:vizstep => 7}}
         %i.glyphicon.glyphicon-stats
         %br
         %span.pipeline-text{ :style => "margin-left:14px;" }
@@ -66,6 +70,6 @@
 .code
   %h2 script.py
   %blockquote
-    %pre.prettyprint
+    %pre.prettyprint#code-block
       = "def f(x,y):\n\tif x == 1:\n\t\treturn 2\n\telse:\n\t\treturn y-1"
 

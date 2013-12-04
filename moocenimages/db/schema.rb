@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131203172913) do
+ActiveRecord::Schema.define(version: 20131204044033) do
 
   create_table "files", force: true do |t|
     t.integer  "visualization_id"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 20131203172913) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.integer  "tag_id"
   end
 
 end

@@ -3,7 +3,19 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+  file_contents = {}
+  file_contents[1] = 'MOOCDB: the universal database schema for MOOC data.'
+  file_contents[3] = 'Private data file: we do not host the private data file contents.'
+  file_contents[7] = 'Visualization: viewable by scrolling up.'
+  
   $("div.pipeline a").click (ev) =>
+    target = $(ev.target)
+
     $("div.pipeline li").removeClass('active')
-    $(ev.target).closest('li').addClass('active')
+    target.closest('li').addClass('active')
+    
+    vizstep = target.closest('a').data('vizstep')
+    content = file_contents[parseInt(vizstep)]
+
+    $('#code-block').html(content).fadeIn('fast')
     return false
