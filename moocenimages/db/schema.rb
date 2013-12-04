@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131201223322) do
+ActiveRecord::Schema.define(version: 20131203172913) do
+
+  create_table "files", force: true do |t|
+    t.integer  "visualization_id"
+    t.integer  "user_id"
+    t.integer  "visualization_step_id"
+    t.integer  "offering_id"
+    t.string   "file_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "content_file_name"
+    t.string   "content_content_type"
+    t.integer  "content_file_size"
+    t.datetime "content_updated_at"
+  end
+
+  create_table "offerings", force: true do |t|
+    t.string   "name"
+    t.integer  "visualization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_sessions", force: true do |t|
     t.string   "user_session_id", null: false
@@ -29,6 +50,18 @@ ActiveRecord::Schema.define(version: 20131201223322) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "visualization_steps", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "visualization_types", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
