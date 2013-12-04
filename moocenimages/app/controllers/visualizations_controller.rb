@@ -7,6 +7,10 @@ class VisualizationsController < ApplicationController
   def index
   end
 
+  def new
+
+  end
+  
   def show
     @visualization = Visualization.find(params[:id])
   end
