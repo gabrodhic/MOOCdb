@@ -8,7 +8,9 @@
       = offering.name
 
 .jumbotron.visualization-panel
-  = image_tag "http://i.imgur.com/df1nVYc.png", :height => 400
+  %iframe.viz-iframe{:src => '/system/uploads/contents/000/000/003/original/abc_collaboration_type_viz.html', :height => 500, :width => 1000, :scrolling => 'no'}
+
+  // = image_tag "http://i.imgur.com/df1nVYc.png", :height => 400
 
 .comment
   %h2
@@ -72,5 +74,7 @@
   %h2.file-name script.py
   %blockquote
     %pre.prettyprint#code-block
-      = "def f(x,y):\n\tif x == 1:\n\t\treturn 2\n\telse:\n\t\treturn y-1"
+      %code
+
+
 

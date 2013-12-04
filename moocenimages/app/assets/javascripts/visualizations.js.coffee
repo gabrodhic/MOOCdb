@@ -3,18 +3,28 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  ajaxData = 
-    offering_id: parseInt($('.offering :selected').val())
-    visualization_id: $('.viz-name').data('vizid')
-    visualization_step_id: 2
-  $.ajax '/get_upload',
-    type: 'POST'
-    contentType: 'application/json'
-    dataType: 'json'
-    data: JSON.stringify(ajaxData)
-    success: (data) =>
-      $('.file-name').html(data['file_name'])
-      $('#code-block').html(data['contents'])
+  get_upload_ajax = (ajaxData) =>
+    $.ajax '/get_upload',
+      type: 'POST'
+      contentType: 'application/json'
+      dataType: 'json'
+      data: JSON.stringify(ajaxData)
+      success: (data) =>
+        $('.file-name').html(data['file_name'])
+        $('#code-block code').html(data['contents'])
+      error: =>
+        $('.file-name').html('Error')
+        $('#code-block code').html('There was an error in fetching this file.')
+  
+  initialize_page = () =>
+    ajaxData = 
+      offering_id: parseInt($('.offering :selected').val())
+      visualization_id: $('.viz-name').data('vizid')
+      visualization_step_id: 2
+
+    get_upload_ajax(ajaxData)
+
+  initialize_page()
 
   $("div.pipeline a").click (ev) =>
     target = $(ev.target)
@@ -40,16 +50,12 @@ $ ->
         visualization_id: $('.viz-name').data('vizid')
         visualization_step_id: vizstep
 
-      $.ajax '/get_upload',
-        type: 'POST'
-        contentType: 'application/json'
-        dataType: 'json'
-        data: JSON.stringify(ajaxData)
-        success: (data) =>
-          $('.file-name').html(data['file_name'])
-          $('#code-block').html(data['contents'])
+      get_upload_ajax(ajaxData)
+      return false
 
-    console.log(content)
     $('.file-name').html(filename)
-    $('#code-block').html(content)
+    $('#code-block code').html(content)
     return false
+
+  $("select.offering").change (ev) =>
+    initialize_page()

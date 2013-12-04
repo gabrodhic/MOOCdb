@@ -4,6 +4,10 @@ class VisualizationsController < ApplicationController
 
   end
 
+  def about
+
+  end
+  
   def index
   end
 
