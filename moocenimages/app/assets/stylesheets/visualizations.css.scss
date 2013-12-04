@@ -1,3 +1,17 @@
 // Place all the styles related to the Visualizations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.visualization-panel {
+	height: 500px;
+	margin: 30px 0px;
+}
+
+.pipeline {
+	width: 1100px;
+	margin: 40px auto;
+	i {
+		font-size: 50px;
+		margin: 10px 30px;
+	}
+}

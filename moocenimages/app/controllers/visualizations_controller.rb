@@ -7,6 +7,10 @@ class VisualizationsController < ApplicationController
   def index
   end
 
+  def show
+    @visualization = Visualization.find(params[:id])
+  end
+
   def get_file
     name = params[:name]
     viz = Visualization.find(:id => 5)
