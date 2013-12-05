@@ -9,6 +9,13 @@ class VisualizationsController < ApplicationController
   end
   
   def index
+    tags = Tag.all
+    @tags_hash = {}
+    tags.each do |tag|
+      visualizations = Visualization.where(:tag_id => tag.id)
+      @tags_hash[tag.name] = visualizations
+    end
+
   end
 
   def new

@@ -1,3 +1,4 @@
 visual_analysis/d3/*.csv
 moocenimages/log/*
 moocenimages/tmp/*
+*.sublime*
