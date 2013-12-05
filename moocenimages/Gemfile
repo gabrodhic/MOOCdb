@@ -21,6 +21,7 @@ gem 'haml'
 gem 'protected_attributes'
 
 gem "paperclip", "~> 3.0"
+gem 'rubyzip'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
