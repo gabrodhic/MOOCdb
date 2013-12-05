@@ -1,0 +1,26 @@
+%h1 Temporary File Upload
+
+= form_for @upload do |f|
+  %p
+    = "Content"
+    = f.file_field :content
+
+  %p
+    = "Visualization ID"
+    = f.text_field :visualization_id
+
+  %p
+    = "User ID"
+    = f.text_field :user_id
+
+  %p
+    = "Offering ID"
+    = f.text_field :offering_id
+
+
+  %p
+    = "Visualization Step ID"
+    = f.text_field :visualization_step_id
+
+  %p
+    = f.submit 'Upload'

@@ -10,8 +10,9 @@
   / Collect the nav links, forms, and other content for toggling
   #bs-example-navbar-collapse-1.collapse.navbar-collapse
     %ul.nav.navbar-nav
-      %li= link_to "Viz Gallery", "#"
-      %li= link_to "Upload", "#"
+      %li= link_to "Viz Gallery", root_path
+      %li= link_to "Upload", new_visualization_path
+      %li= link_to "About MOOCdb", '/about' 
     %ul.nav.navbar-nav.navbar-right
       - if logged_in?
         %li= link_to "Welcome, #{current_user.username}", "#"
