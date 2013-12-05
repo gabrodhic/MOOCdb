@@ -1,14 +1,11 @@
 .page-header
   %h1 Gallery
 - @tags_hash.each do |tag, visualizations|
+  .row
   %h2= tag
   .row
   - visualizations.each do |vis|
     .col-md-4
       = link_to (image_tag "graph.jpg", :size => "250x200"), "/visualizations/#{vis.id}"
-  .col-md-4
-    = image_tag "graph.jpg", :size => "250x200"
-  .col-md-4
-    = image_tag "graph.jpg", :size => "250x200"
 
 
