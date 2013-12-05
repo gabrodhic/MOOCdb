@@ -20,12 +20,17 @@ $ ->
         $('.download-file').hide()
   
   initialize_page = () =>
+    offeringID = parseInt($('.offering :selected').val())
+    vizID = $('.viz-name').data('vizid')
+
     ajaxData = 
-      offering_id: parseInt($('.offering :selected').val())
-      visualization_id: $('.viz-name').data('vizid')
+      offering_id: offeringID
+      visualization_id: vizID
       visualization_step_id: 2
 
     get_upload_ajax(ajaxData)
+
+    $('.download-zip').attr('href', '/get_zip?visualization_id=' + vizID.toString() + '&offering_id=' + offeringID.toString())
 
   initialize_page()
 
