@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204202312) do
+ActiveRecord::Schema.define(version: 20131204235819) do
 
   create_table "offerings", force: true do |t|
     t.string   "name"
@@ -77,6 +77,10 @@ ActiveRecord::Schema.define(version: 20131204202312) do
     t.datetime "updated_at"
     t.string   "description"
     t.integer  "tag_id"
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
   end
 
 end

@@ -8,9 +8,7 @@
       = offering.name
 
 .jumbotron.visualization-panel
-  %iframe.viz-iframe{:src => '/system/uploads/contents/000/000/003/original/abc_collaboration_type_viz.html', :height => 500, :width => 1000, :scrolling => 'no'}
-
-  // = image_tag "http://i.imgur.com/df1nVYc.png", :height => 400
+  %iframe.viz-iframe{:src => @visualization.offerings.first.uploads.find_by_visualization_step_id(6).content.url, :height => 500, :width => 1000, :scrolling => 'no'}
 
 .comment
   %h2
@@ -70,11 +68,22 @@
         %span.pipeline-text{ :style => "margin-left:14px;" }
           %strong Visualization
 
+%button.btn.btn-primary.btn-lg.download-zip
+  %i.glyphicon.glyphicon-download
+  %span.download-text
+    &nbsp;Download ZIP of all files
+
 .code
   %h2.file-name script.py
   %blockquote
     %pre.prettyprint#code-block
       %code
+
+%a.download-file{:href => @visualization.offerings.first.uploads.find_by_visualization_step_id(2).content.url(:original, false)}
+  %button.btn.btn-success.btn-lg.download-file
+    %i.glyphicon.glyphicon-download
+    %span.download-text
+      &nbsp;Download File
 
 
 

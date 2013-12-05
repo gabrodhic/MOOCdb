@@ -12,9 +12,12 @@ $ ->
       success: (data) =>
         $('.file-name').html(data['file_name'])
         $('#code-block code').html(data['contents'])
+        $('.download-file').show()
+        $('.download-file').attr('href', data['download_url'])
       error: =>
         $('.file-name').html('Error')
         $('#code-block code').html('There was an error in fetching this file.')
+        $('.download-file').hide()
   
   initialize_page = () =>
     ajaxData = 
@@ -55,6 +58,7 @@ $ ->
 
     $('.file-name').html(filename)
     $('#code-block code').html(content)
+    $('.download-file').hide()
     return false
 
   $("select.offering").change (ev) =>
