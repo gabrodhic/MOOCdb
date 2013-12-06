@@ -10,4 +10,5 @@ Moocenimages::Application.routes.draw do
   get 'logout' => 'user_sessions#destroy', :as => :logout
   get 'about' => 'visualizations#about'
   post 'get_upload' => 'visualizations#get_upload'
+  get 'get_zip' => 'visualizations#get_zip'
 end
