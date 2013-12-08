@@ -1,26 +1,33 @@
 
 <head>
+	<%= javascript_include_tag "typeahead" %>
 	<script src="./typeahead.js/typeahead.js"></script>
 	
 	<!-- Jquery -->
+	<%= javascript_include_tag "jquery-1.10.1.min" %>
+	<%= javascript_include_tag "jquery-migrate-1.2.1.min" %>
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 	<!-- Tagmanager -->
+	<%= javascript_include_tag "tagmanager" %>
+	<%= stylesheet_link_tag "tagmanager", :media => "all" %>
 	<script src="./tagmanager/tagmanager.js"></script>
 	<link rel="stylesheet" href="./tagmanager/tagmanager.css">
 
 	<!-- Bootstrap CSS and Javascript-->
+	<%= javascript_include_tag "bootstrap.min" %>
+	<%= stylesheet_link_tag "bootstrap.min", :media => "all" %>
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.0.1-p7/css/bootstrap.min.css">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.0.1-p7/js/bootstrap.min.js"></script>
 
 	<!-- Bootstrap theme -->
+	<%= stylesheet_link_tag "bootstrap-theme.min", :media => "all" %>
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.0.1-p7/css/bootstrap-theme.min.css">
 
 
 
 	<script>
-
 
 	$( document ).ready(function() {
         jQuery(".tm-input").tagsManager();
