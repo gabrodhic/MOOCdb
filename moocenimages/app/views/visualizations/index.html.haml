@@ -6,6 +6,6 @@
   .row
   - visualizations.each do |vis|
     .col-md-4
-      = link_to (image_tag "graph.jpg", :size => "250x200"), "/visualizations/#{vis.id}"
+      = link_to (image_tag "#{vis.thumbnail_file_name}.#{vis.thumbnail_content_type}", :size => "250x200"), "/visualizations/#{vis.id}"
 
 
