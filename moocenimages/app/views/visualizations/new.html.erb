@@ -1,0 +1,182 @@
+  <script>
+
+  $( document ).ready(function() {
+        $(".tm-input").tagsManager();
+
+    //     $(".tm-input").typeahead({
+    //   name: 'countries',
+    //   limit: 15,
+    //   prefetch: '/ajax/countries/json'
+    // }).on('typeahead:selected', function (e, d) {
+ 
+    //   tagApi.tagsManager("pushTag", d.value);
+ 
+    // });
+    });
+
+    var counter = 0;
+
+            function moreHTML() {
+                counter++;
+                var newFields = document.getElementById("html").cloneNode(true);
+                newFields.id = '';
+                newFields.style.display = 'block';
+                var newField = newFields.childNodes;
+                for (var i=0;i<newField.length;i++) {
+                    var theName = newField[i].name;
+                    if (theName)
+                        newField[i].name = theName + counter;
+                }
+                var insertHere = document.getElementById("html");
+                insertHere.parentNode.insertBefore(newFields,insertHere);
+            }
+
+            function moreData() {
+                counter++;
+                var newFields = document.getElementById("data").cloneNode(true);
+                newFields.id = '';
+                newFields.style.display = 'block';
+                var newField = newFields.childNodes;
+                for (var i=0;i<newField.length;i++) {
+                    var theName = newField[i].name;
+                    if (theName)
+                        newField[i].name = theName + counter;
+                }
+                var insertHere = document.getElementById("data");
+                insertHere.parentNode.insertBefore(newFields,insertHere);
+            }
+
+            function moreScripts() {
+                counter++;
+                var newFields = document.getElementById("scripts").cloneNode(true);
+                newFields.id = '';
+                newFields.style.display = 'block';
+                var newField = newFields.childNodes;
+                for (var i=0;i<newField.length;i++) {
+                    var theName = newField[i].name;
+                    if (theName)
+                        newField[i].name = theName + counter;
+                }
+                var insertHere = document.getElementById("scripts");
+                insertHere.parentNode.insertBefore(newFields,insertHere);
+            }
+
+            
+
+
+  
+  </script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Upload New Viz</h3>
+      <hr>
+      <address>
+        <strong>Attach files to add a new visualization.</strong>
+      </address>
+    </div>
+
+    <div class="col-sm-8 contact-form">
+      <form id="contact" method="post" class="form" role="form">
+        <div class="row">
+          <div class="col-xs-6 col-md-6 form-group">
+            Title <br>
+            <input class="form-control" id="title" name="title" placeholder="Title" type="text" required/>
+          </div>
+        </div>
+
+
+
+        <textarea class="form-control" id="message" name="message" placeholder="Description/Comments" rows="5"></textarea>
+        <br />
+        <div class="row">
+
+          <div class="col-xs-6 col-md-6 form-group">
+
+            Offering<br>
+            <input class="input-medium tm-input tm-input-success form-control" id="offering" name="offering" placeholder="Hit Return To Add Offerings" type="text"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6 col-md-6 form-group">
+
+            Tags<br>
+            <input class="input-medium tm-input tm-input-info form-control" id="offering" name="offering" placeholder="Hit Return To Add Tags" type="text"/>
+          </div>
+        </div>
+
+        <div id="html" class="row">
+          <div class="col-xs-6 col-md-6 form-group">
+            
+            
+            HTML/Viz/JS/CSS<br>
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <div class="input-group">
+                <div class="form-control uneditable-input span3" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                <span class="input-group-addon btn btn-default btn-file"><input type="file" name="..."></span>
+                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <button class="btn btn-warning pull-left" onclick="moreHTML()">Add Viz File</button><br><br>
+        <div id="data" class="row">
+          <div class="col-xs-6 col-md-6 form-group">
+            
+            
+            Datasets<br>
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <div class="input-group">
+                <div class="form-control uneditable-input span3" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                <span class="input-group-addon btn btn-default btn-file"><input type="file" name="..."></span>
+                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <button class="btn btn-warning pull-left" onclick="moreData()">Add Datasets File</button><br><br>
+        <div id="scripts" class="row">
+          <div class="col-xs-6 col-md-6 form-group">
+            
+            
+            Script<br>
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <div class="input-group">
+                <div class="form-control uneditable-input span3" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                <span class="input-group-addon btn btn-default btn-file"><input type="file" name="..."></span>
+                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <button id="scripts" class="btn btn-warning pull-left" onclick="moreScripts()">Add Script File</button><br><br>
+        <div class="row">
+          <div class="col-xs-6 col-md-6 form-group">
+            
+            
+            Preview PNG<br>
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <div class="input-group">
+                <div class="form-control uneditable-input span3" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                <span class="input-group-addon btn btn-default btn-file"><input type="file" name="..."></span>
+                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- Row -->
+
+        
+        <div class="row">
+          <div class="col-xs-12 col-md-12 form-group">
+            <button class="btn btn-primary pull-right" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
