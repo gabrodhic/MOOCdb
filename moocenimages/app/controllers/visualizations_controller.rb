@@ -7,6 +7,8 @@ class VisualizationsController < ApplicationController
   def about
 
   end
+
+
   
   def index
     tags = Tag.all
@@ -19,9 +21,87 @@ class VisualizationsController < ApplicationController
   end
 
   def new
-    @upload = Upload.new
+    @visualization = Visualization.new
+  end
+
+  def create
+    visualization = Visualization.create(params[:visualization])
+    visualization.update(:user_id => current_user.id)
+    redirect_to '/new_viz_step_2?viz_id=' + visualization.id.to_s
   end
   
+  def new_step_2
+    @viz_id = 0
+    @viz_id = params[:viz_id] if params[:viz_id]
+  end
+
+  def create_step_2
+    viz_id = Integer(params[:viz_id])
+    offerings = params['hidden-offering'].split(',')
+    # TOOD: make this work with more than one offering
+    offering = Offering.create(:name => offerings[0], :visualization_id => viz_id)
+
+    tag = Tag.create(:name => params[:tag])
+    Visualization.find(viz_id).update(:tag_id => tag.id)
+    redirect_to '/new_viz_step_3?viz_id=' + params[:viz_id] + '&offering_id=' + offering.id.to_s
+  end
+
+  def new_step_3
+    @viz_id = 0
+    @offering_id = 0
+    @viz_id = params[:viz_id] if params[:viz_id]
+    @offering_id = params[:offering_id] if params[:offering_id]
+
+    @upload = Upload.new
+  end
+
+  def create_step_3
+    @upload = Upload.create(params[:upload])
+    redirect_to '/new_viz_step_4?viz_id=' + params[:upload][:visualization_id] + '&offering_id=' + params[:upload][:offering_id]
+  end
+
+  def new_step_4
+    @viz_id = 0
+    @offering_id = 0
+    @viz_id = params[:viz_id] if params[:viz_id]
+    @offering_id = params[:offering_id] if params[:offering_id]
+
+    @upload = Upload.new
+  end
+
+  def create_step_4
+    @upload = Upload.create(params[:upload])
+    redirect_to '/new_viz_step_5?viz_id=' + params[:upload][:visualization_id] + '&offering_id=' + params[:upload][:offering_id]
+  end
+
+  def new_step_5
+    @viz_id = 0
+    @offering_id = 0
+    @viz_id = params[:viz_id] if params[:viz_id]
+    @offering_id = params[:offering_id] if params[:offering_id]
+
+    @upload = Upload.new
+  end
+
+  def create_step_5
+    @upload = Upload.create(params[:upload])
+    redirect_to '/new_viz_step_6?viz_id=' + params[:upload][:visualization_id] + '&offering_id=' + params[:upload][:offering_id]
+  end
+
+  def new_step_6
+    @viz_id = 0
+    @offering_id = 0
+    @viz_id = params[:viz_id] if params[:viz_id]
+    @offering_id = params[:offering_id] if params[:offering_id]
+
+    @upload = Upload.new
+  end
+
+  def create_step_6
+    @upload = Upload.create(params[:upload])
+    redirect_to '/visualizations/' + params[:upload][:visualization_id]
+  end
+
   def show
     @visualization = Visualization.find(params[:id])
   end
