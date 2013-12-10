@@ -33,7 +33,7 @@ $ ->
     $('.download-zip').attr('href', '/get_zip?visualization_id=' + vizID.toString() + '&offering_id=' + offeringID.toString())
 
   current_url = document.URL
-  if current_url.substr(current_url.length - 3) != 'new' 
+  if current_url.indexOf('new') == -1
     initialize_page()
 
     $("div.pipeline a").click (ev) =>

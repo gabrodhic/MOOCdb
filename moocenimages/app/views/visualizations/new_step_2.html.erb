@@ -1,0 +1,45 @@
+<script>
+
+  $( document ).ready(function() {
+    $("#offering").tagsManager();
+  });
+</script>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Tags and Offerings (Step 2 of 6)</h3>
+      <hr>
+      <address>
+        <strong>Add tags and offerings associated with your visualization.</strong>
+      </address>
+    </div>
+
+    <div class="col-sm-8 contact-form">
+      <form id="contact" method="POST" class="form" role="form" action="/create_viz_step_2">
+        <div class="row">
+          <div class="col-xs-6 col-md-6 form-group">
+            Offering<br>
+            <input class="input-medium tm-input tm-input-success form-control" id="offering" name="offering" placeholder="Hit Return To Add Offerings" type="text"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6 col-md-6 form-group">
+            Tags<br>
+            <input class="form-control" id="tag" name="tag" placeholder="Type a tag associated with your visualization." type="text"/>
+          </div>
+        </div>
+
+        <input type="hidden" id="viz_id" name="viz_id" value="<%=@viz_id%>" />
+
+        <div class="row">
+          <div class="col-xs-12 col-md-12 form-group">
+            <button class="btn btn-primary pull-left" type="submit">Next Step&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
