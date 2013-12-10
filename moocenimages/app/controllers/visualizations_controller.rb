@@ -1,4 +1,5 @@
 class VisualizationsController < ApplicationController
+  before_filter :login_required, :only => [:new]
 
   def home
 

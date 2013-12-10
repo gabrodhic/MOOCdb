@@ -1,0 +1,26 @@
+6.885 Lecture 3 (Data Cleaning and Integration #1) - 9/12/13
+
+-- From last lecture
+
+Takes unstructured text -("cleaning")> structured text/data
+
+**What goes around comes around paper**
+
+XML
+  - schema later model (vs. schema first)
+    - schema later is useful for when you have two data sets and you want to merge them at a later time
+    - schema later is very attractive for people who really quickly want to have something up
+    - when you get to a production environment, everything you send around pretty much conforms to your schema.
+
+Support for complex (user defined) types/operations
+  + the user defines custom types and operations on their data
+  - code to data
+  - bad for modularity
+  - terrible for portability
+
+Support for a notion of ordering (like time ordering) in data
+  - "find the earliest entry before this point in time"
+  - SQL does not support this (can't look arbitrary number of timestamps before or after something)
+
+**Data Wrangler Demo**
+lol data wrangler
