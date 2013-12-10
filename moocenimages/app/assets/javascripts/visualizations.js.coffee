@@ -11,7 +11,7 @@ $ ->
       data: JSON.stringify(ajaxData)
       success: (data) =>
         $('.file-name').html(data['file_name'])
-        $('#code-block code').html(data['contents'])
+        $('#code-block code').html(data['contents'].replace(/>/gi, '&gt').replace(/</gi, '&lt'))
         $('.download-file').show()
         $('.download-file').attr('href', data['download_url'])
       error: =>
