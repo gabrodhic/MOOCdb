@@ -70,3 +70,6 @@ $ ->
 
     $("select.offering").change (ev) =>
       initialize_page()
+  else
+    $('input:file').change =>
+      $('button:submit').removeAttr('disabled')

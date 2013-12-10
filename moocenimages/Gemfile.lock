@@ -64,12 +64,19 @@ GEM
     less (2.4.0)
       commonjs (~> 0.2.7)
     libv8 (3.16.14.3)
+    localtunnel (0.3)
+      json (>= 1.2.4)
+      net-ssh (>= 2.0.22)
+      net-ssh-gateway (>= 1.0.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.2)
+    net-ssh (2.7.0)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
     paperclip (3.5.2)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -147,6 +154,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   less
+  localtunnel
   paperclip (~> 3.0)
   protected_attributes
   rails (= 4.0.1)

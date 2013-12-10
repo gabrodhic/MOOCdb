@@ -1,0 +1,94 @@
+6.885 Lecture 9 (Data Cubes + Materialized Views) - 10/3/13
+
+Data Analytics (Storage+querying)
+Map Reduce -> MySQL -> Vertica (OLAP) -> Search Engine or Precomputation (Caching)
+
+**DATA CUBES**
+- SELECT airline, origin, avg(delay) FROM flights CUBE(airine, origin)
+- How is that different than GROUP BY?
+  - instead of getting the exact airline and origin, you get all the additional information (where some dimensions have been projected out)
+
+Generally when you use the Data Cube you cache it and then use it later.
+Would look something like this:
+                AIRPORT:
+AIRLINE:    BOS       JFK          LAX        TOTAL
+AA          1
+UA          2
+US          3
+WN          4
+TOTAL       6/4
+
+Tableau Software
+- It's just a GUI that sits over data cubes and allows for fast processing
+
+How to maintain a cube?
+  COUNT
+    - increment cells on arrival (delete is easy too)
+  MIN/MAX
+    - insert easy (compare with min and max)
+    - delete is hard (need to find next min/max potentially)
+  AVG
+    - insert and delete relatively easy
+    - but need a limited amount of extra state
+  MEDIAN
+    - in order to do an exact computation of median you have to maintain all the original values
+    - when you delete, add, or even update an element it would be hard to find what's next
+  COUNT DISTINCT
+    - in order to count all the distinct values in the table, you need to know what all the values in the table are
+
+E.G.
+Aggregate
+  init -> state
+  up(value, state) -> state
+  final(state) -> value
+Average
+  - Starts at (0,0)
+  - update, sum += val and count++
+  - final avg() return sum/count
+
+What's bad about cubes?
+- DIMENSIONALITY
+  - memory and space might be an issue
+    - takes up a lot of space and blows up exponentially with more dimensions
+    - also the data is very sparce (so you have a lot of empty space)
+- FLEXIBILITY
+- OTHER
+  - we're spending a lot of time computing aggregates for things that we don't care about
+
+
+**VIEW MATERIALIZATION AND MAINTENANCE**
+- create view v as
+    select emp.eid, emp.name, dept.name
+    from emp JOIN dept on empt.dno = dept.dno
+    where dept.bldg=17;
+
+- What can't we maintain?
+  - sorts with specific records (e.g. top k)
+  - deletions without keys
+  - nested queries?
+
+V = select count(*) from A JOIN B
+  - A JOIN B is a cross product: A x B
+  - Count, A, and B you would need to maintain for each tuple added or removed from A
+
+
+**CACHING**
+- In the real world (aka web apps)- people don't really use materialized views
+- The way they do caching is different
+  - you put a cache in between the app server and DB (memcache/redis)
+  - store in the cache the results of queries you ran before
+  - why use memcache though? Why can't the database just cache it?
+    - memcache is easily distributed and parallelized across machines
+    - you don't have to stored strucuted data - you can store whatever you want
+      - memcache is a key value store, not that structured
+  - how do people update memcache if database changes?
+    - caches have a time to live parameter, after which the cache entry gets thrown out
+
+- Maintaining App Cache/state
+  - TTL (time to live)
+  - Expiry?
+    - either naive or generally very hard (so people don't do it)
+  - Why don't you put memcache inside the database?
+    - memcache in databasea dds a bunch of work to the database system, which is not where you want to add excess work in your web app
+    - databases actually already have a great caching mechanism
+

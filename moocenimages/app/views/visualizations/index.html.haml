@@ -1,13 +1,13 @@
 .flash-notice= flash[:notice]
 
 .page-header
-  %h1 Gallery
+  %h1 MOOCvis Gallery
 - @tags_hash.each do |tag, visualizations|
   .row
-  %h2= tag
+  %h3= tag
   .row
   - visualizations.each do |vis|
     .col-md-4
-      = link_to (image_tag vis.thumbnail.url, :size => "250x200"), "/visualizations/#{vis.id}"
+      = link_to (image_tag vis.thumbnail.url, :size => "250x200", :class => 'viz_thumbnail'), "/visualizations/#{vis.id}"
 
 

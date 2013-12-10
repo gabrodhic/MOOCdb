@@ -42,7 +42,14 @@ class VisualizationsController < ApplicationController
     # TOOD: make this work with more than one offering
     offering = Offering.create(:name => offerings[0], :visualization_id => viz_id)
 
-    tag = Tag.create(:name => params[:tag])
+    tags = Tag.where(:name => params[:tag])
+
+    if tags.length > 0
+      tag = tags[0]
+    else
+      tag = Tag.create(:name => params[:tag])
+    end
+
     Visualization.find(viz_id).update(:tag_id => tag.id)
     redirect_to '/new_viz_step_3?viz_id=' + params[:viz_id] + '&offering_id=' + offering.id.to_s
   end
