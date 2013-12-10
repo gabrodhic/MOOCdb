@@ -1,0 +1,90 @@
+%h1.viz-name{:data => {:vizid => @visualization.id}}
+  = @visualization.name
+  %small= "by #{@visualization.user.username}"
+
+%select.form-control.offering
+  - @visualization.offerings.each do |offering|
+    %option{:value => offering.id}
+      = offering.name
+
+.jumbotron.visualization-panel
+  %iframe.viz-iframe{:src => @visualization.offerings.first.uploads.find_by_visualization_step_id(6).content.url, :height => 500, :width => 1000, :scrolling => 'no'}
+
+.comment
+  %h2
+    %small
+      = @visualization.description
+
+.pipeline
+  %ul.nav.nav-pills
+    %li
+      %a{:href => "#", :data =>{:vizstep => 1}}
+        %i.glyphicon.glyphicon-hdd
+        %br
+        %span.pipeline-text{ :style => "margin-left:20px;" }
+          %strong MOOCDB
+
+    %li.active
+      %a{:href => "#", :data =>{:vizstep => 2}}
+        %i.glyphicon.glyphicon-arrow-right
+        %br
+        %span.pipeline-text{ :style => "margin-left:0px;" }
+          %strong DB to Data script
+
+    %li
+      %a{:href => "#", :data =>{:vizstep => 3}}
+        %i.glyphicon.glyphicon-file
+        %br
+        %span.pipeline-text{ :style => "margin-left:12px;" }
+          %strong Private Data
+
+    %li
+      %a{:href => "#", :data =>{:vizstep => 4}}
+        &nbsp;
+        %i.glyphicon.glyphicon-arrow-right
+        %br
+        %span.pipeline-text{ :style => "margin-left:0px;" }
+          %strong Data to Data Script
+
+    %li
+      %a{:href => "#", :data =>{:vizstep => 5}}
+        %i.glyphicon.glyphicon-file
+        %br
+        %span.pipeline-text{ :style => "margin-left:14px;" }
+          %strong Public Data
+
+    %li
+      %a{:href => "#", :data =>{:vizstep => 6}}
+        &nbsp;
+        %i.glyphicon.glyphicon-arrow-right
+        %br
+        %span.pipeline-text{ :style => "margin-left:0px;" }
+          %strong Data to Vis Script
+
+    %li
+      %a{:href => "#", :data =>{:vizstep => 7}}
+        %i.glyphicon.glyphicon-stats
+        %br
+        %span.pipeline-text{ :style => "margin-left:14px;" }
+          %strong Visualization
+
+%a.download-zip
+  %button.btn.btn-primary.btn-lg.download-zip
+    %i.glyphicon.glyphicon-download
+    %span.download-text
+      &nbsp;Download ZIP of all files
+
+.code
+  %h2.file-name script.py
+  %blockquote
+    %pre.prettyprint#code-block
+      %code
+
+%a.download-file{:href => @visualization.offerings.first.uploads.find_by_visualization_step_id(2).content.url(:original, false)}
+  %button.btn.btn-success.btn-lg.download-file
+    %i.glyphicon.glyphicon-download
+    %span.download-text
+      &nbsp;Download File
+
+
+

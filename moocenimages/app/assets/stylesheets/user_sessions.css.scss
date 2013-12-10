@@ -1,6 +1,6 @@
 .login-box {
   margin: 60px auto;
-  width: 500px;
+  width: 280px;
 
   .login-title {
     text-align: center;
@@ -9,8 +9,8 @@
   }
 
   .login-form {
+    margin: 20px 10px;
     text-align: center;
-    font-size: 20px;
     
     input {
       width: 160px;
@@ -20,6 +20,7 @@
       font-size: 12px;
       color: red;
       margin-top: 5px;
+      margin-bottom: 10px;
     }
   }
 }

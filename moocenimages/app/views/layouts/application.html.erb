@@ -6,6 +6,8 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Bootstrap" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag params[:controller] %>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -24,11 +26,11 @@
               <%= yield %>
             </div>
           </div>
-          <footer>
+          <div class="footer">
+            <%= render 'layouts/footer' %>
           </footer>
         </div>
       </div>
     </main>
   </body>
-  <%= render 'layouts/footer' %>
 </html>

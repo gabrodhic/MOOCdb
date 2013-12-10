@@ -11,27 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131203172913) do
-
-  create_table "files", force: true do |t|
-    t.integer  "visualization_id"
-    t.integer  "user_id"
-    t.integer  "visualization_step_id"
-    t.integer  "offering_id"
-    t.string   "file_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "content_file_name"
-    t.string   "content_content_type"
-    t.integer  "content_file_size"
-    t.datetime "content_updated_at"
-  end
+ActiveRecord::Schema.define(version: 20131204235819) do
 
   create_table "offerings", force: true do |t|
     t.string   "name"
     t.integer  "visualization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "uploads", force: true do |t|
+    t.integer  "visualization_id"
+    t.integer  "user_id"
+    t.integer  "visualization_step_id"
+    t.integer  "offering_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "content_file_name"
+    t.string   "content_content_type"
+    t.integer  "content_file_size"
+    t.datetime "content_updated_at"
   end
 
   create_table "user_sessions", force: true do |t|
@@ -72,6 +75,12 @@ ActiveRecord::Schema.define(version: 20131203172913) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.integer  "tag_id"
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
   end
 
 end
