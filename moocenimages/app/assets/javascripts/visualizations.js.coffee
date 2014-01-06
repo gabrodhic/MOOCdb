@@ -49,8 +49,8 @@ $ ->
         filename = 'MOOCDB'
         content = 'MOOCDB: the universal database schema for MOOC data.'
       else if vizstep == 3
-        filename = 'Exported data'
-        content = 'Exported data file: we do not host the exported data file contents.'
+        filename = 'Exported Data'
+        content = 'Exported Data file: we do not host the Exported Data file contents.'
       else if vizstep == 7
         filename = 'Visualization'
         content = 'Visualization: viewable by scrolling up.'
