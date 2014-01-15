@@ -4,3 +4,4 @@ moocenimages/tmp/*
 *.sublime*
 moocenimages/db/development.sqlite3
 moocenimages/public/system/*
+visual_analysis/d3/stanford/*
