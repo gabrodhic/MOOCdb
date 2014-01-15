@@ -3,3 +3,4 @@ moocenimages/log/*
 moocenimages/tmp/*
 *.sublime*
 moocenimages/db/development.sqlite3
+moocenimages/public/system/*
