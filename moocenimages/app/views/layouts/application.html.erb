@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOOCvis</title>
+    <title>MOOCviz</title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Bootstrap" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
@@ -31,6 +31,12 @@
     </header>
     <main role="main">
       <div class="container">
+        <div class="row">
+          <p class="notice">
+          </p>
+        </div>
+      </div>
+      <div class="container">
         <div class="content">
            <div class="row">
             <div class="span12">
@@ -39,7 +45,7 @@
           </div>
           <div class="footer">
             <%= render 'layouts/footer' %>
-          </footer>
+          </div>
         </div>
       </div>
     </main>

@@ -3,26 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery
 
-  helper_method :current_user_session, :current_user, :logged_in?, :login_required, :admin_required
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  private
+  helper_method :admin_required
 
-  def current_user_session
-    @current_user_session ||= UserSession.find
-  end
-
-  def current_user
-    @current_user ||= current_user_session && current_user_session.user
-  end
-
-  def logged_in?
-  	UserSession.find
-  end
-
-  def login_required
-    unless logged_in?
-      flash[:notice] = "You must be logged in to view that page."
-      redirect_to :root
-    end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :email
   end
 end

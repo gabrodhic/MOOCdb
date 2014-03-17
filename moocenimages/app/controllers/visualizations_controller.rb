@@ -1,5 +1,5 @@
 class VisualizationsController < ApplicationController
-  before_filter :login_required, :only => [:new]
+  before_filter :authenticate_user!, :only => [:new]
 
   def home
 
@@ -115,15 +115,21 @@ class VisualizationsController < ApplicationController
   end
 
   def get_upload
-    visualization = Visualization.find(params[:visualization_id])
-    offering = visualization.offerings.find(params[:offering_id])
-    upload = offering.uploads.find_by_visualization_step_id(params[:visualization_step_id])
+    begin
+      visualization = Visualization.find(params[:visualization_id])
+      offering = visualization.offerings.find(params[:offering_id])
+      upload = offering.uploads.find_by_visualization_step_id(params[:visualization_step_id])
 
-    upload_contents = File.open(upload.content.path).read
-    upload_name = upload.content_file_name
+      upload_contents = File.open(upload.content.path).read
+      upload_name = upload.content_file_name
 
+      response = {:contents => upload_contents, :file_name => upload_name}
+
+    rescue ActiveRecord::RecordNotFound => e
+      response = {:contents => "This file could not be read.", :file_name => "File Not Found"}
+    end
     respond_to do |format|
-      format.json {render :json => {:contents => upload_contents, :file_name => upload_name}}
+      format.json {render :json => response}
     end
   end
 
@@ -144,6 +150,7 @@ class VisualizationsController < ApplicationController
         zipfile.add(upload.content_file_name, upload.content.path)
       end
     end
+    File.chmod(0644, zipfile_path)
 
     redirect_to URI.encode(zipfile_name)
   end

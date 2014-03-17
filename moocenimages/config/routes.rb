@@ -1,8 +1,7 @@
 Moocenimages::Application.routes.draw do
+  devise_for :users
   root :to => "visualizations#index"
 
-  resources :users
-  resources :user_sessions
   resources :visualizations
   resources :uploads
 
