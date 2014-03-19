@@ -1,12 +1,16 @@
 Moocenimages::Application.routes.draw do
+  # admin routes
+  get "admin/users"
+  get "admin/visualizations"
+  get "admin/offerings"
+  put "admin/approve_user/:user_id"  => "admin#approve_user", :as => :approve_user
+
   devise_for :users
   root :to => "visualizations#index"
 
   resources :visualizations
   resources :uploads
 
-  get 'login' => 'user_sessions#new', :as => :login
-  get 'logout' => 'user_sessions#destroy', :as => :logout
   get 'about' => 'visualizations#about'
   post 'get_upload' => 'visualizations#get_upload'
   get 'get_zip' => 'visualizations#get_zip'

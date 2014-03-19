@@ -20,3 +20,5 @@ db/development.sqlite3
 
 # Ignore Rubymine project folder
 /.idea/
+# Ignore application configuration
+/config/application.yml

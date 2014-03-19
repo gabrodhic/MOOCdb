@@ -5,7 +5,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :admin_required
+  def admin_required
+    unless current_user.try(:admin?)
+      flash[:notice] = "You must be an admin to do that."
+      redirect_to root_path
+    end
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :email

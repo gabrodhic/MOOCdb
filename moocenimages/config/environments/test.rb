@@ -33,4 +33,6 @@ Moocenimages::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  config.admin_email = 'prestont@mit.edu'
 end
