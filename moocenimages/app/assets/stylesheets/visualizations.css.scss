@@ -23,12 +23,21 @@
 }
 
 .pipeline {
-	width: 1100px;
+	width: 1150px;
 	margin: 40px auto;
 	i {
 		font-size: 50px;
 		margin: 10px 30px;
 	}
+    p {
+        margin: 0;
+    }
+    .pipeline-text {
+        text-align: center;
+    }
+    .pipeline-image {
+        text-align: center;
+    }
 }
 
 .download-file {
@@ -48,6 +57,18 @@
 	padding: 20px;
 }
 
-.viz_thumbnail:hover {
-	opacity: 0.5;
+.viz_thumbnail {
+  margin: 20px 0;
+}
+
+.viz-container {
+    text-align: center;
+    font-size: 16px;
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+a.viz-link:hover {
+  text-decoration: none;
 }
