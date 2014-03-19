@@ -1,0 +1,15 @@
+%h1 Users
+
+= link_to "All Users", :action => "users"
+|
+= link_to "Users awaiting approval", :action => "users", :pending => "true"
+
+%table
+  - @users.each do |user|
+    %tr
+      %td= user.email
+      %td= user.approved
+      - if user.approved?
+        %td
+      -else
+        %td= link_to "Approve", approve_user_path(user), :method => :put

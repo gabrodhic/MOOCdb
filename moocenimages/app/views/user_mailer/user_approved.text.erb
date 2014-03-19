@@ -1,0 +1,7 @@
+Hi <%= @user.username %>,
+
+Your MOOCviz account has been approved by an admin. Go to <%= url_for controller: 'devise/sessions', action: 'new', only_path: false %> to log in.
+
+Sincerely,
+
+The MOOCviz team
