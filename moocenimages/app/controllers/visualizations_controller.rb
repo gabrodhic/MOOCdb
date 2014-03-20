@@ -141,7 +141,7 @@ class VisualizationsController < ApplicationController
     offering = visualization.offerings.find(params[:offering_id])
     uploads = offering.uploads
 
-    zipfile_name = '/' + offering.name + '_' + visualization.name + '.zip'
+    zipfile_name = '/zips/' + offering.name + '_' + visualization.name + '.zip'
     zipfile_path = 'public' + zipfile_name
     File.delete(zipfile_path) if File.exist?(zipfile_path)
 

@@ -8,8 +8,7 @@ Moocenimages::Application.routes.draw do
   devise_for :users
   root :to => "visualizations#index"
 
-  resources :visualizations
-  resources :uploads
+  resources :visualizations, :only => [:index, :new, :create, :show]
 
   get 'about' => 'visualizations#about'
   post 'get_upload' => 'visualizations#get_upload'
