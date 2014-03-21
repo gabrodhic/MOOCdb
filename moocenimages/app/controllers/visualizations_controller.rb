@@ -29,7 +29,7 @@ class VisualizationsController < ApplicationController
     viz_id = Integer(params[:viz_id])
     offerings = params[:offering][:name].split(',')
     # TODO: make this work with more than one offering
-    offering = Offering.create(:name => offerings[0], :visualization_id => viz_id)
+    offering = Offering.create(params[:offering].merge({:visualization_id => viz_id}))
 
     tags = Tag.where(:name => params[:tag])
 
