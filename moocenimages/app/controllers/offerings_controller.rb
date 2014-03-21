@@ -9,8 +9,7 @@ class OfferingsController < ApplicationController
 
   def create
     @visualization = Visualization.find(params[:viz_id])
-    @offering = Offering.create(:visualization_id => @visualization.id,
-                                :name => params[:offering][:name])
+    @offering = Offering.create(params[:offering].merge({:visualization_id => @visualization.id,}))
     upload = Upload.create(
         :visualization_id => @visualization.id,
         :content => params[:offering][:content],
