@@ -8,7 +8,6 @@
   - @users.each do |user|
     %tr
       %td= user.email
-      %td= user.approved
       - if user.approved?
         %td
       -else
