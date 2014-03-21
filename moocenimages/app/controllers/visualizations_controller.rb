@@ -27,7 +27,7 @@ class VisualizationsController < ApplicationController
 
   def create_step_2
     viz_id = Integer(params[:viz_id])
-    offerings = params['hidden-offering'].split(',')
+    offerings = params[:offering][:name].split(',')
     # TODO: make this work with more than one offering
     offering = Offering.create(:name => offerings[0], :visualization_id => viz_id)
 
