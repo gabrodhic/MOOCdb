@@ -8,44 +8,7 @@
       </address>
     </div>
 
-    <div class="col-sm-8 contact-form">
-      <%= form_for @visualization do |f| %>
-        <div class="row">
-          <div class="col-xs-6 col-md-6 form-group">
-            Title <br>
-            <%= f.text_field :name, :class => 'form-control', :placeholder => 'Visualization Title' %>
-          </div>
-        </div>
-
-        Description
-        <%= f.text_area :description, :class => 'form-control', :placeholder => 'Visualization Description' %>
-        <br />
-
-        <div id="scripts" class="row">
-          <div class="col-xs-6 col-md-6 form-group">
-            
-            
-            Visualization Thumbnail<br>
-            <div class="fileinput fileinput-new" data-provides="fileinput">
-              <div class="input-group">
-                <div class="form-control uneditable-input span3" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-                <span class="input-group-addon btn btn-default btn-file"><%= f.file_field :thumbnail %></span>
-                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-
-
-
-        <div class="row">
-          <div class="col-xs-12 col-md-12 form-group">
-            <button class="btn btn-primary pull-left" type="submit" disabled='disabled'>Next Step&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right"></i></button>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <%= render :partial =>  'visualization_metadata' %>
   </div>
 </div>
 

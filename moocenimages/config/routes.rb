@@ -9,8 +9,9 @@ Moocenimages::Application.routes.draw do
   root :to => "visualizations#index"
 
   resources :visualizations, :only => [:index, :new, :create, :show]
+  resources :offerings, :only => [:new, :create]
 
-  get 'about' => 'visualizations#about'
+  get 'about' => 'home#about'
   post 'get_upload' => 'visualizations#get_upload'
   get 'get_zip' => 'visualizations#get_zip'
 

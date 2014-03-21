@@ -2,13 +2,21 @@
   = @visualization.name
   %small= "by #{@visualization.user.username}"
 
-%select.form-control.offering
-  - @visualization.offerings.each do |offering|
-    %option{:value => offering.id}
-      = offering.name
+.row
+  .select-offering.col-md-4
+    %select.form-control.offering
+      - @visualization.offerings.each do |offering|
+        %option{:value => offering.id, :selected => ("selected" if offering.id == @offering_id)}
+          = offering.name
 
-.jumbotron.visualization-panel
-  %iframe.viz-iframe{:src => @visualization.offerings.first.uploads.find_by_visualization_step_id(6).content.url, :height => 500, :width => 1000, :scrolling => 'no'}
+  .col-md-4
+
+  .new-offering.col-md-4
+    = link_to "New Offering", (new_offering_path :viz_id => @visualization.id), :class => "btn btn-primary pull-right"
+
+.row
+  .jumbotron.visualization-panel.span12
+    %iframe.viz-iframe{:src => @visualization.offerings.first.uploads.find_by_visualization_step_id(6).content.url, :height => 500, :width => 1000, :scrolling => 'no'}
 
 .comment
   %h2

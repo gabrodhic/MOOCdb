@@ -15,15 +15,7 @@
         <div id="scripts" class="row">
           <div class="col-xs-6 col-md-6 form-group">
             
-            
-            Public Data File<br>
-            <div class="fileinput fileinput-new" data-provides="fileinput">
-              <div class="input-group">
-                <div class="form-control uneditable-input span3" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-                <span class="input-group-addon btn btn-default btn-file"><%= f.file_field :content %></span>
-                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-              </div>
-            </div>
+            <%= render 'public_data_upload', :f => f %>
 
             <input type="hidden" id="visualization_id" name="upload[visualization_id]" value="<%=@viz_id%>" />
             <input type="hidden" id="visualization_step_id" name="upload[visualization_step_id]" value="5" />

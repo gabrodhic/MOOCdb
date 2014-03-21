@@ -1,0 +1,9 @@
+.container
+  .row
+    %h3= "Add Offering for Visualization '#{@visualization.name}'"
+    = form_for @offering do |f|
+      = render 'visualizations/tags_and_offerings'
+      = render 'visualizations/public_data_upload', :form => f
+      %br
+      %input#viz_id{:type => "hidden", :name => "viz_id", :value => @visualization.id}
+      = f.submit :class => "btn btn-primary pull-left"

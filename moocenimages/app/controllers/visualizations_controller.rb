@@ -1,15 +1,5 @@
 class VisualizationsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new]
-
-  def home
-
-  end
-
-  def about
-
-  end
-
-
   
   def index
     tags = Tag.all
@@ -18,7 +8,6 @@ class VisualizationsController < ApplicationController
       visualizations = Visualization.where(:tag_id => tag.id)
       @tags_hash[tag.name] = visualizations
     end
-
   end
 
   def new
@@ -39,7 +28,7 @@ class VisualizationsController < ApplicationController
   def create_step_2
     viz_id = Integer(params[:viz_id])
     offerings = params['hidden-offering'].split(',')
-    # TOOD: make this work with more than one offering
+    # TODO: make this work with more than one offering
     offering = Offering.create(:name => offerings[0], :visualization_id => viz_id)
 
     tags = Tag.where(:name => params[:tag])
@@ -117,8 +106,20 @@ class VisualizationsController < ApplicationController
   def get_upload
     begin
       visualization = Visualization.find(params[:visualization_id])
-      offering = visualization.offerings.find(params[:offering_id])
+      begin
+        offering = visualization.offerings.find(params[:offering_id])
+      rescue ActiveRecord::RecordNotFound => e
+        render :json => {:contents => "No offerings found for this visualization", :file_name => "File not Found"}
+      end
       upload = offering.uploads.find_by_visualization_step_id(params[:visualization_step_id])
+      if upload.nil?
+        begin
+          offering = visualization.offerings.first
+        rescue ActiveRecord::RecordNotFound => e
+          render :json => {:contents => "No offerings found for this visualization", :file_name => "File not Found"}
+        end
+        upload = offering.uploads.find_by_visualization_step_id(params[:visualization_step_id])
+      end
 
       upload_contents = File.open(upload.content.path).read
       upload_name = upload.content_file_name

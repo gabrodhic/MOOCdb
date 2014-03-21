@@ -9,7 +9,8 @@
 
 .visualization-panel {
 	height: 600px;
-	margin: 30px 0px;
+	margin: 30px 0;
+    text-align: center;
 }
 
 .viz-iframe {
@@ -71,4 +72,8 @@
 
 a.viz-link:hover {
   text-decoration: none;
+}
+
+.new-offering {
+  margin-top: 20px;
 }
