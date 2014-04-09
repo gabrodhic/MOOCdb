@@ -101,30 +101,40 @@ class VisualizationsController < ApplicationController
 
   def show
     @visualization = Visualization.find(params[:id])
+    @offering = @visualization.offerings.first
   end
 
   def get_upload
+    viz_step = params[:visualization_step_id]
     begin
+      script = nil
       visualization = Visualization.find(params[:visualization_id])
-      begin
-        offering = visualization.offerings.find(params[:offering_id])
-      rescue ActiveRecord::RecordNotFound => e
-        render :json => {:contents => "No offerings found for this visualization", :file_name => "File not Found"}
-      end
-      upload = offering.uploads.find_by_visualization_step_id(params[:visualization_step_id])
-      if upload.nil?
+      if viz_step == 2
+        script = visualization.data_extraction_script
+        script_name = visualization.data_extraction_script_file_name
+      elsif viz_step == 4
+        script = visualization.data_aggregation_script
+        script_name = visualization.data_aggregation_script_file_name
+      elsif viz_step == 6
+        script = visualization.data_to_visualization_script
+        script_name = visualization.data_to_visualization_script_file_name
+      else
         begin
-          offering = visualization.offerings.first
+          offering = visualization.offerings.find(params[:offering_id])
+          script = offering.public_data
+          script_name = offering.public_data_file_name
         rescue ActiveRecord::RecordNotFound => e
           render :json => {:contents => "No offerings found for this visualization", :file_name => "File not Found"}
         end
-        upload = offering.uploads.find_by_visualization_step_id(params[:visualization_step_id])
       end
 
-      upload_contents = File.open(upload.content.path).read
-      upload_name = upload.content_file_name
+      if script.nil?
+        render :json => {:contents => "No offerings found for this visualization", :file_name => "File not Found"}
+      end
 
-      response = {:contents => upload_contents, :file_name => upload_name}
+      script_contents = File.open(script.path).read
+
+      response = {:contents => script_contents, :file_name => script_name}
 
     rescue ActiveRecord::RecordNotFound => e
       response = {:contents => "This file could not be read.", :file_name => "File Not Found"}
@@ -140,16 +150,16 @@ class VisualizationsController < ApplicationController
 
     visualization = Visualization.find(params[:visualization_id])
     offering = visualization.offerings.find(params[:offering_id])
-    uploads = offering.uploads
 
     zipfile_name = '/zips/' + offering.name + '_' + visualization.name + '.zip'
     zipfile_path = 'public' + zipfile_name
     File.delete(zipfile_path) if File.exist?(zipfile_path)
 
     Zip::File.open(zipfile_path, Zip::File::CREATE) do |zipfile|
-      uploads.each do |upload|
-        zipfile.add(upload.content_file_name, upload.content.path)
-      end
+      zipfile.add(visualization.data_extraction_script_file_name, visualization.data_extraction_script.path)
+      zipfile.add(visualization.data_aggregation_script_file_name, visualization.data_aggregation_script.path)
+      zipfile.add(visualization.data_to_visualization_script_file_name, visualization.data_to_visualization_script.path)
+      zipfile.add(offering.public_data_file_name, offering.public_data.path)
     end
     File.chmod(0644, zipfile_path)
 

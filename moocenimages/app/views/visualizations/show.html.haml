@@ -1,3 +1,6 @@
+:coffee
+  window.path_to_public_data = "../../../../" + "#{@offering.public_data.url}"
+
 %h1.viz-name{:data => {:vizid => @visualization.id}}
   = @visualization.name
   %small= "by #{@visualization.user.username}"
@@ -16,7 +19,7 @@
 
 .row
   .jumbotron.visualization-panel.span12
-    %iframe.viz-iframe{:src => @visualization.offerings.first.uploads.find_by_visualization_step_id(6).content.url, :height => 500, :width => 1000, :scrolling => 'no'}
+    %iframe.viz-iframe{:src => @visualization.data_to_visualization_script.url, :height => 500, :width => 1000, :scrolling => 'no'}
 
 .comment
   %h2
@@ -86,7 +89,7 @@
     %pre.prettyprint#code-block
       %code
 
-%a.download-file{:href => @visualization.offerings.first.uploads.find_by_visualization_step_id(2).content.url(:original, false)}
+%a.download-file{:href => @visualization.data_to_visualization_script.url(:original, false)}
   %button.btn.btn-success.btn-lg.download-file
     %i.glyphicon.glyphicon-download
     %span.download-text

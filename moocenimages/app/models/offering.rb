@@ -1,5 +1,5 @@
 class Offering < ActiveRecord::Base
-	attr_accessible :name, :visualization_id, :platform, :instructor, :start_date, :end_date, :user_id
+	attr_accessible :name, :visualization_id, :platform, :instructor, :start_date, :end_date, :user_id, :public_data
 
   has_attached_file :public_data,
                     :url => "/system/:class/:attachment/:id/:filename",
