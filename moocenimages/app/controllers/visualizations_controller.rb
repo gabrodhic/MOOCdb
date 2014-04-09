@@ -1,5 +1,7 @@
 class VisualizationsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new]
+  before_filter :authenticate_user!, :only => [:new, :create, :new_step_2, :create_step_2, :new_step_3, :create_step_3,
+                                               :new_step_4, :create_step_4, :new_step_5, :create_step_5, :new_step_6,
+                                               :create_step_6]
   
   def index
     tags = Tag.all
@@ -23,13 +25,17 @@ class VisualizationsController < ApplicationController
   def new_step_2
     @viz_id = 0
     @viz_id = params[:viz_id] if params[:viz_id]
+    @offering = Offering.new
   end
 
   def create_step_2
     viz_id = Integer(params[:viz_id])
     offerings = params[:offering][:name].split(',')
     # TODO: make this work with more than one offering
-    offering = Offering.create(params[:offering].merge({:visualization_id => viz_id}))
+    offering = Offering.create(params[:offering].merge({
+      :visualization_id => viz_id,
+      :user_id => current_user.id
+    }))
 
     tags = Tag.where(:name => params[:tag])
 
@@ -48,13 +54,14 @@ class VisualizationsController < ApplicationController
     @offering_id = 0
     @viz_id = params[:viz_id] if params[:viz_id]
     @offering_id = params[:offering_id] if params[:offering_id]
-
-    @upload = Upload.new
+    @visualization = Visualization.find(@viz_id)
   end
 
   def create_step_3
-    @upload = Upload.create(params[:upload])
-    redirect_to '/new_viz_step_4?viz_id=' + params[:upload][:visualization_id] + '&offering_id=' + params[:upload][:offering_id]
+    visualization = Visualization.find(params[:visualization][:visualization_id])
+    visualization.data_extraction_script = params[:visualization][:data_extraction_script]
+    visualization.save
+    redirect_to '/new_viz_step_4?viz_id=' + params[:visualization][:visualization_id] + '&offering_id=' + params[:visualization][:offering_id]
   end
 
   def new_step_4
@@ -62,13 +69,14 @@ class VisualizationsController < ApplicationController
     @offering_id = 0
     @viz_id = params[:viz_id] if params[:viz_id]
     @offering_id = params[:offering_id] if params[:offering_id]
-
-    @upload = Upload.new
+    @visualization = Visualization.find(@viz_id)
   end
 
   def create_step_4
-    @upload = Upload.create(params[:upload])
-    redirect_to '/new_viz_step_5?viz_id=' + params[:upload][:visualization_id] + '&offering_id=' + params[:upload][:offering_id]
+    visualization = Visualization.find(params[:visualization][:visualization_id])
+    visualization.data_aggregation_script = params[:visualization][:data_aggregation_script]
+    visualization.save
+    redirect_to '/new_viz_step_5?viz_id=' + params[:visualization][:visualization_id] + '&offering_id=' + params[:visualization][:offering_id]
   end
 
   def new_step_5
@@ -76,13 +84,14 @@ class VisualizationsController < ApplicationController
     @offering_id = 0
     @viz_id = params[:viz_id] if params[:viz_id]
     @offering_id = params[:offering_id] if params[:offering_id]
-
-    @upload = Upload.new
+    @offering = Offering.find(@offering_id)
   end
 
   def create_step_5
-    @upload = Upload.create(params[:upload])
-    redirect_to '/new_viz_step_6?viz_id=' + params[:upload][:visualization_id] + '&offering_id=' + params[:upload][:offering_id]
+    offering = Offering.find(params[:offering][:offering_id])
+    offering.public_data = params[:offering][:public_data]
+    offering.save
+    redirect_to '/new_viz_step_6?viz_id=' + params[:offering][:visualization_id] + '&offering_id=' + params[:offering][:offering_id]
   end
 
   def new_step_6
@@ -90,13 +99,14 @@ class VisualizationsController < ApplicationController
     @offering_id = 0
     @viz_id = params[:viz_id] if params[:viz_id]
     @offering_id = params[:offering_id] if params[:offering_id]
-
-    @upload = Upload.new
+    @visualization = Visualization.find(@viz_id)
   end
 
   def create_step_6
-    @upload = Upload.create(params[:upload])
-    redirect_to '/visualizations/' + params[:upload][:visualization_id]
+    visualization = Visualization.find(params[:visualization][:visualization_id])
+    visualization.data_to_visualization_script = params[:visualization][:data_to_visualization_script]
+    visualization.save
+    redirect_to '/visualizations/' + params[:visualization][:visualization_id]
   end
 
   def show
