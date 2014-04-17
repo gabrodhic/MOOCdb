@@ -18,82 +18,91 @@
     = link_to "New Offering", (new_offering_path :viz_id => @visualization.id), :class => "btn btn-primary pull-right"
 
 .row
-  .jumbotron.visualization-panel.span12
-    %iframe.viz-iframe{:src => @visualization.data_to_visualization_script.url, :height => 500, :width => 1000, :scrolling => 'no'}
+  .jumbotron.visualization-panel.span12 {:"data-url" => "../../../../#{@offering.public_data.url}"}
+    %iframe#visualization-frame.viz-iframe{:src => @visualization.data_to_visualization_script.url, :height => 500, :width => 1000, :scrolling => 'no'}
 
 .comment
   %h2
     %small
       = @visualization.description
 
-.pipeline
-  %ul.nav.nav-pills
-    %li
-      %a{:href => "#", :data =>{:vizstep => 1}}
-        .pipeline-image
-          %i.glyphicon.glyphicon-hdd
-        .pipeline-text
-          %strong MOOCDB
+%ul.nav.nav-tabs
+  %li.active
+    %a{:href=>"#files", :"data-toggle" => "tab"} Files
+  %li
+    %a{:href=>"#comments", :"data-toggle" => "tab"} Comments
 
-    %li.active
-      %a{:href => "#", :data =>{:vizstep => 2}}
-        .pipeline-image
-          %i.glyphicon.glyphicon-arrow-right
-        .pipeline-text
-          %strong Data Extraction Script 
+.tab-content
+  #files.tab-pane.active
+    .pipeline
+      %ul.nav.nav-pills
+        %li
+          %a{:href => "#", :data =>{:vizstep => 1}}
+            .pipeline-image
+              %i.glyphicon.glyphicon-hdd
+            .pipeline-text
+              %strong MOOCDB
 
-    %li
-      %a{:href => "#", :data =>{:vizstep => 3}}
-        .pipeline-image
-          %i.glyphicon.glyphicon-file
-        .pipeline-text
-          %strong Exported Data
+        %li.active
+          %a{:href => "#", :data =>{:vizstep => 2}}
+            .pipeline-image
+              %i.glyphicon.glyphicon-arrow-right
+            .pipeline-text
+              %strong Data Extraction Script
 
-    %li
-      %a{:href => "#", :data =>{:vizstep => 4}}
-        .pipeline-image
-          %i.glyphicon.glyphicon-arrow-right
-        .pipeline-text
-          %strong Data Aggregation Script 
+        %li
+          %a{:href => "#", :data =>{:vizstep => 3}}
+            .pipeline-image
+              %i.glyphicon.glyphicon-file
+            .pipeline-text
+              %strong Exported Data
 
-    %li
-      %a{:href => "#", :data =>{:vizstep => 5}}
-        .pipeline-image
-          %i.glyphicon.glyphicon-file
-        .pipeline-text
-          %strong Public Data
+        %li
+          %a{:href => "#", :data =>{:vizstep => 4}}
+            .pipeline-image
+              %i.glyphicon.glyphicon-arrow-right
+            .pipeline-text
+              %strong Data Aggregation Script
 
-    %li
-      %a{:href => "#", :data =>{:vizstep => 6}}
-        .pipeline-image
-          %i.glyphicon.glyphicon-arrow-right
-        .pipeline-text
-          %strong Data to Vis Script
+        %li
+          %a{:href => "#", :data =>{:vizstep => 5}}
+            .pipeline-image
+              %i.glyphicon.glyphicon-file
+            .pipeline-text
+              %strong Public Data
 
-    %li
-      %a{:href => "#", :data =>{:vizstep => 7}}
-        .pipeline-image
-          %i.glyphicon.glyphicon-stats
-        .pipeline-text
-          %strong Visualization
+        %li
+          %a{:href => "#", :data =>{:vizstep => 6}}
+            .pipeline-image
+              %i.glyphicon.glyphicon-arrow-right
+            .pipeline-text
+              %strong Data to Vis Script
 
-%a.download-zip
-  %button.btn.btn-primary.btn-lg.download-zip
-    %i.glyphicon.glyphicon-download
-    %span.download-text
-      &nbsp;Download ZIP of all files
+        %li
+          %a{:href => "#", :data =>{:vizstep => 7}}
+            .pipeline-image
+              %i.glyphicon.glyphicon-stats
+            .pipeline-text
+              %strong Visualization
 
-.code
-  %h2.file-name script.py
-  %blockquote
-    %pre.prettyprint#code-block
-      %code
+    %a.download-zip
+      %button.btn.btn-primary.btn-lg.download-zip
+        %i.glyphicon.glyphicon-download
+        %span.download-text
+          &nbsp;Download ZIP of all files
 
-%a.download-file{:href => @visualization.data_to_visualization_script.url(:original, false)}
-  %button.btn.btn-success.btn-lg.download-file
-    %i.glyphicon.glyphicon-download
-    %span.download-text
-      &nbsp;Download File
+    .code
+      %h2.file-name script.py
+      %blockquote
+        %pre.prettyprint#code-block
+          %code
 
+    %a.download-file{:href => @visualization.data_to_visualization_script.url(:original, false)}
+      %button.btn.btn-success.btn-lg.download-file
+        %i.glyphicon.glyphicon-download
+        %span.download-text
+          &nbsp;Download File
 
+  #comments.tab-pane
+    %h1 Comments
 
