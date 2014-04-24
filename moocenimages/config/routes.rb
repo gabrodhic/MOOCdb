@@ -13,6 +13,7 @@ Moocenimages::Application.routes.draw do
 
   get 'about' => 'home#about'
   post 'get_upload' => 'visualizations#get_upload'
+  post 'get_path_to_public_data' => 'visualizations#get_path_to_public_data'
   get 'get_zip' => 'visualizations#get_zip'
 
   get '/new_viz_step_2' => 'visualizations#new_step_2'

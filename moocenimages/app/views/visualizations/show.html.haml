@@ -1,5 +1,5 @@
-:coffee
-  window.path_to_public_data = "../../../../" + "#{@offering.public_data.url}"
+-#:coffee
+-#  window.path_to_public_data = "../../../.." + "#{@offering.public_data.url}"
 
 %h1.viz-name{:data => {:vizid => @visualization.id}}
   = @visualization.name
@@ -18,8 +18,8 @@
     = link_to "New Offering", (new_offering_path :viz_id => @visualization.id), :class => "btn btn-primary pull-right"
 
 .row
-  .jumbotron.visualization-panel.span12 {:"data-url" => "../../../../#{@offering.public_data.url}"}
-    %iframe#visualization-frame.viz-iframe{:src => @visualization.data_to_visualization_script.url, :height => 500, :width => 1000, :scrolling => 'no'}
+  #visualization-jumbotron.jumbotron.visualization-panel.span12{:"data-url" => "../../../..#{@offering.public_data.url}"}
+    %iframe#visualization-frame.viz-iframe{:src => "", :"data-url" => @visualization.data_to_visualization_script.url, :height => 500, :width => 1000, :scrolling => 'no'}
 
 .comment
   %h2

@@ -154,6 +154,14 @@ class VisualizationsController < ApplicationController
     end
   end
 
+  def get_path_to_public_data
+    offering = Offering.find(params[:offering_id])
+    path_to_public_data = "../../../.." + offering.public_data.url
+    respond_to do |format|
+      format.json {render :json => {:path_to_public_data => path_to_public_data}}
+    end
+  end
+
   def get_zip
     require 'zip'
     require 'uri'
