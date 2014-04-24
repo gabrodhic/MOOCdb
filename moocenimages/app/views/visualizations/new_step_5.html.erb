@@ -10,16 +10,15 @@
 
     <div class="col-sm-8 contact-form">
 
-      <%= form_for @upload, :url => '/create_viz_step_5' do |f| %>
+      <%= form_for @offering, :url => '/create_viz_step_5', :method => :post do |f| %>
 
         <div id="scripts" class="row">
           <div class="col-xs-6 col-md-6 form-group">
             
             <%= render 'public_data_upload', :f => f %>
 
-            <input type="hidden" id="visualization_id" name="upload[visualization_id]" value="<%=@viz_id%>" />
-            <input type="hidden" id="visualization_step_id" name="upload[visualization_step_id]" value="5" />
-            <input type="hidden" id="offering_id" name="upload[offering_id]" value="<%=@offering_id%>" />
+            <input type="hidden" id="visualization_id" name="offering[visualization_id]" value="<%=@viz_id%>" />
+            <input type="hidden" id="offering_id" name="offering[offering_id]" value="<%=@offering_id%>" />
             
           </div>
         </div>

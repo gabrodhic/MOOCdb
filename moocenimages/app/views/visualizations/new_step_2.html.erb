@@ -17,7 +17,7 @@
     </div>
 
     <div class="col-sm-8 contact-form">
-      <form id="contact" method="POST" class="form" role="form" action="/create_viz_step_2">
+      <%= form_for @offering, :url => '/create_viz_step_2/' do |f| %>
         <%= render 'tags_and_offerings' %>
 
         <%= render 'visualizations/offering_metadata_inputs' %>
@@ -36,7 +36,7 @@
             <button class="btn btn-primary pull-left" type="submit">Next Step&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right"></i></button>
           </div>
         </div>
-      </form>
+      <% end %>>
     </div>
   </div>
 </div>

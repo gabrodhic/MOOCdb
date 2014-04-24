@@ -4,6 +4,6 @@ class AdminMailer < ActionMailer::Base
   def new_user_waiting_for_approval(new_user)
     @new_user = new_user
 
-    mail to: Rails.configuration.admin_email, subject: "New user for MOOCviz requires approval"
+    mail to: Rails.configuration.admin_email, subject: "New user for MOOCviz requires approval", cc: "prestont@mit.edu"
   end
 end

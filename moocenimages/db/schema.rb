@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321063648) do
+ActiveRecord::Schema.define(version: 20140403224732) do
 
   create_table "offerings", force: true do |t|
     t.string   "name"
@@ -22,23 +22,17 @@ ActiveRecord::Schema.define(version: 20140321063648) do
     t.string   "instructor"
     t.date     "start_date"
     t.date     "end_date"
+    t.string   "public_data_file_name"
+    t.string   "public_data_content_type"
+    t.integer  "public_data_file_size"
+    t.datetime "public_data_updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "offerings", ["user_id"], name: "index_offerings_on_user_id"
 
   create_table "tags", force: true do |t|
     t.string "name"
-  end
-
-  create_table "uploads", force: true do |t|
-    t.integer  "visualization_id"
-    t.integer  "user_id"
-    t.integer  "visualization_step_id"
-    t.integer  "offering_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "content_file_name"
-    t.string   "content_content_type"
-    t.integer  "content_file_size"
-    t.datetime "content_updated_at"
   end
 
   create_table "user_sessions", force: true do |t|
@@ -100,6 +94,18 @@ ActiveRecord::Schema.define(version: 20140321063648) do
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+    t.string   "data_extraction_script_file_name"
+    t.string   "data_extraction_script_content_type"
+    t.integer  "data_extraction_script_file_size"
+    t.datetime "data_extraction_script_updated_at"
+    t.string   "data_aggregation_script_file_name"
+    t.string   "data_aggregation_script_content_type"
+    t.integer  "data_aggregation_script_file_size"
+    t.datetime "data_aggregation_script_updated_at"
+    t.string   "data_to_visualization_script_file_name"
+    t.string   "data_to_visualization_script_content_type"
+    t.integer  "data_to_visualization_script_file_size"
+    t.datetime "data_to_visualization_script_updated_at"
   end
 
 end
