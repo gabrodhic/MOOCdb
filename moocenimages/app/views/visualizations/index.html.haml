@@ -10,7 +10,7 @@
       - visualizations.each do |viz|
         .col-md-4
           %a.viz-link{:href => "/visualizations/#{viz.id}"}
-            .well.viz-container
+            .viz-container
               = image_tag viz.thumbnail.url, :size => "300x240", :class => 'viz_thumbnail'
               %p.viz-name= viz.name
 
