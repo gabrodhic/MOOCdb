@@ -1,0 +1,46 @@
+.public_data_instructions
+  %h2 How to Use the path_to_public_data variable
+  %br
+  %p
+    MOOCviz is designed for one person to upload their visualization, including the scripts to extract and aggregate the
+    data into a public data file, as well as the script to make a visualization out of the data in the public data file.
+    Then, others can download these scripts and make their own public data file and upload it as a new offering for the
+    same visualization. For this offering to display correctly using the original data to visualization script, however,
+    MOOCviz must be able to reference the public data file for the new offering.
+
+  %p
+    So, we ask that when you upload a new visualization, you simply replace the public data file reference
+    with window.parent.path_to_public_data.
+    Somewhere in the visualization script, it must reference the public data file as a relative path. If the file
+    is in the same folder as the script, which is often the case, the relative path is simply the public data file name
+    as a string. Before uploading, simply replace this path with the variable
+    %strong window.parent.path_to_public_data
+    and MOOCviz will take care of the rest.
+
+    For example. if your visualization script file looks like
+
+  .code
+    %blockquote
+      %pre.prettyprint
+        %code1
+  %p
+    simply change it like so
+
+  .code
+    %blockquote
+      %pre.prettyprint
+        %code2
+
+  %p
+    Because we use an iframe for the visualization script file, this allows us to set the path_to_public_data variable
+    in our code and change it appropriately when viewing different offerings.
+
+  %p
+    If you'd like to be able to make this change while still developing the data to visualization script, simply include
+    the following in the same file as your data to visualization script and open it in your browser to see your
+    visualization.
+
+  .code
+    %blockquote
+      %pre.prettyprint
+        %code3
