@@ -5,7 +5,8 @@ class Offering < ActiveRecord::Base
                     :url => "/system/:class/:attachment/:id/:filename",
                     :path => ":rails_root/public:url"
 
-  belongs_to :user
+  belongs_to :user, :foreign_key => :user_id
+  belongs_to :visualization, :foreign_key => :visualization_id
 
   private
 

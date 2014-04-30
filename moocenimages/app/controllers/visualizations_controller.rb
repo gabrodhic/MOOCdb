@@ -111,7 +111,7 @@ class VisualizationsController < ApplicationController
 
   def show
     @visualization = Visualization.find(params[:id])
-    @offering = @visualization.offerings.first
+    @offering = params[:offering_id]? @visualization.offerings.find(params[:offering_id]) : @visualization.offerings.first
   end
 
   def get_upload

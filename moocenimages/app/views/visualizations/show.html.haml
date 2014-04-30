@@ -9,7 +9,7 @@
   .select-offering.col-md-4
     %select.form-control.offering
       - @visualization.offerings.each do |offering|
-        %option{:value => offering.id, :selected => ("selected" if offering.id == @offering_id)}
+        %option{:value => offering.id, :selected => ("selected" if offering.id == @offering.id)}
           = offering.name
 
   .col-md-4
