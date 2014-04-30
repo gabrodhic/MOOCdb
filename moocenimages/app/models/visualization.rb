@@ -14,9 +14,10 @@ class Visualization < ActiveRecord::Base
                     :url => "/system/:class/:attachment/:id/:filename",
                     :path => ":rails_root/public:url"
 
-  belongs_to :user
+  belongs_to :user, :foreign_key => :user_id
   has_many :offerings
-  belongs_to :tag
+  belongs_to :tag, :foreign_key => :tag_id
+  has_and_belongs_to_many :comments
 
   private
 

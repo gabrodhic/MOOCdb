@@ -111,7 +111,8 @@ class VisualizationsController < ApplicationController
 
   def show
     @visualization = Visualization.find(params[:id])
-    @offering = @visualization.offerings.first
+    @offering = params[:offering_id]? @visualization.offerings.find(params[:offering_id]) : @visualization.offerings.first
+    @comment = Comment.new
   end
 
   def get_upload
@@ -182,5 +183,16 @@ class VisualizationsController < ApplicationController
     File.chmod(0644, zipfile_path)
 
     redirect_to URI.encode(zipfile_name)
+  end
+
+  def comment
+    @visualization = Visualization.find(params[:id])
+    @offering = Offering.find(params[:offering_id]) if params[:offering_id]
+    comment = @visualization.comments.create(params[:comment])
+    if current_user.present?
+      comment.user = current_user
+      comment.save
+    end
+    redirect_to @visualization, :offering_id => params[:offering_id]
   end
 end

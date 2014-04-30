@@ -9,7 +9,7 @@
   .select-offering.col-md-4
     %select.form-control.offering
       - @visualization.offerings.each do |offering|
-        %option{:value => offering.id, :selected => ("selected" if offering.id == @offering_id)}
+        %option{:value => offering.id, :selected => ("selected" if offering.id == @offering.id)}
           = offering.name
 
   .col-md-4
@@ -21,16 +21,18 @@
   #visualization-jumbotron.jumbotron.visualization-panel.span12{:"data-url" => "../../../..#{@offering.public_data.url}"}
     %iframe#visualization-frame.viz-iframe{:src => "", :"data-url" => @visualization.data_to_visualization_script.url, :height => 500, :width => 1000, :scrolling => 'no'}
 
-.comment
-  %h2
-    %small
-      = @visualization.description
+.row
+  .description
+    %h2
+      %small
+        = @visualization.description
 
-%ul.nav.nav-tabs
-  %li.active
-    %a{:href=>"#files", :"data-toggle" => "tab"} Files
-  %li
-    %a{:href=>"#comments", :"data-toggle" => "tab"} Comments
+.row
+  %ul.nav.nav-tabs
+    %li.active
+      %a{:href=>"#files", :"data-toggle" => "tab"} Files
+    %li
+      %a{:href=>"#comments", :"data-toggle" => "tab"} Comments
 
 .tab-content
   #files.tab-pane.active
@@ -104,5 +106,22 @@
           &nbsp;Download File
 
   #comments.tab-pane
-    %h3 Coming Soon!
+    .row
+      %p Comment on this visualization:
+    = form_for Comment.new, :url => comment_visualization_path(@visualization) do |f|
+      .row
+        .col-lg-6.remove-padding
+          = f.text_area :contents, :class => "form-control"
+      .row
+        %br
+        = f.submit :class => "btn btn-submit"
+      %br
+      .row
+        - @visualization.comments.order(:created_at => :desc).each do |comment|
+          %span.name
+            = comment.user.nil? ? "Anonymous" : comment.user.username
+          %span.time
+            = time_ago_in_words(comment.created_at) + " ago"
+          %p.contents
+            = comment.contents
 

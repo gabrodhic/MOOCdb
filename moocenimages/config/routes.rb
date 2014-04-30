@@ -8,7 +8,11 @@ Moocenimages::Application.routes.draw do
   devise_for :users
   root :to => "visualizations#index"
 
-  resources :visualizations, :only => [:index, :new, :create, :show]
+  resources :visualizations, :only => [:index, :new, :create, :show] do
+    member do
+      post 'comment'
+    end
+  end
   resources :offerings, :only => [:new, :create]
 
   get 'about' => 'home#about'

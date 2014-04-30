@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   after_create :send_admin_new_user_email
 
   has_many :visualizations
+  has_many :offerings
+  has_many :comments
 
   # override for user approval
   def active_for_authentication?
