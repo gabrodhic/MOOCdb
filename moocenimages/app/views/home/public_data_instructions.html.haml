@@ -1,5 +1,5 @@
 .public_data_instructions
-  %h2 How to Use the path_to_public_data variable
+  %h2 How to use the path_to_public_data variable
   %br
   %p
     MOOCviz is designed for one person to upload their visualization, including the scripts to extract and aggregate the
@@ -36,11 +36,11 @@
     in our code and change it appropriately when viewing different offerings.
 
   %p
-    If you'd like to be able to make this change while still developing the data to visualization script, simply include
-    the following in the same file as your data to visualization script and open it in your browser to see your
-    visualization.
-
-  .code
-    %blockquote
-      %pre.prettyprint
-        %code3
+    We were hoping to give you a file containing an iframe that would let you define the path_to_public data so you could
+    simply make the changes above once. Then you wouldn't have to worry about changing back and forth if you later edit
+    your visualization. Unfortunately, Javascript prevents cross-domain iframe communication
+    (which includes files even on the same local system). We hope to give you some code that you
+    can add to your data to visualization script along with a visualization container file that uses iframe messaging
+    to make it easier for you in the future. In the meantime, however, you'll simply have to remember to follow the
+    steps above to change the public data file name in the data to visualization script before uploading to our site.
+    We appreciate your help!
