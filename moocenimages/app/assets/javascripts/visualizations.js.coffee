@@ -40,14 +40,15 @@ $ ->
     offeringID = parseInt($('.offering :selected').val())
     vizID = $('.viz-name').data('vizid')
 
-    ajaxData =
-      offering_id: offeringID
-      visualization_id: vizID
-      visualization_step_id: 2
+    if offeringID? && vizID?
+      ajaxData =
+        offering_id: offeringID
+        visualization_id: vizID
+        visualization_step_id: 2
 
-    get_upload_ajax(ajaxData)
+      get_upload_ajax(ajaxData)
 
-    $('.download-zip').attr('href', '/get_zip?visualization_id=' + vizID.toString() + '&offering_id=' + offeringID.toString())
+      $('.download-zip').attr('href', '/get_zip?visualization_id=' + vizID.toString() + '&offering_id=' + offeringID.toString())
 
   current_url = document.URL
   if current_url.indexOf('new') == -1

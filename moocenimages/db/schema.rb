@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403224732) do
+ActiveRecord::Schema.define(version: 20140430024746) do
+
+  create_table "comments", force: true do |t|
+    t.text     "contents"
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "comments_visualizations", id: false, force: true do |t|
+    t.integer "visualization_id", null: false
+    t.integer "comment_id",       null: false
+  end
+
+  add_index "comments_visualizations", ["comment_id"], name: "index_comments_visualizations_on_comment_id"
+  add_index "comments_visualizations", ["visualization_id"], name: "index_comments_visualizations_on_visualization_id"
 
   create_table "offerings", force: true do |t|
     t.string   "name"
@@ -29,7 +48,9 @@ ActiveRecord::Schema.define(version: 20140403224732) do
     t.integer  "user_id"
   end
 
+  add_index "offerings", ["platform"], name: "index_offerings_on_platform"
   add_index "offerings", ["user_id"], name: "index_offerings_on_user_id"
+  add_index "offerings", ["visualization_id"], name: "index_offerings_on_visualization_id"
 
   create_table "tags", force: true do |t|
     t.string "name"
@@ -107,5 +128,8 @@ ActiveRecord::Schema.define(version: 20140403224732) do
     t.integer  "data_to_visualization_script_file_size"
     t.datetime "data_to_visualization_script_updated_at"
   end
+
+  add_index "visualizations", ["tag_id"], name: "index_visualizations_on_tag_id"
+  add_index "visualizations", ["user_id"], name: "index_visualizations_on_user_id"
 
 end
