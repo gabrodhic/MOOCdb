@@ -16,6 +16,8 @@ Moocenimages::Application.routes.draw do
   resources :offerings, :only => [:new, :create]
 
   get 'about' => 'home#about'
+  get 'public_data_instructions' => 'home#public_data_instructions'
+
   post 'get_upload' => 'visualizations#get_upload'
   post 'get_path_to_public_data' => 'visualizations#get_path_to_public_data'
   get 'get_zip' => 'visualizations#get_zip'
