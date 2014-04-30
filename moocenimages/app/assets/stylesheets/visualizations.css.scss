@@ -77,3 +77,15 @@ a.viz-link:hover {
 .new-offering {
   margin-top: 20px;
 }
+#comments {
+  margin-top: 20px;
+  .name {
+    font-weight: bold;
+  }
+  .time {
+    color: #bbb;
+  }
+}
+.remove-padding {
+  padding-left: 0px;
+}

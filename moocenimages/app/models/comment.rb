@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  attr_accessible :contents
+
   belongs_to :user, :foreign_key => :user_id
   belongs_to :parent, :foreign_key => :parent_id, :class_name => Comment.name
 
