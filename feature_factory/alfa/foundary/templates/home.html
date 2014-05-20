@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+{% block extrahead %}
+<style>
+div.repeater {
+	border-bottom: 1px dotted #ccc;
+	padding: 10px 0 10px 0px;
+	clear: both;
+	position: relative;
+}
+
+span.ideauser {
+	font-size: 12px;
+	opacity: .6;
+}
+span.ideabtns{opacity: .7;}
+span.ideabtns:hover {opacity: .9;}
+
+.panel-code > .panel-body,.panel-comment > .panel-body {
+	overflow-y: scroll;
+	max-height: 250px;
+	}
+	 
+	.bs-callout {
+	    margin: 0;
+	    padding: 4px;
+	    border-left:3px solid #eee
+	}	
+	.bs-callout p {	    
+	    font-weight: bold;
+	    font-size: 10px;
+	}
+	.bs-callout-danger {
+	    background-color:#fdf7f7;
+	    border-color:#d9534f;	    
+	}
+	.bs-callout-warning {
+	    background-color:#fcf8f2;
+	    border-color:#f0ad4e
+	}
+	.bs-callout-info {
+	    background-color:#e0eaf1;#f4f8fa;	    
+	    }
+	    </style>
+	    {% endblock %}
+
+	    {% block content %}
+	    <!-- Show errors modal -->
+	    <div id="modal-errors" class="modal fade" aria-hidden="true">
+	    	<div class="modal-dialog">
+	    		<div class="modal-content">
+	    			<div class="modal-header">
+	    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	    				<h4 class="modal-title">Result</h4>
+	    			</div>
+	    			<div class="modal-body">
+	    				<div class="alert alert-danger"></div>
+	    			</div>
+	    			<div class="modal-footer">
+	    				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+
+	    <div class="repeater" style="margin-bottom:50px; border-bottom: 0px;">
+	    	<!-- onload if form error hide button and show panel add ideaform-->
+	    	<button type="button" class="btn btn-primary toggle-addidea" id="showhide_ideaform_btn"{% if form.errors %} style="display:none;"{% endif %}>Add an idea</button>
+	    	<div class="panel panel-success panel-addidea"{% if not form.errors %} style="display:none;"{% endif %}>
+	    		<div class="panel-body">    	
+	    			<form action="." method="post" class="form">{% csrf_token %}
+	    				<p class="lead">Add an idea</p>
+	    				<div class="row" style="padding-bottom:10px">
+	    					<div class="col-md-6">{{form.name}}
+	    						{% if form.name.errors %}<p class="text-danger">{{ form.name.errors.as_text }}</p>{% endif %}
+	    					</div>
+	    					<div class="col-md-6">{{form.email}}
+	    						{% if form.email.errors %}<p class="text-danger">{{ form.email.errors.as_text }}</p>{% endif %}
+	    					</div>
+	    				</div>            
+	    				{{ form.idea }}{% if form.idea.errors %}<p class="text-danger">{{ form.idea.errors.as_text }}</p>{% endif %}
+	    				<br>
+	    				<input type="submit" value="Save Idea" class="btn btn-success btn-xs" />
+	    				<a href="#" class="btn btn-danger btn-xs toggle-addidea">Cancel</a>
+	    			</form>
+	    		</div>
+	    	</div>	
+	    </div>
+
+	    <h2> Existing ideas and scripts </h2>
+	    <br>
+
+
+	    {% for idea in ideas %}
+	    <div class="repeater">
+	    	<div class="ideadesc">{{ idea.idea }}</div>
+	    	<span class="ideauser"> by {{ idea.name }}</span>		
+	    	<span class="pull-right ideabtns">			  
+	    		<a href="#" class="btn btn-default btn-xs btn-togglefrm" data-frm="code" data-pk="{{idea.pk}}"><span class="glyphicon glyphicon-pencil"></span> code{% if idea.has_code %} <span class="glyphicon glyphicon-ok"></span>{% endif %}</a>
+	    		<a href="#" class="btn btn-default btn-xs btn-togglefrm" data-frm="comment" data-pk="{{idea.pk}}"><span class="glyphicon glyphicon-comment"></span> comment <span class="badge ncomments">{{idea.total_comments}}</span></a> |		
+	    		<a href="#" class="btn btn-default btn-xs btn-like" data-pk="{{idea.pk}}" title="like this item"><span class="glyphicon glyphicon-thumbs-up"></span> like <span class="badge">{{idea.vote_total}}</span></a>
+	    	</span>	
+	    	<div class="frm_code" style="display: none;">
+	    		<div class="panel panel-default panel-code" style="margin-bottom:5px"></div>
+	    		<a data-frm="code" class="btn btn-warning btn-xs btn-togglefrm">cancel</a>
+	    	</div>
+	    	<div class="frm_comment" style="display: none;">
+	    		<div class="panel panel-default panel-comment" style="margin-bottom:5px"></div>
+	    		<a data-frm="comment" class="btn btn-warning btn-xs btn-togglefrm">cancel</a>
+	    	</div>
+	    </div>    
+	    {% endfor %}
+
+	    {% endblock %}
+	    {% block javascript %}
+	    <script type="text/javascript" src="{{STATIC_URL}}jquery.expander.min.js"></script>
+
+	    <script>
+// MIGHT NEED TO RESET THE FORM FOR Cancel button clicks.
+// Show/Hide Form --> IDEA
+$('.toggle-addidea').click(function(){
+	$(".panel-addidea").toggle();	
+	$("button.toggle-addidea").toggle();
+	if ($(this).hasClass('btn-danger')){
+//$("input:not(:empty)")
+$(this).closest('form').find("input[name=name],input[name=email],textarea").val("");
+$(this).parent().find(".text-danger").empty();		
+}
+});
+
+// Show/Hide Forms --> CODE & COMMENT
+$('.btn-togglefrm').click(function(e){	
+	e.preventDefault();
+	var $parent_div = $(this).closest(".repeater");
+	var cname = $(this).data('frm');	
+	var ideapk = $(this).data('pk');
+	$parent_div.children('.frm_'+ cname).toggle();
+	$parent_div.children('.ideabtns').toggle();	
+	if (ideapk !== undefined){
+		if (cname == 'comment') var c_url = "{% url 'comments' %}";		
+		else var c_url = "{% url 'codes' %}";
+		$.get(c_url,{'ipk':ideapk}).done(function(data) {
+			var $cur_panel = $parent_div.children('.frm_'+cname).children('.panel-'+cname);
+			$cur_panel.html(data);			
+		});	
+	}
+});
+
+// Like button click --> Like Idea
+$('.btn-like').click(function(e){
+	e.preventDefault();
+	var $curbtn=$(this);
+	$.get("{% url 'like' %}",{pk: $(this).data('pk')})
+	.done(function(data) {
+		//data is some thing like {"num_votes":1}
+		var sdata=data.slice(0,-1);
+		var cleandata=sdata.split(":");	
+		$curbtn.children('.badge').text(cleandata[1]);
+	});
+});
+
+//ADD Code
+$(document).on('click', '.btn-savecode', function(){
+	var $curbtn= $(this);
+	$.ajax({
+		type: "POST",
+		url: "{% url 'codes' %}",
+		data: $(this).parent().serialize()
+	}).done(function(dt){
+		if (dt == '1'){
+			$('#modal-errors .alert-danger').html('<h2>Please Check.</h2><ul><li>Name is required</li><li>Email is required and must be a valid email.</li><li>Code must have at least 20 characters.</li></ul>');
+			$("#modal-errors").modal();
+		} else {
+			var $mainbox = $curbtn.closest('.repeater');
+			$curbtn.closest('.panel').html(dt);
+			$('#modal-errors .modal-body').html('<div class="alert alert-success"><h2>Thank you for submitting the Code.</h2><h3> You will receive an email with the results, shortly.</h3></div>');
+			$("#modal-errors").modal();
+			
+		}
+	});
+});
+
+//Add Comment
+$(document).on('click', '.btn-addcomment', function(){
+	var $curbtn= $(this);
+	$.ajax({
+		type: "POST",
+		url: "{% url 'comments' %}",
+		data: $(this).parent().serialize()
+	}).done(function(dt){
+		if (dt == '1') {
+			$('#modal-errors .alert-danger').html("Comment must have at least 15 characters.");
+			$("#modal-errors").modal();			
+		}else{			
+			var $num_comments = $curbtn.closest('.repeater').find('.ncomments');
+			$curbtn.closest('.panel').html(dt);			
+			var ncomments = $num_comments.text();		
+			$num_comments.text(++ncomments);	//console.log(++ncomments);			
+		}
+	});
+});
+
+//Expander
+$('div.ideadesc').expander({
+	slicePoint: 100,
+	widow: 2,
+	expandEffect: 'show',
+	userCollapseText: '[^]'
+});
+</script>
+{% endblock %}
