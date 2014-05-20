@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Meta, title, CSS, favicons, etc. -->
+	<meta charset="utf-8">
+	<title>Feature Factory</title>
+	<!-- Bootstrap core CSS -->
+	<link href="{{STATIC_URL}}bootstrapcssonly/css/bootstrap.min.css" rel="stylesheet">	
+	<!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	  <![endif]-->
+	  <style>
+	  .tree > ul {
+	  	list-style-type:none;
+	  }
+	  .desc {
+	  	border: 1px solid #ccc;
+	  	padding:10px
+	  }
+	  </style>
+	  {% block extrahead %}
+	  {% endblock %}
+	</head>
+
+	<body>
+		<div class="container">
+
+			<div class="page-header">
+				<img src="http://moocdb.csail.mit.edu/people%20looking%20data.png" class="img-responsive" alt="Feature Factory"> 
+
+				<h1> Feature Factory <small> MIT CSAIL ALFA Lab </small> </h1>
+			</div>
+			<p class="lead">
+				Feature discovery is a challenging aspect of the data science and knowledge discovery. Creating an online interactive space where data scientists can benefit from each other’s ideas on various features can significantly simplify and expedite the process. Feature Factory is an online platform where ALFA@CSAIL will present a prediction problem for which features are sought. For the prediction problem, the group will provide downloadable mock data so users can test their scripts and submit. Feature Factory seeks three kinds of contributions: ideas of new features, feature extraction code and comments on existing ones. 
+			</p>
+			<p class="lead">
+				Upon the submission of the feature extraction code , it will be validated on our online mock dataset and you will be notified of the result immediately. Upon validation, our team will execute the code on the real dataset to generate the features and insert the new feature into a number of machine learning models using discriminative (Decision trees, Neural networks, support vector Machines), generative (logistic regression, Gaussian process) and time series models. As a result, your features will be ranked against one another. 
+			</p>
+			<br>
+			<h3> <strong>Current Focus Problem:</strong> Predict Student Stopouts on Massive Open Online Courses </h3> 
+			<p class="lead">
+
+In this problem, our goal is to predict when a student will stop engaging with the course. A student is assumed to have stopped out from a course when s/he stops to attempt problems/homeworks. We have data captured from students online behavior, which includes click stream data, their online forum interactions and their submissions for problems. We have a comprehensive data schema, called MOOCdb which captures the student activity data on a MOOC platform. The data schema is documented <a href="http://moocdb.csail.mit.edu/wiki/index.php?title=Moocdb"> here</a>. A small mock dataset that is in the form of the data schema can be downloaded in two formats: <a href="http://alfa6.s3.amazonaws.com/small_mock_scripts.zip">sql</a> or <a href="http://alfa6.s3.amazonaws.com/small_mock_csv.zip"> csv</a>. 
+			</p>
+			<p class="lead">
+				We solicit participants for three distinct activities: 
+			</p>
+			<p class="lead">
+				1. Propose a new feature by clicking on Add an idea <br>
+An example of a possible feature for this problem is: 
+<em>Amount of time student spent on the course </em> <br>
+Below you can see a number of features already developed and extracted.
+			</p>
+			<p class="lead">
+2. Write an SQL script for your idea or for an already existing idea <br>
+Below you can see a list of feature ideas. For some of them, extraction has not yet been performed.
+
+			</p>
+			<p class="lead">
+				3. Comment on an existing ideas 
+Ideas develop when they are refined. So please feel free to comment or like the existing scripts. 
+			</p>
+
+	</div>
+	<br>	
+
+	<br></br>
+	<div class="container">
+		{% block content %}{% endblock %}
+
+
+<br><br><br><br><br><br><br>
+
+<div class="text-center">
+
+ © 2013 MIT CSAIL ALFA Lab
+	</div>
+	</div>
+
+	<script type="text/javascript" src="{{STATIC_URL}}jquery.min.js"></script>
+	<script type="text/javascript" src="{{STATIC_URL}}bootstrap.min.js"></script>
+	
+	{% block javascript %}
+	{% endblock %}
+
+
+
+</body>
+</html>
