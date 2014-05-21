@@ -1,4 +1,9 @@
 <div class="col-sm-8 contact-form">
+  <p>
+    Before upload, ensure that your data to visualization script references your public data file via the
+    window.parent.path_to_public_data variable so that MOOCviz can reference other offerings' public data files. For
+    more information, view <a href="/public_data_instructions" target="_blank">these instructions</a>.
+  </p>
   <%= form_for @visualization do |f| %>
       <div class="row">
         <div class="col-xs-6 col-md-6 form-group">
