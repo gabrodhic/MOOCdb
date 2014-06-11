@@ -226,7 +226,7 @@ if __name__ == "__main__":
     port = 3316
     user = "root"
     database = "moocdb"
-    pw = "edx2013"
+    pw = "your password"
 
     db = MySQLdb.connect(host=host, port=port, user=user, db=database, passwd=pw)
     cursor = db.cursor()
