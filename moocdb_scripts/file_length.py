@@ -69,11 +69,11 @@ if __name__ == "__main__":
     
     host = "alfa6.csail.mit.edu"
     port = 3306
-    user = "kevin"
+    user = ""
     dbS2013 = "moocdb_6002x_spring_2013"
     dbF2012 = "6002x_fall_2012"
     dbS2012 = "moocdb"
-    pw = "cosmos5"
+    pw = ""
 
     db = MySQLdb.connect(host=host, port=port, user=user, db=dbF2012, passwd=pw)
     cursor = db.cursor()
