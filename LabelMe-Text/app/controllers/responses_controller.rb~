@@ -1,0 +1,65 @@
+class ResponsesController < ApplicationController
+  def new
+    @response = Response.new
+    @post,@sentence = current_user.get_post_and_sentence
+    if @post == nil
+      flash[:error] = "No more posts to label"
+      redirect_to current_user
+    end
+  end
+
+  def show
+  end
+
+  def create
+    params[:response][:label] = apply_label_boxes
+    @response = current_user.responses.build(response_params)
+    if @response.save
+      flash[:success] = "Response saved"
+    end
+    redirect_to new_response_path
+  end
+
+  private
+    def apply_label_boxes
+      new_label = ""
+      if params[:content] == "1"
+        new_label += "content@"
+      end
+      if params[:other_courses] == "1"
+        new_label += "other_courses@"
+      end
+      if params[:social_affective] == "1"
+        new_label += "social_affective@"
+      end
+      if params[:site_technology] == "1"
+        new_label += "site_technology@"
+      end
+      if params[:structure_policies] == "1"
+        new_label += "structure_policies@"
+      end
+      if params[:other] == "1"
+        new_label += "other@"
+      end
+      if params[:missing_data] == "1"
+        new_label += "missing_data@"
+      end
+      if params[:non_english] == "1"
+        new_label += "non_english@"
+      end 
+      if params[:role_other] == "1"
+        new_label += "other@"
+      end
+      if params[:help_seeker] == "1"
+        new_label += "missing_data@"
+      end
+      if params[:help_giver] == "1"
+        new_label += "non_english@"
+      end     
+    return new_label
+    end
+
+    def response_params
+      params.require(:response).permit(:label, :sentence_id)
+    end
+end

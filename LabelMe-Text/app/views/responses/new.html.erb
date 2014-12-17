@@ -1,0 +1,29 @@
+<% provide(:title, 'Label') %>
+<h1>Label me</h1>
+<%= @bold.html_safe %>
+<br>
+<br>
+<div class="text-center">
+  <%= form_for(@response) do |f| %>
+    <%= f.hidden_field :sentence_id, :value => @sentence.id %>
+    <%= f.hidden_field :label%>
+
+    <table style="width:500px;" cellpadding="0" cellspacing="0" align="center">
+    <tr>
+    <tr>
+    <% @fields.each {|key,value| %>
+      <td style="width:200px;vertical-align:top;">
+        <b><%= key.to_s %></b>
+        <% value.each {|key2, value2| %>
+          <label><%= check_box_tag key2 %><%= value2 %></label>
+        <% }%>
+      </td>       
+    <% }%>
+    </tr>
+    </table>
+    <br>
+    <%= f.submit "Submit labels", class:"btn btn-primary" %>
+  <% end %>
+
+      <div class="text-left"><%= @post.upload.instructions.html_safe %></div>
+</div>

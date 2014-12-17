@@ -1,0 +1,14 @@
+<div class="center hero-unit">
+  <% if signed_in? %>
+  	<h1>LabelMe-Text Terms of Service</h1>
+  <% else %>
+  <h1>Before participating in LabelMe-Text you must agree to the following terms:</h1>
+  <% end %>
+  <h3>I agree to refrain from scraping data from this website and from trying to identify the original authors of content found on this site.</h3><br>
+
+  <% if not signed_in? %>
+  	<div class="btn-group">
+    	<%= link_to "I have read these terms and agree to them", users_path, class: "btn btn-large btn-primary", method: :post%>
+  	</div>
+  <% end %>
+</div>

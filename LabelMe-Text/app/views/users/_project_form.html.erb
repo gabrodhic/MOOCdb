@@ -1,0 +1,14 @@
+<% if Upload.all.blank? %>
+  There are no projects available at this time. Try again later!
+<% else %>
+  <%= form_for(@user, :id => "proj_form") do |f| %>
+    <%= render 'shared/error_messages' %>
+    <%= f.hidden_field :current_upload, :value => @user.current_upload, :id => "hidden_cur_proj" %>
+    <% Upload.all.each {|project| %>
+    <button type="button" id=<%= project.id.to_s %> project=<%=project.name%> class="btn btn-default">     
+      <%= "#{project.name}" %><br>
+      <%= "#{project.user.name}" %>
+    </button><br><br>
+    <% }%>
+  <% end %>
+<% end %>

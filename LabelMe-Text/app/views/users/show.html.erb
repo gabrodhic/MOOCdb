@@ -1,0 +1,6 @@
+<% provide(:title, @user.name) %>
+<h3><ul><p>Name: <%= @user.guest ? @user.display_name : @user.name %><br>
+<% if admin? || current_user == @user %>
+  Email: <%= @user.guest ? "None" : @user.email %><br>
+<% end %>
+Sentences labeled: <%= @user.responses.count %> </p></ul></h3>

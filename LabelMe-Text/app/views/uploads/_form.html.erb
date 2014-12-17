@@ -1,0 +1,32 @@
+<%= form_for(@upload) do |f| %>
+  <%= render 'shared/upload_error_messages' %>
+  <b>CSV Upload</b><br>
+  <%= f.file_field :csv, label: "To generate data to label, upload a CSV file and designate the column to read in from." %>
+  <%= f.label :name, "Project name" %>
+  <%= f.text_field :name %>
+  <%= f.label :description, "Project description" %>
+  <%= f.text_area :description %>
+  <%= f.label :column, "Column number of text? (0-indexed)" %>
+  <%= f.text_field :column %>
+  <%= f.check_box :header %>
+  <%= f.label :header, "Check this box if the CSV has a header row", :class => "checkbox inline"  %> <br>
+  <%= f.check_box :sentences %>
+  <%= f.label :sentences, "Check this box if you want posts to be labeled at the sentence level", :class => "checkbox inline"  %> 
+  <br>
+  <br>
+  <b>Label Definitions</b>
+  <br><br>
+  <div class="nested-feld">
+    <%= f.fields_for :label_categories do |builder| %>
+      <%= render 'label_category_fields', :f => builder %>
+    <% end %>
+    <div class="not-here">
+      <%= link_to_add_association "Add Category", f, :label_categories, :data => {"association-insertion-method" => "before"} %>
+    </div>
+  </div>
+  <br><br>
+  <b>Label Instructions</b>
+  <%= f.label :instructions, "Write up the instructions to users on how to label your data here." %>
+  <%= f.text_area :instructions, class: "tinymce" %><%= tinymce %>
+  <p><%= f.submit "Upload file" %></p>
+<% end %>

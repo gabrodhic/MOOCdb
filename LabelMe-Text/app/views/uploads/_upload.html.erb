@@ -1,0 +1,11 @@
+<span2 class="content">
+  <%= upload.name %><br>
+  <% if upload.user != current_user %>
+    <%= upload.user.name %><br>
+  <% end %>
+  <%= upload.description %><br>
+  <% if upload.user == current_user %>
+    <%= upload.csv_file_name %><br>
+    <%= link_to "Edit", edit_upload_path(upload), 'data-no-turbolink' => true %> | <%= link_to "Delete", upload, method: :delete, data: { confirm: "You sure?" } %><br>
+  <% end %>
+</span><br>
