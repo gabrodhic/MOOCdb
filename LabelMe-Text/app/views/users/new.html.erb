@@ -18,8 +18,12 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
-      <%= f.label :tos_agreement, "By checking this box I agree to refrain from scraping data from this website and from trying to identify the original authors of content found on this site." %>
-      <%= f.check_box :tos_agreement %>
+      <%= f.check_box :tos_agreement%>
+      <%= f.label :tos_agreement, "By checking this box I agree to:", :class => "checkbox inline" %><br>
+      <ul>
+        <li>Refrain from scraping data from this website</li>
+        <li>Attempt to identify the original authors of content found on this site</li>
+      </ul>
 
       <%= f.hidden_field :guest, :value => nil %>
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
