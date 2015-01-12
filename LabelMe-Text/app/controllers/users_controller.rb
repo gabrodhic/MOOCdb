@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def newguest
+    if signed_in?
+      redirect_to label_path
+    end
+  end
+
   def index
     @users = User.paginate(page: params[:page])
   end

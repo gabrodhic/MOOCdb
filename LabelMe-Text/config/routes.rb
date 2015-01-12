@@ -5,8 +5,10 @@ LabelSite::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   match '/projects',       to: 'uploads#index',         via: 'get' 
   match '/data_upload',    to: 'uploads#new',           via: 'get'
+  match '/uploadsfaq',     to: 'uploads#howto',         via: 'get'
   match '/label',          to: 'responses#new',         via: 'get' 
   match '/signup',         to: 'users#new',             via: 'get'
+  match '/guest_agreement',to: 'users#newguest',        via: 'get'
   root 'users#home'
   match '/welcome',        to: 'static_pages#home',     via: 'get'
   match '/help',           to: 'static_pages#help',     via: 'get'
@@ -15,7 +17,7 @@ LabelSite::Application.routes.draw do
   match '/signin',         to: 'sessions#new',          via: 'get'
   match '/signout',        to: 'sessions#destroy',      via: 'delete'
   match '/termsofservice', to: 'static_pages#tos',      via: 'get'
-  match '/uploadsfaq',     to: 'uploads#howto',         via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
