@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108002622) do
+ActiveRecord::Schema.define(version: 20140820213227) do
 
   create_table "label_categories", force: true do |t|
     t.integer  "upload_id"
@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 20141108002622) do
     t.boolean  "guest"
     t.string   "current_post"
     t.text     "current_upload"
-    t.boolean  "tos_agreement"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

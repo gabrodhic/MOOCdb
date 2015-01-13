@@ -13,9 +13,9 @@ class User < ActiveRecord::Base
   has_secure_password(validations: false)
   validates :password, length: { minimum: 6 }, unless: :guest?
   validates :password_digest, presence: true, unless: :guest?
-  validates :tos_agreement, acceptance: true
+  validates :tos_agreement, :acceptance => true, :allow_nil => false
   def self.new_guest
-    new { |u| u.guest = true; u.tos_agreement = true }
+    new { |u| u.guest = true }
   end
 
   def display_name
