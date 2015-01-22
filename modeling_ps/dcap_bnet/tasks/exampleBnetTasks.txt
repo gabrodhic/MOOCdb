@@ -1,0 +1,4 @@
+rBnet_DAG1sup5ite100f1,../tasks/run_bnet.py,../tasks/rBnet_DAG1sup5ite100f1
+rBnet_DAG1sup5ite100f2,../tasks/run_bnet.py,../tasks/rBnet_DAG1sup5ite100f2
+rBnet_DAG1sup10ite100f1,../tasks/run_bnet.py,../tasks/rBnet_DAG1sup10ite100f1
+rBnet_DAG1sup10ite100f2,../tasks/run_bnet.py,../tasks/rBnet_DAG1sup10ite100f2

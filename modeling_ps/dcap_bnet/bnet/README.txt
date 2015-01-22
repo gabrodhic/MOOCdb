@@ -1,0 +1,1 @@
+You must have the Bayes Net Toolbox in 'bnt' folder under this directory. 
