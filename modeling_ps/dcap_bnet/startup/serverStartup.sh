@@ -12,8 +12,7 @@ DCAP_SERVER_SCRIPT=RunServer.py
 PART_HANDLER=$(readlink -f part_handler.py)
 EUCA_INITIALIZE_INSTANCES_CMD=euca-run-instances 
 SERVER_PORT=4444
-TASKFILE='../tasks/testBnetTasks.txt'
-# TASKFILE='../tasks/bnetTasks.txt'
+TASKFILE='../tasks/exampleBnetTasks.txt'
 #=====================
 
 
@@ -56,7 +55,12 @@ python $DCAP_SERVER_SCRIPT -p $SERVER_PORT -n $NAME -t $TASKFILE
 
 # exit 0
 
-INSTANCE=$(euca-describe-instances $INSTANCE | grep $CERT | grep $AMI | grep -v error | grep i- | cut -f 2) #filtering out ids of instances that are in error state
-echo "TERMINATING"
-echo $INSTANCE
-echo "Terminated $(xargs -t -a <(echo $INSTANCE) -n 1 -P 50 euca-terminate-instances | wc -l) instances" #kills nodesi
+# AUTO termination somehow fails. Either run the euca-terminate-instances command manually 
+# or terminate in Openstack manually.
+
+echo "AUTO termination command not run. Please terminate manually -- see script comments."
+
+#INSTANCE=$(euca-describe-instances $INSTANCE | grep $CERT | grep $AMI | grep -v error | grep i- | cut -f 2) #filtering out ids of instances that are in error state
+#echo "TERMINATING"
+#echo $INSTANCE
+#echo "Terminated $(xargs -t -a <(echo $INSTANCE) -n 1 -P 50 euca-terminate-instances | wc -l) instances" #kills nodesi

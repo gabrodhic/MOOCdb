@@ -5,6 +5,11 @@ Please run from own directory!
 
 Created by: Elaine Han(skewlight@gmail.com)
 Created on: 5/9/2014
+
+Data files (extracted trajectories and inter/intra csv files) should
+be located in this directory (/generateScripts) to be copied into
+task folders under /tasks. Alternatively the paths to intput data files 
+could be modified to access data in subfolders.
 '''
 
 import itertools
@@ -21,7 +26,7 @@ def create_dir_if_not_exists(directory):
 hidden_node_support_list = [10,15,20,30]
 problem_list= [94,111,121,135,139,161,181,183,229,236,239,259,276,318,326,\
                     330,332,353,358,369,467,479,484,513]
-DAG_list = ['4']
+DAG_list = ['1','4']
 max_iterations = 100
 feature_list = ['1']
 number_to_train = 0
@@ -41,7 +46,7 @@ tasks_dir =  os.path.join(os.path.dirname(generate_dir), 'tasks')
 assert os.path.isdir(tasks_dir), 'Tasks directory must be exist!'
 os.chdir(tasks_dir)
 
-tasks_file = open("DAG4_sup_BnetTasks.txt", "w")
+tasks_file = open("exampleBnetTasks.txt", "w")
 
 for problem_id in problem_list: #loop over data_list
     data = "problem_%i_v2_filtered_combine.csv"%problem_id
