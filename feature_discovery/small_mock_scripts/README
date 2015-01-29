@@ -1,4 +1,0 @@
-In order to create your mock moocdb database, please run
-cat *.sql | mysql -u <your user> -p<your password>
-
-This will create and populate your database called 'small_mock'. Good luck!
