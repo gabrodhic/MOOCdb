@@ -1,0 +1,152 @@
+ \documentclass[]{article}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{doublespace}
+% \usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{xspace}
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+
+\usepackage{color}
+\newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
+\usepackage{layouts}  %helps print textheight and textwidth in inches...it's about 8.5 but I'm only getting 6 in height inside a figure environment
+\usepackage{multirow}
+\usepackage{rotating}  % To put figures with their captions sideways
+\usepackage[top=2.0in, bottom=1.5in, left=1in, right=1in]{geometry}
+\usepackage[section]{placeins}
+
+%%EXAMPLES: 
+%\begin{sidewaysfigure}%\begin{center}
+%\includegraphics[width=1.0\textwidth]{figs/Our-territory.pdf}
+%\caption{We show the activities of the project in Year 1 in the context of evolutionary systems.}
+%\label{fig:our-activities}%\end{center}%\end{sidewaysfigure}
+%
+%\begin{sideways}
+%Is this rotated?  YES! IT IS!!
+%\end{sideways}
+%
+
+%\usepackage{hyperref}  % see below for colouring options included
+\usepackage[bookmarks=false,colorlinks=true,linkcolor={blue},citecolor={blue},urlcolor={blue}]{hyperref}
+
+%
+%
+%
+
+% additional packages included in Daniele's thesis:
+\usepackage[italian,english]{babel} %to set the language
+\usepackage{tabularx} %to use tabular environment
+\usepackage{amsmath} %to manage math formulas
+\usepackage{amssymb} %to manage math formulas
+%\usepackage[scriptsize]{caption} %to customise the captions
+\usepackage{stdclsdv} %to control the design of the contents
+%\usepackage{tocloft} %to control the design of the contents
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} %to manage the colors
+\usepackage{fancyhdr} %to use the fancy style
+\usepackage{caption} %to manage rotated subfigures
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{pgf}
+
+
+
+%\makenomenclature
+%\setcounter{secnumdepth}{3}
+%\setcounter{tocdepth}{3}
+
+\def \nibf#1{\noindent\textbf{#1}}
+%\newcommand{\NB}[1]{\textcolor{red}{\textbf{Comment: #1}}}
+%\newcommand{\UM}[1]{\textcolor{blue}{\textbf{UM: #1}}}
+
+%\newcommand{\TODO}[1]{\textcolor{red}{\textbf{TODO: #1}}}
+%\newcommand{\CHECK}[1]{\textcolor{red}{\textbf{CHECK THIS: #1}}}
+%\newcommand{\RedBF}[1]{\textcolor{red}{\textbf{#1}}}
+%\newcommand{\BlueBF}[1]{\textcolor{blue}{\textbf{#1}}}
+%\newcommand{\redbf}{\RedBF}
+%\newcommand{\bluebf}{\BlueBF}
+
+\usepackage{tocloft}
+\newcommand{\listappendicesname}{Appendices}
+\newlistof{appendices}{apc}{\listappendicesname}
+\newcommand{\appendices}[1]{\addcontentsline{apc}{appendices}{#1}}
+
+\newcommand{\newappendix}[1]{\section*{#1}\appendices{#1}}
+%set the abbreviations
+
+
+
+%-------------------------------------------------------------------------
+\begin{document}
+\input{title.tex}
+
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage
+\listofappendices
+\newpage
+
+\pagestyle{plain}
+\lfoot{\today}
+\cfoot{\thepage}
+\rfoot{ALFA, CSAIL, MIT}
+\pagestyle{plain}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\newpage
+\section*{Abstract}
+
+CommunityFinder is software to analyze the communities that develop in massively online open courses (MOOCs).  The goal of the tool is to give researchers and teachers further insight into their classes. The software organizes a corpus of forum posts into an Interaction Graph that represents how students interact with each other. From this graph, the software can perform community detection using two different algorithms. Along with the source code, we also release the results of running CommunityFinder on two different edX courses.
+
+\input{intro}
+
+\input{motivation}
+
+\input{previous}
+
+\input{forum}
+
+\input{community}
+
+\input{software}
+
+\input{results}
+
+\input{discussion}
+
+\input{contributions}
+
+\input{future}
+
+
+
+
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{bibliography}
+%\include{bibliography.tex}
+
+\newpage
+\input{appendex}
+
+
+\end{document}
+
+%-------------------------------------------------------------------------
+
+
+
+

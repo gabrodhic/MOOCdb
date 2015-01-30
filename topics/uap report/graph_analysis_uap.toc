@@ -1,0 +1,18 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {2}Motivation}{1}{section.2}
+\contentsline {section}{\numberline {3}Previous Work}{1}{section.3}
+\contentsline {section}{\numberline {4}Student Relationships in Discussion Forums}{2}{section.4}
+\contentsline {subsection}{\numberline {4.1}Interaction Graph}{3}{subsection.4.1}
+\contentsline {section}{\numberline {5}Community Detection}{4}{section.5}
+\contentsline {subsection}{\numberline {5.1}Spectral Clustering}{5}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Louvain Method}{5}{subsection.5.2}
+\contentsline {section}{\numberline {6}CommunityFinder Software}{6}{section.6}
+\contentsline {subsection}{\numberline {6.1}Overview}{6}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Data Sources}{6}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Design Decisions}{6}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Adding Functionality}{7}{subsection.6.4}
+\contentsline {section}{\numberline {7}Results}{8}{section.7}
+\contentsline {section}{\numberline {8}Discussion}{10}{section.8}
+\contentsline {section}{\numberline {9}Contributions}{10}{section.9}
+\contentsline {section}{\numberline {10}Future Work}{10}{section.10}

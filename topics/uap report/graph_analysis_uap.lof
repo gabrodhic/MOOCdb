@@ -1,0 +1,7 @@
+\select@language {english}
+\contentsline {figure}{\numberline {1}{\ignorespaces An example thread from 6.002x Spring 2014, which is currently being offered.\relax }}{2}{figure.caption.2}
+\contentsline {figure}{\numberline {2}{\ignorespaces This is a visualization of the Interaction Graph for 6.002x Fall 2012. This graph has 2163 students who made 6902 posts.\relax }}{3}{figure.caption.3}
+\contentsline {figure}{\numberline {3}{\ignorespaces Visualization of the results of the highest modularity partitioning of 6.002x Fall 2012. On the top is the the best Louvain Method partition. On the bottom is the best spectral clustering partition.\relax }}{4}{figure.caption.4}
+\contentsline {figure}{\numberline {4}{\ignorespaces CommunityFinder performs analysis on an edge list and output three files that describe the community structure discovered by the graph\relax }}{7}{figure.caption.5}
+\contentsline {figure}{\numberline {5}{\ignorespaces This represents how the CommnityFinder software understands the structure of the interaction graph. The hierarchical structure was chosen to enable flexibility as the software is developed. \relax }}{8}{figure.caption.6}
+\contentsline {figure}{\numberline {6}{\ignorespaces Number of Communities vs Modularity. 6.002x Fall 2012 is on top and 6.002x Spring 2013 is on bottom\relax }}{9}{figure.caption.9}
