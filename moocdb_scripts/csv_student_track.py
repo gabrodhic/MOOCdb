@@ -17,14 +17,14 @@ import sys
 def generate_user_csv(cursor):
 
 # Selects the problem with the most users
-   query = """SELECT problem_id, COUNT(DISTINCT user_id)
+    query = """SELECT problem_id, COUNT(DISTINCT user_id)
 FROM submissions
 GROUP BY problem_id
 ORDER BY COUNT(user_id) DESC;
 """
-   cursor.execute(query)
-   problem = cursor.fetchone()
-   problem_id = problem[0]
+    cursor.execute(query)
+    problem = cursor.fetchone()
+    problem_id = problem[0]
 
 # Selects all the users who attempted the given problem_id
     query = """SELECT DISTINCT user_id
@@ -59,20 +59,20 @@ ORDER BY s.submission_timestamp ASC;"""%(student)
 		        previous = next
 		    next = cursor.fetchone()
 	limit+=1
-	if limit>10: # Stops after 10 users have been generated
+	if limit>3: # Stops after 10 users have been generated
 	    sys.exit()
                     
 if __name__ == "__main__":
     
     host = "alfa6.csail.mit.edu"
     port = 3306
-    user = ""
+    user = "kevin"
     dbS2013 = "moocdb_6002x_spring_2013"
     dbF2012 = "6002x_fall_2012"
     dbS2012 = "moocdb"
-    pw = ""
+    pw = "cosmos5"
 
-    db = MySQLdb.connect(host=host, port=port, user=user, dbS2013=database, passwd=pw)
+    db = MySQLdb.connect(host=host, port=port, user=user, db=dbF2012, passwd=pw)
     cursor = db.cursor()
                         
     generate_user_csv(cursor)
