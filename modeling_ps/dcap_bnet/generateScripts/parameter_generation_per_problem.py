@@ -33,7 +33,7 @@ number_to_train = 0
 number_to_test = 0
 empty_state = 1
 empty_res = 0
-binary = 0 #either 1= correctness or 0=answer types
+binary = 0 #either 1= use binary or 0=use answer types
 
 # Indices could be loaded to make sure that different models
 # use the exact same train and test samples for each problem.

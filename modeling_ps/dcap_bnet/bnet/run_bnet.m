@@ -12,7 +12,7 @@ try
 	set_parameters()
 	which 'run_general_bnet_experiment'
 
-	[result, supports,allfold_result,case_idx] = run_general_bnet_experiment(parameters);
+	[result, supports, allfold_result, case_idx] = run_general_bnet_experiment(parameters);
 catch exc
 	errorReport = getReport(exc,'extended');
 	disp(errorReport);
@@ -20,7 +20,7 @@ catch exc
 end
 cd(resultDirectory);
 
-if success %store results
+if success % store results
 	
 	save('result','result');
 	save('parameters','parameters');
@@ -28,7 +28,7 @@ if success %store results
 	save('supports','supports');
 	save('cases','case_idx');
 
-else %store error Report and the parameters used so we can recreate
+else % store error Report and the parameters used so we can recreate
 	save('errorReport','errorReport');
 	
 	if exist('parameters','var')
